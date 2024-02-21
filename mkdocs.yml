@@ -1,0 +1,10 @@
+site_name: My Docs
+nav:
+  - 主页: index.md
+  - 分类:
+    - Java: Java.md
+theme:
+name: material
+language: zh
+hljs_languages:
+- yaml
