@@ -8,7 +8,7 @@ nav:
       - Java2: Java.md
       - Java3: Java.md
 theme:
-name: material
+  name: material
 language: zh
 hljs_languages:
-- yaml
+  - yaml
