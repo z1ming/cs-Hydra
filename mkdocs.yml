@@ -1,12 +1,6 @@
-site_name: My Docs
+site_name: 技术图谱
 nav:
   - 前言: index.md
-  - 分类:
-    - Java: Java.md
-  - 分类 2:
-    - 分类 3:
-      - Java2: Java.md
-      - Java3: Java.md
 theme:
   name: material
 language: zh
