@@ -1,23 +1,17 @@
-# 编程语言
-## Java
-## Go
-# 计算机网络
-# 操作系统
-# 数据库
-# 中间件
-
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- 计算机网络
+  - 应用层
+    - HTTP
+    - SFTP
+  - 表示层
+  - 传输层
+    - TCP
+    - UTP
+  - 网络层
+    - IP
+  - 数据链路层
+  - 物理层
+- 操作系统
+- 编程基础
+- 数据库
+- 中间件
+- 项目
