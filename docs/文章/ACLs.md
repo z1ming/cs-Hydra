@@ -4,7 +4,7 @@
 
 **示例 1**
 
-!(example1)[../images/ACLs-example1.png]
+![example1](../images/ACLs-example1.png)
 
 1. Allow only 172.16.0.0 traffic on the networks 172.16.3.0 and 172.16.4.0. (Deny non 172.16.0.0 network traffic on 3.0 and 4.0)
 
@@ -114,5 +114,14 @@ ip access-group 102 in
 Specification #6: Allow SNMP from 192.168.1.1 to 192.168.4.1 and allow HTTP access from 192.168.4.1 to 192.168.1.1. No other traffic should flow between the two networks. (Note: SNMP is 161 and HTTP is 80).
 
 ```
- test
+access-list 103 permit udp 192.168.1.1 0.0.0.0   192.168.4.1 0.0.0.0   eq 161
+access-list 103 permit tcp 192.168.4.1 0.0.0.0   192.168.1.1 0.0.0.0   eq 80
+access-list 103 deny   ip  192.168.1.0 0.0.0.255 192.168.4.0 0.0.0.255
+access-list 103 deny   ip  192.168.4.0 0.0.0.255 192.168.1.0 0.0.0.255
+access-list 103 permit ip  any         any
+Toronto # interface E0
+ip access-group 103 in
+Calgary # interface E0
+ip access-group 103 in
+
 ```
