@@ -1,6 +1,7 @@
 site_name: 技术图谱
 nav:
-  - 前言: index.md
+  - 文章:
+    - 网络访问控制列表 ACL: 文章/ACLs.md
 theme:
   name: material
 language: zh
