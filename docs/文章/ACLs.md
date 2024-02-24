@@ -146,12 +146,11 @@ b) Prevent all traffic from the workstation 170.16.10.5 from reaching the workst
 ```
 access-list 2 deny   170.16.10.5 0.0.0.0
 access-list 2 permit any
-R1 # interface E1
-ip access-group 2 in
+R3 # interface E0
+ip access-group 2 out
 ```
 
 c) Workstations 170.16.50.75 and 170.16.50.7 should not be allowed HTTP access to the tower box 170.16.70.2. All other workstations can have HTTP access on the tower box. All other traffic including traffic from outside networks are allowed.
-
 
 ```
 access-list 101 deny   tcp 170.16.50.75 0.0.0.0     170.16.70.2 0.0.0.0 eq 80
