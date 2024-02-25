@@ -1,7 +1,6 @@
 site_name: 腐烂的橘子
-nav: 
-  - index.md
-  - 知识图谱: 
+nav:
+  - 主页: index.md
   - 文章:
     - 手写访问控制列表（ACL）: 文章/ACLs.md
 theme:
