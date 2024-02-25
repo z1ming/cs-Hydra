@@ -1,6 +1,7 @@
 site_name: 腐烂的橘子
 nav: 
-  - 知识图谱: index.md
+  - index.md
+  - 知识图谱: 
     - 计算机网络:
     - 操作系统:
     - 编程基础:
