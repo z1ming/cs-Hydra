@@ -1,12 +1,71 @@
-# ACLs 访问控制权限
+# 手写访问控制列表（ACL）
 
-## 示例
 
-**示例 1**
 
-![example1](../images/ACLs-example1.png)
+## 前言
 
-1. Allow only 172.16.0.0 traffic on the networks 172.16.3.0 and 172.16.4.0. (Deny non 172.16.0.0 network traffic on 3.0 and 4.0)
+本文先介绍了访问控制列表的基本概念，然后分别通过标准 ACL （Standard ACL）和拓展 ACL （Extend ACL）的示例让大家学会手写 ACL，由此深入理解路由器内部原理。不同的路由器内部的 ACL 规则可能有些偏差，本文以思科（Cisco）路由器为例。可能华为毕竟作为了国内 4G，5G 通信建设的重要角色，所以国内关于 ACL 的介绍更多和华为相关。
+
+## 基本概念
+
+访问控制列表（Access Control Lists，ACL）是应用在路由器接口的指令列表[1]。有了它，通过在路由器内配置 ACL，我们可以限制或允许某些 ip 地址段的数据包进入路由器，或从路由器转出。
+
+![concepts](../images/ACLs/ACLs-concepts.png)
+
+假设 R1 是路由器，E0 和 S0 是路由器的两个接口：
+
+- 数据包从局域网到广域网，E0 是 ACL 的 in 方向，S0 是 ACL 的 out 方向
+- 数据包从广域网到局域网，E0 是 ACL 的 out 方向，S0 是 ACL 的 in 方向
+
+对于如下路由器：
+
+![router](../images/ACLs/ACLs-router.png)
+
+内部路由规则：
+
+![router](../images/ACLs/ACLs-in-out.png)
+
+## 示例1 ：手写 ACL
+
+### 标准 ACL
+
+- 每条语句都校验 IP 数据包的源地址
+- 根据校验结果决定允许/拒绝数据包
+
+如何手写标准 ACL：
+
+- 编写允许/拒绝策略
+- 编写路由器接口
+- 将策略绑定到该接口
+
+```
+access-list acl-number {permit/deny} source[mask]
+access-list acl-number {permit/deny} source[mask]
+interface interface-number
+ip access-group acl-number {in/out}
+```
+
+mask 表示掩码，用于指定基于 source 的 ip 范围，0 表示相应的位必须匹配，1 表示不匹配
+
+示例 1: 拒绝来自 172.16.3.14 的数据包
+
+```
+access-list 1 deny 172.16.3.14 0.0.0.0
+                    |__________| | | |
+                        |________| | |
+                          |________| |
+                            |________|   
+``` 
+
+示例 2: 允许所有来自 172.16.0.0 的数据包
+
+```
+access-list  2  permit  172.16.0.0   0.0.255.255
+```
+
+![example1](../images/ACLs/ACLs-example1.png)
+
+1. 仅允许网络 172.16.3.0 和 172.16.4.0 上的 172.16.0.0 流量。（拒绝 3.0 和 4.0 上的非 172.16.0.0 网络流量）
 
 ```
 access-list 1 permit 172.12.0.0 0.0.255.255
@@ -16,7 +75,11 @@ interface E1
 ip access-group 1 out
 ```
 
-2.
+为什么不绑定在 in 方向？
+- 如果一个新的网络（例如 172.16.5.0）加入，ACL 需要更改
+- 数据包进入路由器前会被丢弃
+
+2. 在 172.16.3.0 上拒绝 172.16.4.13 的流量，在 172.16.3.0 上也只允许 172.16.0.0 的流量
 
 ```
 access-list  2  deny    172.16.4.13  0.0.0.0
@@ -25,17 +88,34 @@ interface E0
 ip access-group 2 out
 ```
 
-3. Deny traffic from 172.16.4.0 on 172.16.3.0 Allow all other 172.16.0.0 traffic
+3. 在 172.16.3.0 上，拒绝 172.16.4.0 的流量，允许所有其他来自 172.16.0.0 的流量
+
 
 ```
-access-list  3  deny    172.16.4.13  0.0.0.255
+access-list  3  deny    172.16.4.0   0.0.0.255
 access-list  3  permit  172.16.0.0   0.0.255.255
 interface E0
 ip access-group 3 out
 ```
 
+### 拓展 ACL
 
-4. Deny FTP access on 172.16.3.0. Deny non 172.16.0.0 traffic on 3.0
+- 每条语句都会检查IP数据包的源地址、目的地地址，以及可能的协议（如tcp）和端口号（如21-ftp）
+- 结果根据源地址、目的地地址、协议和端口号的组合决定允许/拒绝数据包
+
+如何手写拓展 ACL：
+
+```
+access-list acl-number {permit/deny} protocol source source-mask  destination  destination-mask [eq port number]
+access-list acl-number {permit/deny} protocol source source- mask destination destination-mask [eq port number]
+interface      interface-number
+ip access-group acl-number {in/out}
+```
+
+- acl-number: 100~199
+- protocol: tcp, udp, icmp, igmp, ip
+
+4. 拒绝 172.16.3.0 上的 FTP 访问，拒绝 3.0 上的非 172.16.0.0 的流量
 
 ```
 access-list  101  deny    tcp  172.16.0.0  0.0.255.255  172.16.3.0  0.0.0.255  eq 20
@@ -50,7 +130,7 @@ ip access-group 101 out
 access-list  101  deny    tcp  172.16.0.0  0.0.255.255  172.16.3.0  0.0.0.255  range 20-21
 ```
 
-5. Deny SSH from 172.16.4.13 on 172.16.3.0, Deny non 172.16.0.0 traffic on 172.16.3.0
+5. 在 172.16.3.0 上拒绝来自 172.16.4.13 的 SSH 流量，在 172.16.3.0 上拒绝非 172.16.0.0 的流量
 
 ```
 access-list  102  deny    tcp  172.16.4.13  0.0.0.0      172.16.3.0   0.0.0.255  eq 22
@@ -59,9 +139,11 @@ interface E0
 ip access-group 102 out
 ```
 
-**示例 2**
+### 示例 2
 
-Specification #1: Prevent traffic from 192.168.2.0 to 192.168.1.0. (All other traffic must be permitted).
+![example2](../images/ACLs/ACLs-example2.png)
+
+#1: 阻止从 192.168.2.0 到 192.168.1.0 的流量（必须允许所有其他流量）
 
 ```
 access-list  1  deny    192.168.2.0  0.0.0.255
@@ -70,7 +152,7 @@ Toronto # interface E0
 ip access-group 1 out
 ```
 
-Specification #2: Prevent traffic from 192.168.4.1 to 192.168.2.0 (All other traffic must be permitted).
+#2: 阻止从 192.168.4.1 到 192.168.2.0 的流量（必须允许所有其他流量）
 
 ```
 access-list  2   deny   192.168.4.1  0.0.0.0
@@ -79,8 +161,7 @@ Halifax # interface E0
 ip access-group 2 out
 ```
 
-Specification #3: Traffic originating from the network 192.168.4.0 must not flow on
-192.168.3.0.
+#3: 来自 192.168.4.0 的流量必须不能经过 192.168.3.0
 
 ```
 access-list 3 deny   192.168.4.0  0.0.0.255
@@ -91,7 +172,7 @@ Halifax # interface S0
 ip access-group 3 out
 ```
 
-Specification #4: Prevent SSH traffic from 192.168.4.1 to 192.168.1.1 (All other traffic must be permitted).
+#4: 阻止所有从 192.168.4.1 到 192.168.1.1 的 SSH 流量（必须允许所有其他流量）
 
 ```
 access-list 101 deny   tcp  192.168.4.1  0.0.0.0  192.168.1.1  0.0.0.0 eq 22
@@ -100,9 +181,7 @@ Calgary # interface E0
 ip access-group 101 in
 ```
 
-Specification #5: Prevent FTP traffic from 192.168.1.1 to 192.168.2.0 (All other
-traffic must be permitted).
-
+#5: 阻止所有从 192.168.1.1 到 192.168.2.0 的 FTP 流量（必须允许所有其他流量）
 
 ```
 access-list 102  deny   tcp  192.168.1.1  0.0.0.0  192.168.2.0  0.0.0.255 range 20-21
@@ -111,7 +190,7 @@ Toronto # interface E0
 ip access-group 102 in
 ```
 
-Specification #6: Allow SNMP from 192.168.1.1 to 192.168.4.1 and allow HTTP access from 192.168.4.1 to 192.168.1.1. No other traffic should flow between the two networks. (Note: SNMP is 161 and HTTP is 80).
+#6: 允许从 192.168.1.1 到 192.168.4.1 的 SNMP 流量，允许从 192.168.4.1 到 192.168.1.1 的 HTTP 流量，之间不允许其他的流量（SNMP 端口 161，HTTP 端口 80）
 
 ```
 access-list 103 permit udp 192.168.1.1 0.0.0.0   192.168.4.1 0.0.0.0   eq 161
@@ -126,103 +205,6 @@ ip access-group 103 in
 
 ```
 
-**示例 3**
+## 参考文章
 
-![example3](../images/ACLs-example3.png)
-
-Specifications:
-
-a) Traffic from the network 170.16.40.0 must not be allowed on the 170.16.50.0 network. All other traffic must be allowed on 170.16.50.0 as long as it originates from 170.16.0.0 (that is, outside traffic must not be allowed).
-
-```
-access-list 1 deny   170.16.40.0 0.0.0.255
-access-list 1 permit 170.16.0.0  0.0.255.255
-R2 # interface E0
-ip access-group 1 out
-```
-
-b) Prevent all traffic from the workstation 170.16.10.5 from reaching the workstation 170.16.80.16. Traffic from all other hosts/ networks including traffic from outside should be allowed everywhere.
-
-```
-access-list 2 deny   170.16.10.5 0.0.0.0
-access-list 2 permit any
-R3 # interface E0
-ip access-group 2 out
-```
-
-c) Workstations 170.16.50.75 and 170.16.50.7 should not be allowed HTTP access to the tower box 170.16.70.2. All other workstations can have HTTP access on the tower box. All other traffic including traffic from outside networks are allowed.
-
-```
-access-list 101 deny   tcp 170.16.50.75 0.0.0.0     170.16.70.2 0.0.0.0 eq 80
-access-list 101 deny   tcp 170.16.50.7  0.0.0.0     170.16.70.2 0.0.0.0 eq 80
-access-list 101 permit tcp 170.16.0.0   0.0.255.255 170.16.70.2 0.0.0.0 eq 80
-access-list 101 permit ip  any          any
-R1 # interface E0
-ip access-group 101 in
-R1 # interface E1
-ip access-group 101 in
-R1 # interface S0
-ip access-group 101 in
-R2 # interface E0
-ip access-group 101 in
-R2 # interface E1
-ip access-group 101 in
-R3 # interface E0
-ip access-group 101 in
-```
-
-d) 170.16.80.16 can telnet to 170.16.40.89. No one else from the network 170.16.80.0 can telnet to 170.16.40.89. Also permit all other traffic to 170.16.40.89, but only if they originate from 170.16.0.0 (that is, do not allow outside traffic).
-
-```
-access-list 102 permit tcp 170.16.80.16 0.0.0.0     170.16.40.0 0.0.0.255 eq 23
-access-list 102 deny   tcp 170.16.80.0  0.0.0.255   170.16.40.0 0.0.0.255 eq 23
-access-list 102 permit ip  170.16.0.0   0.0.255.255 170.16.40.0 0.0.0.255
-R1 # interface E1
-ip access-group 102 in
-R2 # interface E0
-ip access-group 102 in
-R3 # interface E0
-ip access-group 102 in
-R3 # interface E1
-ip access-group 102 in
-```
-
-
-e) 170.16.10.5 can do only ftp access onto any host on the network 170.16.70.0. All other types of traffic from all other hosts are allowed, but only if they originate from 170.16.0.0 (that is, do not allow outside traffic).
-
-```
-access-list 103 permit tcp 170.16.10.5 0.0.0.0     170.16.70.0 0.0.0.255 range 20-21
-access-list 103 permit ip  170.16.0.0  0.0.255.255 170.16.70.0 0.0.0.255
-access-list 103 deny   ip  any         any
-R1 # interface E1
-ip access-group 103 in
-R1 # interface E0
-ip access-group 103 in
-R2 # interface E0
-ip access-group 103 in
-R2 # interface E1
-ip access-group 103 in
-R3 # interface E0
-ip access-group 103 in
-```
-
-f) Prevent traffic from the network 170.16.20.0 from flowing on the network 170.16.70.0 (that is, it must not flow on the network in either direction). All other traffic, including traffic from outside can.
-
-```
-access-list 3 deny   170.16.20.0 0.0.0.255
-access-list 3 deny   170.16.70.0 0.0.0.255
-access-list 3 permit any
-R1 # interface E0
-ip access-group 3 out
-R3 # interface E1
-ip access-group 3 out
-```
-
-g) Prevent traffic from the tower box 170.16.70.2 from going outside to the non-170.16.0.0 network. All other traffic can go out.
-
-```
-access-list 4 deny   170.16.70.2 0.0.0.0
-access-list 4 permit any
-R1 # interface S0
-ip access-group 4 out
-```
+[1] [访问控制列表](https://baike.baidu.com/item/%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8/1844390?fr=ge_ala)
