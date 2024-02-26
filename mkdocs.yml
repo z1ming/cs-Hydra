@@ -3,6 +3,7 @@ nav:
   - 技术图谱: index.md
   - 其他文章:
     - 手写访问控制列表（ACL）: 文章/ACLs.md
+    - 分布式全局唯一 ID 实现: 文章/id.md
 theme:
   name: material
 language: zh
