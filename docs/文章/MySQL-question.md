@@ -29,6 +29,7 @@ InnoDB 有如下锁[2]：
 具体参考[InnoDB 锁介绍](./InnoDB-Locking.md)
 
 小林版锁：
+
 - 全局锁
 	- FTWRL
 - 表锁
