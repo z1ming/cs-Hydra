@@ -2,7 +2,10 @@ site_name: 腐烂的橘子
 nav:
   - 前言: index.md
   - MySQL: 
-    - 哲学家就餐：死锁及解决方案 Java: 文章/DiningPhilosophers.md
+    - 锁:
+      - MySQL 锁高频面试题: 文章/MySQL.question.md
+      - 哲学家就餐：死锁及解决方案 Java: 文章/DiningPhilosophers.md
+      - InnoDB 锁介绍: 文章/InnoDB-Locking.md
   - 其他文章:
     - 手写访问控制列表（ACL）: 文章/ACLs.md
     - 分布式全局唯一 ID 实现: 文章/id.md
