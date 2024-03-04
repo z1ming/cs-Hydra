@@ -1,6 +1,8 @@
 site_name: 腐烂的橘子
 nav:
   - 前言: index.md
+  - Java:
+    - Java 基础面试题: 文章/Java-base.md
   - MySQL: 
     - 高频面试题-锁: 文章/MySQL-question.md
     - 哲学家就餐：死锁及解决方案 Java: 文章/DiningPhilosophers.md
