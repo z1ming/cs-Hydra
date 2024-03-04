@@ -13,16 +13,16 @@
 
 InnoDB 共有以下几种锁：
 
-- Shared(S) and Exclusive(X) Locks 
-- Intention Locks
-- Record Locks
-- Gap Locks
-- Next-Key Locks
-- Insert Intention Locks
-- AUTO-INC Locks
-- Predicate Locks for Spatial Indexes
+- 共享锁和排他锁(Shared(S) and Exclusive(X) Locks)
+- 意向锁(Intention Locks)
+- 记录锁(Record Locks)
+- 间隙锁(Gap Locks)
+- 临键锁(Next-Key Locks)
+- 插入意向锁(Insert Intention Locks)
+- 自增锁(AUTO-INC Locks)
+- 空间索引锁(Predicate Locks for Spatial Indexes)
 
-### Shared(S) and Exclusive(X) Locks
+### 共享锁和排他锁(Shared(S) and Exclusive(X) Locks)
 
 InnoDB 实现了标准的行级锁定，其中有两种类型的锁：共享锁(S)和排他锁(X)。
 
@@ -35,6 +35,41 @@ InnoDB 实现了标准的行级锁定，其中有两种类型的锁：共享锁(
 2. T2 对 X 锁的请求无法立刻批准
 
 如果事务 T1 持有 r 行的 X 锁，那么另一个事务 T2 对 r 行任一类型的锁请求都不会立即批准，只能等待 T1 释放 X 锁。
+
+### 意向锁(Intention Locks)
+
+InnoDB 支持多粒度锁定，允许行锁和表锁共存。意向锁是表级别的锁，表明稍后需要对表中的行设置那种类型的锁。意向锁有两种类型：
+
+- 意向共享锁(IS): 表示事务打算在个别行上设置共享锁
+- 意向排他锁(IX): 表示事务打算在个别行上设置排他锁
+
+使用 `select ... for share` 设置 IS 锁，使用 `select ... for update` 设置 IX 锁。
+
+规则如下：
+
+1. 在事务可以获取 S 锁之前，必须先获取 IS 锁或更强的锁
+2. 在事务可以获取 X 锁之前，必须先获取 IX 锁
+
+兼容性如下：
+
+||X|IX|S|IS|
+|:-:|:-:|:-:|:-:|:-:|
+|X|Conflict|Conflict|Conflict|Conflict|
+|IX|Conflict|Compatible|Conflict|Compatible|
+|S|Conflict|Conflict|Compatible|Compatible|
+|IS|Conflict|Compatible|Compatible|Compatible|
+
+如果一个事务请求加的锁与现有的锁兼容，那么该事务将获得该锁，否则事务将等待，直到现有锁被释放。如果请求的锁冲突，并可能发生死锁，这时会报错。
+
+意向锁只会发送一个全表的请求(比如 LOCK TABLES ... WRITE)，不会阻塞任何东西，它只是表明有人正在锁定一行，或者即将锁定一行。
+
+使用命令 `SHOW ENGINE INNODB STATUS` 将显示如下信息：
+
+```
+TABLE LOCK table `test`.`t` trx id 10080 lock mode IX
+```
+
+
 
 ## 总结
 
