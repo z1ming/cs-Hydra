@@ -68,7 +68,20 @@ class Bird extends Animal {
 
 ### HashMap 的扩容机制？
 
-- 达到负载因子（默认 0.75）时，首先将数组长度扩容原来的二倍
-- 扩容后，对原有节点重新哈希；如果节点是链表，则从头节点开始重新计算哈希
-- 扩容期间新增的元素按照新的哈希值保存
+- 判断老表容量是否超过上限，是修改为 Integer.MAX_VALUE
+- 否将容量和阈值都修改为原来 2 倍，遍历老数组，如果索引位置有一个节点，直接迁移到新位置，如果大于 1 个，则判断是红黑树节点还是链表节点，如果是链表，先保存头结点，然后依次计算后续的节点
+- Jdk1.8 之前头插法，1.8 开始尾插法
 
+### HashMap 是线程安全的吗？
+
+线程不安全。
+
+- `resize()` 时，旧数据还没有被转移到重新哈希后的位置，但这时请求的 `key` 已经会被定位到重新哈希后的位置，导致获取到空值
+- 多线程 `put` 时可能会数据覆盖。如果两个不同的 key 发生哈希冲突，可能会只新增一个列表节点而不是两个
+
+### HashTable 和 ConcurrentHashMap 的区别是什么？
+
+- HashTable 在整个方法加锁，ConcurrentHashMap 在每个链表头节点加锁，不会发生锁冲突
+- HashTable 使用 `synchronized` 加锁，ConcurrentHashMap 使用 CAS，后者效率更高
+- HashTable `resize` 时旧元素搬到新空间，然后释放旧空间，大量拷贝，效率低；ConcurrentHashMap 每次拷贝一部分，新旧空间同时存在
+- HashTable `get` 加锁，ConcurrentHashMap `get` 不加锁，原因是 Node 中的 val(和 next) 使用 volatile 修饰
