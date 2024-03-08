@@ -12,3 +12,7 @@
 
 - [LCR 039. 柱状图中最大的矩形](https://leetcode.cn/problems/0ynMMM/description/)
 - [LCR 040. 最大矩形](https://leetcode.cn/problems/PLYXKQ/description/)
+
+## 数学
+
+- [2834. 找出美丽数组的最小和](https://leetcode.cn/problems/find-the-minimum-possible-sum-of-a-beautiful-array/description/?envType=daily-question&envId=2024-03-08)
