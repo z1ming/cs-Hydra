@@ -24,3 +24,4 @@
 ### 队列
 
 - [LCR 041. 数据流中的移动平均值](https://leetcode.cn/problems/qIsx9U/description/)
+- [LCR 042. 最近的请求次数](https://leetcode.cn/problems/H8086Q/description/)
