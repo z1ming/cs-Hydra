@@ -235,3 +235,25 @@ public ThreadPoolExecutor(int corePoolSize,
 
 在 IO 密集型任务中，线程通畅会因为 IO 操作而阻塞，此时可以让其他线程继续执行，充分利用 CPU 字段。设置为 2N+1 可以保证在有多个线程阻塞时，仍有足够的线程可以继续执行。
 
+### String，StringBuilder，StringBuffer 区别？单线程大量操作字符串用哪个？
+
+- String 是不可变字符序列，每次对 String 进行修改时都会创建一个新的 String 对象，因此在大量操作字符串时，使用 String 会频繁创建对象，导致性能较低
+- StringBuilder 线程不安全，
+- StringBuffer 线程安全，性能不如 StringBuilder，因为 StringBuffer 所有共有的方法都是同步的
+
+因此单线程场景下，使用 StringBuilder 性能更好，多线程场景下使用 StringBuffer 能保证线程安全。
+
+### synchronized 偏向锁直接升级为重量级锁吗？重量级锁是怎么实现的？
+
+偏向锁不会直接升级为重量级锁，而是先升级为轻量级锁，如果轻量级锁竞争失败，则再升级为重量级锁。
+
+重量级锁一般是通过操作系统的互斥量（mutex）来实现的，当一个线程获取重量级锁时，会将该线程挂起，直到锁被释放。这种锁的性能比较低，因为每次加锁和释放锁都需要涉及到操作系统的系统调用，开销比较大。因此在实际应用中，应尽量避免使用重量级锁。
+
+### Java 中的异常分类？
+
+- Checked Exception（受检异常）：这种异常在编译时就可以被检测出来，必须在代码中声明或者抛出，否则编译不通过。一般由外部环境引起，如 `IOException`，`SQLException` 等
+- Unchecked Exception（非受检异常）：程序内部错误导致，这类代码不用显式声明抛出，抛出后不处理程序会崩溃，如 `NullPointerException`, `ArrayIndexOutOfBoundsException`, `IllegalArgumentException` 等
+- Error（错误）：这类错误无法捕获，通常由 JVM 或内存不足引起。如 `OutOfMemory Error`, `StackOverFlowError` 等
+
+Java 中，可以使用 `try ... catch` 捕获异常，使用 `throw` 手动抛出异常。
+
