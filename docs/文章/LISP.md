@@ -174,6 +174,44 @@ Scheme 是 LISP 具体实现的一个分支，官方文档[2]有其具体的描�
 (append '(1) '(2 3 4 5))         // 输出 (1 2 3 4 5)
 ```
 
+### 使用 scheme 实现 padovan 函数
+
+padovan 函数[4]类似 Fibonacci 数列，两者公式有一些不同。Fibonacci 数列为 ：
+
+${\displaystyle P(0)=P(1)=P(2)=1,}$
+
+```
+#lang scheme
+(define (padovan x)  
+  (cond  
+    [(or (= x 0) (= x 1) (= x 2))  
+     1]  
+    [else  
+     (+ (padovan (- x 2)) (padovan (- x 3)))]))
+
+(padovan 0)
+(padovan 1)
+(padovan 2)
+(padovan 3)
+(padovan 4)
+(padovan 5)
+(padovan 6)
+(padovan 10)
+```
+
+输出为：
+
+```
+1
+1
+1
+2
+2
+3
+4
+12
+```
+
 ## 总结
 
 自己尝试实现 LISP 的一些方法，有助于锻炼递归的思想，还能掌握一门编程语言，这个感觉简直太棒了。
@@ -183,3 +221,4 @@ Scheme 是 LISP 具体实现的一个分支，官方文档[2]有其具体的描�
 1. 中文维基百科: https://zh.wikipedia.org/zh-hans/LISP
 2. Scheme 官方文档：https://docs.racket-lang.org/r5rs/r5rs-std/r5rs-Z-H-9.html
 3. racket 下载地址：https://download.racket-lang.org/
+4. padovan sequence 维基百科: https://en.wikipedia.org/wiki/Padovan_sequence
