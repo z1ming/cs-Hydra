@@ -178,9 +178,15 @@ Scheme 是 LISP 具体实现的一个分支，官方文档[2]有其具体的描�
 
 padovan 函数[4]类似 Fibonacci 数列，两者公式有一些不同。Fibonacci 数列为 ：
 
-$${\displaystyle P(0)=P(1)=P(2)=1,}$$
+${\displaystyle P(0)=P(1)=1,}$
+
+${\displaystyle P(n)=P(n-1)+P(n-2).}$
+
+padovan 数列为：
 
 ${\displaystyle P(0)=P(1)=P(2)=1,}$
+
+${\displaystyle P(n)=P(n-2)+P(n-3).}$
 
 ```
 #lang scheme
