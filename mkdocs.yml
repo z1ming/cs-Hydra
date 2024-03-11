@@ -1,6 +1,8 @@
 site_name: 腐烂的橘子
 nav:
   - 前言: index.md
+  - 计算机网络: 
+    - 计算机网络面试题: 文章/network.md
   - Java:
     - Java 面试题-基础: 文章/Java-base.md
   - MySQL: 
