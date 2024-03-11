@@ -31,3 +31,4 @@
 - [LCR 042. 最近的请求次数](https://leetcode.cn/problems/H8086Q/description/)
 - [LCR 043. 完全二叉树插入器](https://leetcode.cn/problems/NaqhDT/description/)
 - [LCR 044. 在每个树行中找最大值](https://leetcode.cn/problems/hPov7L/description/)
+- [LCR 045. 找树左下角的值](https://leetcode.cn/problems/LwUNpT/description/)
