@@ -11,6 +11,8 @@ nav:
     - InnoDB 锁介绍: 文章/InnoDB-Locking.md
   - 操作系统:
     - 操作系统面试题: 文章/OS.md
+  - Spring Boot:
+    - Spring Boot 面试题: 文章/spring-boot.md
   - 算法:
     - 力扣分类题集: 文章/LeetCode.md
   - 其他文章:
