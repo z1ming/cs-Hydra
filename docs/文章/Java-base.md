@@ -107,6 +107,10 @@ class Bird extends Animal {
 - 使用 `ConcurrentHashMap`：ConcurrentHashMap 是线程安全的哈希表实现，通过分段锁和 CAS 保证线程安全
 - 使用 `Collections.synchronizedMap`：该方法会返回同步 Map 对象，但性能不如 ConcurrentHashMap
 
+### HashMap put 的流程？
+
+![HashMap.put](../images/WX20240313-082755@2x.png)
+
 ### 拓展：解决线程安全问题还有哪些办法？
 
 - 使用同步关键字 `synchronized`：同一时刻只有一个线程可以访问共享资源
