@@ -33,3 +33,7 @@
 - [LCR 044. 在每个树行中找最大值](https://leetcode.cn/problems/hPov7L/description/)
 - [LCR 045. 找树左下角的值](https://leetcode.cn/problems/LwUNpT/description/)
 - [LCR 046. 二叉树的右视图](https://leetcode.cn/problems/WNC0Lk/description/)
+
+### 堆
+
+- [LCR 059. 数据流中的第 K 大元素](https://leetcode.cn/problems/jBjn9C/description/)
