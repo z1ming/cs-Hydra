@@ -9,6 +9,8 @@ nav:
     - MySQL 高频面试题: 文章/MySQL-question.md
     - 哲学家就餐：死锁及解决方案 Java: 文章/DiningPhilosophers.md
     - InnoDB 锁介绍: 文章/InnoDB-Locking.md
+  - Redis: 
+    - Redis 面试题: 文章/redis.md
   - 操作系统:
     - 操作系统面试题: 文章/OS.md
   - Spring Boot:
