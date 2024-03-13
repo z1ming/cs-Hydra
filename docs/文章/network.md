@@ -112,7 +112,35 @@ SSL/TLS 协议的基本流程：
 
 ## HTTPS客户端验证证书的细节？[2]
 
+CA 机构首先进行证书签名，然后客户端进行校验。
 
+证书签名过程：
+
+- CA 将持有者的公钥、用途、颁发者、有效时间等信息打成一个包，然后对这些信息进行 Hash 计算，得到一个 Hash 值
+- CA 使用私钥将 Hash 值加密，形成 Certificate Signature，即对证书进行签名
+- 将 Certificate Signature 添加在文件证书上，形成电子证书
+
+客户端校验证书过程：
+
+- 客户端使用同样的 Hash 算法得到该证书的 Hash 值 H1
+- 浏览器和操作系统中集成了 CA 的公钥信息，浏览器收到证书后可以使用 CA 的公钥对 Certificate Signature 解密，得到 Hash 值 H2
+- 比较 H1 和 H2，如果值相同，则为可信赖的证书，否则认为证书不可信
+
+实际上证书的签发还有一个证书信任链的问题，我们向 CA 申请的证书一般不是根证书签发的，而是由中间证书签发的。假如客户端收到的是 baidu.com 证书，层级关系如下：
+
+- 客户端收到 baidu.com 的证书后，发现这个证书的签发者不是根证书，就无法根据本地已有的根证书中的公钥去验证 baidu.com 证书是否可信。于是，客户端根据 baidu.com 证书中的签发者，找到该证书的颁发机构是 “GlobalSign Organization Validation CA - SHA256 - G2”，然后向 CA 请求该中间证书
+- 请求到证书后发现 “GlobalSign Organization Validation CA - SHA256 - G2” 证书是由 “GlobalSign Root CA” 签发的，由于 “GlobalSign Root CA” 已经是根签发机构，应用软件会检查此证书是否已预加载于跟证书清单上，如果有，则可以利用根证书中的公钥去验证“GlobalSign Organization Validation CA - SHA256 - G2”，如果验证通过，认为中间证书是可信的
+- “GlobalSign Organization Validation CA - SHA256 - G2” 证书被信任后，可以使用 “GlobalSign Organization Validation CA - SHA256 - G2” 证书中的公钥去验证 baidu.com 证书的可信性，如果验证通过，就可以新增 baidu.com 证书
+
+整个信任链路如下：
+
+- 服务器证书的颁发者 -> 中间证书的颁发者 -> 根证书的颁发者
+- 根证书自验证 -> 中间证书验证 -> 服务器证书验证
+
+## 如何防止下载的文件被劫持和篡改？
+
+- 使用 HTTPS 下载：确保下载链接使用 HTTPS 协议，通过 SSL 加密传输协议，防止中间人攻击和数据篡改
+- 验证文件完整性：在下载文件后使用 Hash 算法（如 MD5，SHA-256）计算文件的哈希值，于官方提供的哈希值进行比对，验证文件是否被篡改
 
 ## 参考文章
 
