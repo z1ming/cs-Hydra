@@ -38,3 +38,4 @@
 
 - [LCR 059. 数据流中的第 K 大元素](https://leetcode.cn/problems/jBjn9C/description/)
 - [LCR 060. 前 K 个高频元素](https://leetcode.cn/problems/g5c51o/description/)
+- [LCR 061. 查找和最小的 K 对数字](https://leetcode.cn/problems/qn8gGX/description/)
