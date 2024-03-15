@@ -26,6 +26,9 @@ theme:
   name: material
   icon:
     repo: fontawesome/brands/github
+  font:
+    text: Roboto Slab
+    code: Roboto Mono
 language: zh
 hljs_languages:
   - yaml
