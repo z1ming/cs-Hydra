@@ -17,6 +17,8 @@ nav:
     - Spring Boot 面试题: 文章/spring-boot.md
   - 算法:
     - 力扣分类题集: 文章/LeetCode.md
+  - Go:
+    - Go 笔记: 文章/Go.md
   - 其他文章:
     - 手写访问控制列表（ACL）: 文章/ACLs.md
     - 分布式全局唯一 ID 实现: 文章/id.md
