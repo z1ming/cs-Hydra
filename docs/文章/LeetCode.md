@@ -42,5 +42,6 @@
 
 ### 前缀树
 
--[LCR 062. 实现 Trie (前缀树)](https://leetcode.cn/problems/QC3q1f/description/)
+- [LCR 062. 实现 Trie (前缀树)](https://leetcode.cn/problems/QC3q1f/description/)
+- [LCR 063. 单词替换](https://leetcode.cn/problems/UhWRSj/description/)
 
