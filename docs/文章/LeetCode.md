@@ -46,4 +46,5 @@
 - [LCR 063. 单词替换](https://leetcode.cn/problems/UhWRSj/description/)
 - [LCR 064. 实现一个魔法字典](https://leetcode.cn/problems/US1pGT/description/)
 - [LCR 065. 单词的压缩编码](https://leetcode.cn/problems/iSwD2y/submissions/513699064/)
+- [LCR 066. 键值映射](https://leetcode.cn/problems/z1R5dt/description/)
 
