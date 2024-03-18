@@ -45,4 +45,5 @@
 - [LCR 062. 实现 Trie (前缀树)](https://leetcode.cn/problems/QC3q1f/description/)
 - [LCR 063. 单词替换](https://leetcode.cn/problems/UhWRSj/description/)
 - [LCR 064. 实现一个魔法字典](https://leetcode.cn/problems/US1pGT/description/)
+- [LCR 065. 单词的压缩编码](https://leetcode.cn/problems/iSwD2y/submissions/513699064/)
 
