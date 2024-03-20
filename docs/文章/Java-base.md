@@ -318,13 +318,15 @@ public class CreateThreadCallableFutureTask {
 ### 线程有哪些状态？
 
 |线程状态|解释|
-|:-:|:-:|
+|:-|:-|
 |NEW|尚未启动线程的状态，即创建线程但为调用 start() 方法|
 |RUNNABLE|就绪状态，调用 start() 等待运行 + 正在运行|
 |BLOCKED|等待监视器锁时，进入阻塞状态|
 |WAITING|该线程正在等待另一个线程完成特定操作（notify,notifyAll）|
 |TIMED_WAITING|具有等待时间的等待状态|
 |TERMINATED|线程完成执行，进入终止状态|
+
+### 如何保证
 
 ## Java 线程池
 
