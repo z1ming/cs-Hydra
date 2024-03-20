@@ -51,5 +51,6 @@
 
 ### 二分查找
 
--[LCR 068. 搜索插入位置](https://leetcode.cn/problems/N6YdxV/description/)
+- [LCR 068. 搜索插入位置](https://leetcode.cn/problems/N6YdxV/description/)
+- [LCR 069. 山脉数组的峰顶索引](https://leetcode.cn/problems/B1IidL/description/)
 
