@@ -259,6 +259,73 @@ Java 中的 wait() 方法需要在同步块（synchronized block）中调用的�
 - 对象监视器：wait() 方法会释放对象的监视器（monitor），其他线程可以获取该对象的监视器并执行同步操作，确保线程之间的协作和同步。
 - 唤醒机制：当调用 wait() 方法后，线程会进入等待状态，只有在其他线程调用 notify() 或 notifyAll() 方法唤醒该线程时，线程才会继续执行。在同步块中调用 wait() 可以保证线程被正确唤醒。
 
+### 创建线程有哪些方式？
+
+1. 继承 Thread 类并重写 `run()` 方法
+2. 实现 `Runnable` 接口并实现 `run()` 方法
+3. 使用 Callable 和 Feature 接口通过 Executor 框架创建线程
+
+对于第 3 点：
+
+```java
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
+
+public class CreateThreadCallableFutureTask {
+    public static final int MAX_TURN = 5;
+    public static final int COMPUTE_TIMES = 100000000;
+    static class ReturnableTask implements Callable<Long> {
+        @Override
+        public Long call() throws Exception {
+            long startTime = System.currentTimeMillis();
+            System.out.println(Thread.currentThread().getName() + " 线程运行开始。");
+            Thread.sleep(1000);
+
+            for (int i = 0; i < COMPUTE_TIMES; i++) {
+                int j = i * 10000;
+            }
+            long used = System.currentTimeMillis() - startTime;
+            System.out.println(Thread.currentThread().getName() + "线程运行结束。");
+            return used;
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        ReturnableTask task = new ReturnableTask();
+        FutureTask<Long> futureTask = new FutureTask<>(task);
+
+        Thread thread = new Thread(futureTask, "returnableThread");
+        thread.start();
+        Thread.sleep(500);
+        System.out.println(Thread.currentThread().getName() + " let 子弹 fly a moument");
+        System.out.println(Thread.currentThread().getName() + " 做自己的事情：");
+
+        for (int i = 0; i < COMPUTE_TIMES /2; i++) {
+            int j = i * 10000;
+        }
+        System.out.println(Thread.currentThread().getName() + " 获取并发任务的执行结果");
+        try {
+            System.out.println(Thread.currentThread().getName() + "线程占用时间" + futureTask.get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(Thread.currentThread().getName() + "运行结束。");
+    }
+}
+```
+
+### 线程有哪些状态？
+
+|线程状态|解释|
+|:-:|:-:|
+|NEW|尚未启动线程的状态，即创建线程但为调用 start() 方法|
+|RUNNABLE|就绪状态，调用 start() 等待运行 + 正在运行|
+|BLOCKED|等待监视器锁时，进入阻塞状态|
+|WAITING|该线程正在等待另一个线程完成特定操作（notify,notifyAll）|
+|TIMED_WAITING|具有等待时间的等待状态|
+|TERMINATED|线程完成执行，进入终止状态|
+
 ## Java 线程池
 
 ### 线程池了解过吗？有哪些核心参数？
