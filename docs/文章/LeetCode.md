@@ -49,3 +49,7 @@
 - [LCR 066. 键值映射](https://leetcode.cn/problems/z1R5dt/description/)
 - [LCR 067. 数组中两个数的最大异或值](https://leetcode.cn/problems/ms70jA/description/)
 
+### 二分查找
+
+-[LCR 068. 搜索插入位置](https://leetcode.cn/problems/N6YdxV/description/)
+
