@@ -54,4 +54,5 @@
 - [LCR 068. 搜索插入位置](https://leetcode.cn/problems/N6YdxV/description/)
 - [LCR 069. 山脉数组的峰顶索引](https://leetcode.cn/problems/B1IidL/description/)
 - [LCR 070. 有序数组中的单一元素](https://leetcode.cn/problems/skFtm2/description/)
+- [LCR 071. 按权重随机选择](https://leetcode.cn/problems/cuyjEf/description/)
 
