@@ -186,6 +186,9 @@ time4: insert into students(id,no,name,age,score) value (26,'S0026','ace',28,90)
 - 按范围分表：根据数据的某个范围属性，（用户 ID、地区 ID 等）将数据打散到不同的表中，便于查询和管理不同范围的数据
 - 按数据量分表：当单表数据量过大时，按照一定规则将数据分散到不同表中
 
+### MVCC 是什么意思？
+
+MVCC（Multiversion concurrency control）多版本并发控制。
 ## 参考
 
 1. 《MySQL 是怎样运行的：从根儿上理解 MySQL》第 22 章 第 6 节
