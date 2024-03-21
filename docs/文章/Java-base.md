@@ -338,6 +338,96 @@ public class CreateThreadCallableFutureTask {
 - 公平锁是指多个线程按照锁申请的顺序来获取锁，线程直接进入队列中排队，队列中的第一个线程才能获取到锁。公平锁的优点在于各个线程公平平等，但是吞吐量小
 - 非公平锁是指多个线程加锁时直接抢占锁，抢到了就直接占有锁，抢不到才进入队列中排队。优点是吞吐量大，缺点是可能有的线程一直抢占不到锁，长时间不会运行
 
+### ReentrantLock 如何实现公平锁和非公平锁？
+
+默认使用非公平锁，参数传 true 时使用公平锁：
+
+```
+public ReentrantLock() {
+    sync = new NonfairSync();
+}
+
+/**
+ * Creates an instance of {@code ReentrantLock} with the
+ * given fairness policy.
+ *
+ * @param fair {@code true} if this lock should use a fair ordering policy
+ */
+public ReentrantLock(boolean fair) {
+    sync = fair ? new FairSync() : new NonfairSync();
+}
+```
+
+公平锁的 Lock 方法：
+
+```
+static final class FairSync extends Sync {
+    private static final long serialVersionUID = -3000897897090466540L;
+
+    final void lock() {
+        acquire(1);
+    }
+
+    /**
+     * Fair version of tryAcquire.  Don't grant access unless
+     * recursive call or no waiters or is first.
+     */
+    protected final boolean tryAcquire(int acquires) {
+        final Thread current = Thread.currentThread();
+        int c = getState();
+        if (c == 0) {
+            if (!hasQueuedPredecessors() && // 1
+                    compareAndSetState(0, acquires)) {
+                setExclusiveOwnerThread(current);
+                return true;
+            }
+        }
+        else if (current == getExclusiveOwnerThread()) {
+            int nextc = c + acquires;
+            if (nextc < 0)
+                throw new Error("Maximum lock count exceeded");
+            setState(nextc);
+            return true;
+        }
+        return false;
+    }
+}
+```
+
+注释 1 处有个 `hasQueuedPredecessors()` 方法，表明当前队列没有前驱节点，即没有线程在等待时才会 `compareAndSetState`，这就实现了公平锁。
+
+非公平锁的实现：
+
+```
+final void lock() {
+    if (compareAndSetState(0, 1)) // 2
+	setExclusiveOwnerThread(Thread.currentThread());
+    else
+	acquire(1);
+}
+
+final boolean nonfairTryAcquire(int acquires) {
+    final Thread current = Thread.currentThread();
+    int c = getState();
+    if (c == 0) {
+	if (compareAndSetState(0, acquires)) { // 3
+	    setExclusiveOwnerThread(current);
+	    return true;
+	}
+    }
+    else if (current == getExclusiveOwnerThread()) {
+	int nextc = c + acquires;
+	if (nextc < 0) // overflow
+	    throw new Error("Maximum lock count exceeded");
+	setState(nextc);
+	return true;
+    }
+    return false;
+}
+```
+
+注释 2 处，在进入 `Lock()` 方法后会直接使用 CAS 尝试获取锁，在注释 3 处没有 `hasQueuedPredecessors()` 方法，直接使用 CAS 尝试获取锁，由此实现非公平锁。
+
 ## Java 线程池
 
 ### 线程池了解过吗？有哪些核心参数？
