@@ -55,4 +55,5 @@
 - [LCR 069. 山脉数组的峰顶索引](https://leetcode.cn/problems/B1IidL/description/)
 - [LCR 070. 有序数组中的单一元素](https://leetcode.cn/problems/skFtm2/description/)
 - [LCR 071. 按权重随机选择](https://leetcode.cn/problems/cuyjEf/description/)
+- [LCR 072. x 的平方根](https://leetcode.cn/problems/jJ0w9p/description/)
 
