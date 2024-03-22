@@ -57,4 +57,5 @@
 - [LCR 071. 按权重随机选择](https://leetcode.cn/problems/cuyjEf/description/)
 - [LCR 072. x 的平方根](https://leetcode.cn/problems/jJ0w9p/description/)
 - [LCR 073. 爱吃香蕉的狒狒](https://leetcode.cn/problems/nZZqjQ/description/)
+- [LCR 074. 合并区间](https://leetcode.cn/problems/SsGoHC/description/)
 
