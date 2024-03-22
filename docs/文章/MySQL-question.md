@@ -188,7 +188,22 @@ time4: insert into students(id,no,name,age,score) value (26,'S0026','ace',28,90)
 
 ### MVCC 是什么意思？
 
-MVCC（Multiversion concurrency control）多版本并发控制。
+MVCC（Multiversion concurrency control）多版本并发控制。假设有两个事务同时更新一条数据，数据有两个隐藏列：
+
+1. trx_id: 当一个聚簇索引对该记录进行改动时，trx_id 为该事务的 id
+2. roll_pointer: 每次对某条聚簇索引改动时，都会把旧版本的日志写到 undo 日志中，roll_pointer 是一个指针，指向上一个版本的数据，形成一个链
+
+当数据库引擎为不同隔离级别时，事务通过数据库快照 ReadView 判断应该读取版本链中的哪条数据：
+
+- 隔离级别为 READ COMMITTED：每次查询开始是生成独立的 ReadView
+- REPEATABLE COMMITTED：第一次读取数据时生成 ReadView
+
+ReadView 有四个字段，在如上不同隔离级别下通过这四个字段完成数据访问：
+  - m_ids：表示在生成 ReadView 时当前系统中活跃的读写事务的事务 id 列表。
+  - min_trx_id：表示在生成 ReadView 时当前系统中活跃的读写事务中最小的事务 id，也就是 m_ids 中的最小值。
+  - max_trx_id：表示生成 ReadView 时系统中应该分配给下一个事务的 id 值。
+  - creator_trx_id：表示生成该 ReadView 的事务的事务 id。
+
 ## 参考
 
 1. 《MySQL 是怎样运行的：从根儿上理解 MySQL》第 22 章 第 6 节
