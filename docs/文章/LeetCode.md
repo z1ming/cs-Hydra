@@ -59,3 +59,9 @@
 - [LCR 073. 爱吃香蕉的狒狒](https://leetcode.cn/problems/nZZqjQ/description/)
 - [LCR 074. 合并区间](https://leetcode.cn/problems/SsGoHC/description/)
 
+### 排序
+
+#### 计数排序
+
+- [LCR 075. 数组的相对排序](https://leetcode.cn/problems/0H97ZC/description/)
+
