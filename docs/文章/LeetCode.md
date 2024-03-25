@@ -64,4 +64,6 @@
 #### 计数排序
 
 - [LCR 075. 数组的相对排序](https://leetcode.cn/problems/0H97ZC/description/)
+- [LCR 076. 数组中的第 K 个最大元素](https://leetcode.cn/problems/xx4gT2/description/)
+- [LCR 077. 排序链表](https://leetcode.cn/problems/7WHec2/description/)
 
