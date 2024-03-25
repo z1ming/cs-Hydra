@@ -74,3 +74,6 @@
 - [LCR 077. 排序链表](https://leetcode.cn/problems/7WHec2/description/)
 - [LCR 078. 合并 K 个升序链表](https://leetcode.cn/problems/vvXgSW/description/)
 
+### 回溯
+
+- [LCR 079. 子集](https://leetcode.cn/problems/TVdhkn/description/)
