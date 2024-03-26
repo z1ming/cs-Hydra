@@ -1,5 +1,5 @@
 site_name: 腐烂的橘子
-
+copyright: &copy; 2024 <a href="https://github.com/z1ming" target="_blank" rel="noopener noreferrer">Rotten Orange</a>|沪ICP备2024058920号
 nav:
   - 前言: index.md
   - 计算机网络: 
