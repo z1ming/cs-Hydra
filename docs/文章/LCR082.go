@@ -26,3 +26,4 @@ func getNext(nums []int, index int) int {
 	}
 	return next
 }
+
