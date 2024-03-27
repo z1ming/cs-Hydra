@@ -192,6 +192,22 @@ time4: insert into students(id,no,name,age,score) value (26,'S0026','ace',28,90)
 - time4: 事务 B 生成 Insert Intention Lock（插入意向锁），等待
 - 由于双方都在等待对方释放间隙锁，进入死锁
 
+### MySQL 如何实现乐观锁？
+
+乐观锁（Optimistic Concurrency Control，缩写“OCC”）是一种并发控制机制，最早是由孔祥重（H.T.Kung）教授提出[4]。乐观锁相信事务之间的竞争是比较小的，因此在读取数据时不会加锁，只在更新数据时根据版本号决定是否更新：
+
+- 如果更新时，版本号与数据库中的版本号一致，则将版本号加 1，并更新到数据库
+- 如果更新时，版本号于数据库中的版本号不一致，表示记录已经被其他事务更新，此次更新失败
+
+SQL 如下：
+
+```
+update table set
+xxx = '其他字段',
+version = version + 1
+where version = #{当前版本号}
+```
+
 ## 其他
 
 ### 设计 MySQL 的表结构要考虑什么问题？
@@ -246,9 +262,39 @@ ReadView 有四个字段，在如上不同隔离级别下通过这四个字段�
 - 第二范式：前提是满足第一范式，每张表只描述一件事情，消除部分依赖的问题
 - 第三范式：前提是满足第一范式和第二范式，第三范式需要确保数据表中每一列数据都和主键直接相关，而不能间接相关，消除传递依赖的问题
 
+### 了解 SQL 注入吗？怎么防止 SQL 注入？
+
+SQL 注入是发生于应用程序和数据库之间的安全漏洞，是输入的字符串中输入 SQL 指令，数据库以为是正常的指令去执行，系统因此遭到破坏。比如有如下 SQL：
+
+```
+select * from table where user_name = 'name' and pass_word = 'passwd' and user_type = 'student';
+```
+
+假如在用户界面需要输入用户名和密码，用户名输入 `name`，密码输入 `'or true --`，SQL 变为：
+
+```
+select * from table where user_name = 'name' and pass_word = ''or true --' and user_type = 'student';
+```
+
+`--` 是 SQL 的注释符号，因此会把 ` and user_type = 'student'` 这段注释掉，而由于 `or true` 的存在，整个 SQL 的逻辑相当于：
+
+```
+select * from table;
+```
+
+由此实现了通过 SQL 注入不用密码即可登录成功。
+
+预防措施：
+
+1. 严格限制数据库的操作权限，给连接数据库的用户提供满足需要的最低权限
+2. 校验参数是否合法，利用正则或特殊字符的判断
+3. 对进入数据库的特殊字符转义处理，或编码转换
+4. 预编译 SQL（Java 中使用 PreparedStatement），参数化查询方式，避免 SQL 拼接
+
 ## 参考
 
 1. 《MySQL 是怎样运行的：从根儿上理解 MySQL》第 22 章 第 6 节
 2. [MySQL 8.0 Reference Manual-17.7.1](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
 3. [小林 coding](https://www.xiaolincoding.com/mysql/lock/show_lock.html#time-2-%E9%98%B6%E6%AE%B5%E5%8A%A0%E9%94%81%E5%88%86%E6%9E%90)
+4. 孔祥重: https://zh.wikipedia.org/wiki/%E5%AD%94%E7%A5%A5%E9%87%8D
 
