@@ -80,3 +80,4 @@
 - [LCR 080. 组合](https://leetcode.cn/problems/uUsW3B/description/)
 - [LCR 081. 组合总和](https://leetcode.cn/problems/Ygoe9J/description/)
 - [LCR 082. 组合总和 II](https://leetcode.cn/problems/4sjJUc/)
+- [LCR 083. 全排列](https://leetcode.cn/problems/VvJkup/description/)
