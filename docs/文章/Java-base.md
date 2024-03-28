@@ -488,6 +488,8 @@ public ThreadPoolExecutor(int corePoolSize,
 
 重量级锁一般是通过操作系统的互斥量（mutex）来实现的，当一个线程获取重量级锁时，会将该线程挂起，直到锁被释放。这种锁的性能比较低，因为每次加锁和释放锁都需要涉及到操作系统的系统调用，开销比较大。因此在实际应用中，应尽量避免使用重量级锁。
 
+## 类
+
 ### Java 中的异常分类？
 
 - Checked Exception（受检异常）：这种异常在编译时就可以被检测出来，必须在代码中声明或者抛出，否则编译不通过。一般由外部环境引起，如 `IOException`，`SQLException` 等
@@ -495,6 +497,31 @@ public ThreadPoolExecutor(int corePoolSize,
 - Error（错误）：这类错误无法捕获，通常由 JVM 或内存不足引起。如 `OutOfMemory Error`, `StackOverFlowError` 等
 
 Java 中，可以使用 `try ... catch` 捕获异常，使用 `throw` 手动抛出异常。
+
+### 异常顶层是什么，有哪些接口实现类
+
+- Throwable
+  - Error
+    - OutOfMemoryError
+    - VirtualMachineError
+    - StackOverFlowError
+    - AssertionError
+    - IOError
+  - Exception
+    - Checked Exception
+      - IOException
+      - ClassNotFoundException
+      - SQLException
+      - FileNotFoundException
+    - Unchecked Exception
+      - ArithmeticException
+      - ClassCastException
+      - IllegalThreadStateException
+      - IndexOutOfBoundsException	
+
+### 集合顶层是什么，各个接口实现类有哪些
+
+![Collection.png](../images/Collection.png)
 
 ## 锁
 
