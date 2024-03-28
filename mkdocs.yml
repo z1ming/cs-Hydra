@@ -2,25 +2,20 @@ site_name: 腐烂的橘子
 copyright: Copyright &copy; 2023 - 2024 <a href="https://github.com/z1ming" target="_blank" rel="noopener noreferrer">Rotten Orange</a>|沪ICP备2024058920号
 nav:
   - 前言: index.md
-  - 计算机网络: 
+  - 面试题合集:
     - 计算机网络面试题: 文章/network.md
-  - Java:
     - Java 面试题-基础: 文章/Java-base.md
-  - MySQL: 
     - MySQL 高频面试题: 文章/MySQL-question.md
+    - Redis 面试题: 文章/redis.md
+    - 操作系统面试题: 文章/OS.md
+    - Spring Boot 面试题: 文章/spring-boot.md
+    - 力扣分类题集: 文章/LeetCode.md
+  - MySQL: 
     - 哲学家就餐：死锁及解决方案 Java: 文章/DiningPhilosophers.md
     - InnoDB 锁介绍: 文章/InnoDB-Locking.md
-  - Redis: 
-    - Redis 面试题: 文章/redis.md
-  - 操作系统:
-    - 操作系统面试题: 文章/OS.md
-  - Spring Boot:
-    - Spring Boot 面试题: 文章/spring-boot.md
-  - 算法:
-    - 力扣分类题集: 文章/LeetCode.md
   - Go:
     - Go 笔记: 文章/Go.md
-  - 其他文章:
+  - 随笔:
     - 手写访问控制列表（ACL）: 文章/ACLs.md
     - 分布式全局唯一 ID 实现: 文章/id.md
     - 浅谈 LISP: 文章/LISP.md
