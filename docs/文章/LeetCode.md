@@ -83,3 +83,4 @@
 - [LCR 083. 全排列](https://leetcode.cn/problems/VvJkup/description/)
 - [LCR 084. 全排列 II](https://leetcode.cn/problems/7p8L0Z/description/)
 - [LCR 085. 括号生成](https://leetcode.cn/problems/IDBivT/description/)
+- [LCR 086. 分割回文串](https://leetcode.cn/problems/M99OJA/description/)
