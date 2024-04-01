@@ -89,3 +89,4 @@
 ### 动态规划
 
 - [LCR 088. 使用最小花费爬楼梯](https://leetcode.cn/problems/GzCJIP/description/)
+- [LCR 089. 打家劫舍](https://leetcode.cn/problems/Gu0c2T/description/)
