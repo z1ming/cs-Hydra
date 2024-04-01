@@ -85,3 +85,7 @@
 - [LCR 085. 括号生成](https://leetcode.cn/problems/IDBivT/description/)
 - [LCR 086. 分割回文串](https://leetcode.cn/problems/M99OJA/description/)
 - [LCR 087. 复原 IP 地址](https://leetcode.cn/problems/0on3uN/)
+
+### 动态规划
+
+- [LCR 088. 使用最小花费爬楼梯](https://leetcode.cn/problems/GzCJIP/description/)
