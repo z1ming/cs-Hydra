@@ -91,3 +91,7 @@
 - [LCR 088. 使用最小花费爬楼梯](https://leetcode.cn/problems/GzCJIP/description/)
 - [LCR 089. 打家劫舍](https://leetcode.cn/problems/Gu0c2T/description/)
 - [LCR 090. 打家劫舍 II](https://leetcode.cn/problems/PzWKhm/description/)
+
+## 大厂面试真题
+
+- [165. 比较版本号](https://leetcode.cn/problems/compare-version-numbers/description/)
