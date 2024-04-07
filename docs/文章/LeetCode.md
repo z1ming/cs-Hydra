@@ -92,7 +92,9 @@
 - [LCR 089. 打家劫舍](https://leetcode.cn/problems/Gu0c2T/description/)
 - [LCR 090. 打家劫舍 II](https://leetcode.cn/problems/PzWKhm/description/)
 - [LCR 091. 粉刷房子](https://leetcode.cn/problems/JEj789/description/)
-- []
+- [LCR 092. 将字符串翻转到单调递增](https://leetcode.cn/problems/cyJERH/description/)
+- [LCR 093. 最长的斐波那契子序列的长度](https://leetcode.cn/problems/Q91FMA/description/)
+- [LCR 094. 分割回文串 II](https://leetcode.cn/problems/omKAoA/description/)
 
 ## 大厂面试真题
 
