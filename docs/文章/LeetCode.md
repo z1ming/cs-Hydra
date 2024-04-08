@@ -98,4 +98,10 @@
 
 ## 大厂面试真题
 
+### 阿里
+
 - [165. 比较版本号](https://leetcode.cn/problems/compare-version-numbers/description/)
+
+### 字节
+
+- [61. 旋转链表](https://leetcode.cn/problems/rotate-list/description/)
