@@ -21,3 +21,32 @@ RocketMQ
     - Push
   - 消息过滤
     - Broker 使用 Hash 过滤，位运算快速过滤海量消息
+- Namesrv
+  - 定义：注册中心，类似于 Kafka 的 Zookeeper
+  - 作用：保存元数据、提高 broker 可用性
+  - 功能模块
+    - Topic 路由管理模块
+    - Remoting 通信模块
+    - 定时任务模块
+    - KV 管理模块
+- Broker
+  - 作用：处理 TCP 请求、存储消息
+  - 目录结构
+    - consumequeue 目录
+      - Topic1
+        - 0
+        - 1
+    - config 目录
+      - consumerOffset.json
+      - delayOffset.json
+      - consumerFilter.json
+      - topics.json
+      - subscriptionGroup.json
+    - commitlog 目录
+      - 000000000023622320128
+      - 000000000025769803776
+    - index 目录
+      - 20191104111040896
+    - abort
+    - lock
+    - checkpoint：最近一次正常运行时的状态
