@@ -104,6 +104,15 @@
 
 ### 字节
 
+#### 力扣
+
 - [61. 旋转链表](https://leetcode.cn/problems/rotate-list/description/)
 - [LCR 016. 无重复字符的最长子串](https://leetcode.cn/problems/wtcaE1/description/)
+
+#### 智力题
+
 - [64匹马，8个赛道，如何找出最快的四匹](https://blog.csdn.net/qq_35246620/article/details/76098949)
+
+#### 编码题
+
+- [手撕单例模式]()
