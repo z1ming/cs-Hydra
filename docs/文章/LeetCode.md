@@ -97,6 +97,8 @@
 - [LCR 094. 分割回文串 II](https://leetcode.cn/problems/omKAoA/description/)
 - [LCR 095. 最长公共子序列](https://leetcode.cn/problems/qJnOS7/description/)
 - [LCR 096. 交错字符串](https://leetcode.cn/problems/IY6buf/description/)
+- [LCR 097. 不同的子序列](https://leetcode.cn/problems/21dk04/description/)
+- [LCR 098. 不同路径](https://leetcode.cn/problems/2AoeFn/description/)
 
 ## 大厂面试真题
 
