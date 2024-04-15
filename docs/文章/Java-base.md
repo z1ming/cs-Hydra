@@ -71,6 +71,11 @@ class Bird extends Animal {
 
 不同进程间通信时，可以发送各种类型的数据，包括文本、图片、音频、视频等，而这些数据都会以二进制序列的形式在网络上传送。当两个 Java 进程通信时，也能实现进程间对象的传送，这就是通过序列化和反序列化。序列化是指将 Java 对象转化为字节序列的过程，反序列化是指将字节序列转化为 Java 对象的过程。
 
+### == 和 equals 的区别是？
+
+- 对于字符串变量：== 比较的是值，equals 比较的是对象在内存中的首地址
+- 非字符串变量：如果没有对 equals 重写的话，== 和 equals 都是用来比较对象在堆内存中的首地址，即用来比较两个引用变量是否指向同一个对象
+
 ## JVM
 
 ### JVM 内存模型说一下
@@ -80,6 +85,13 @@ class Bird extends Animal {
 - 虚拟机栈（VM Stack）：每个线程都有一个虚拟机栈。虚拟机栈保存着方法执行期间的局部变量、操作数栈、方法出口等信息。线程每调用一个 Java 方法时，会创建一个栈帧（Stack Frame），栈帧包含着该方法的局部变量、操作数栈、方法返回地址等信息。栈帧在方法执行结束后会被弹出
 - 程序计数器（Program Counter Register）：每个线程都有一个程序计数器。当线程执行 Java 方法时，程序计数器保存当前指令的地址，以便在 JVM 调用其他方法或恢复线程执行时，重新回到正确的位置
 - 本地方法栈（Native Method Stack）：与 Java 虚拟机类似，但是为本地方法服务
+
+### jvm 内存结构有哪几种内存溢出的情况？
+
+- 堆内存溢出：当出现 java.lang.OutOfMemoryError:Java Heap Space 异常时，就是堆内存溢出了。原因是代码中可能存在大对象分配，或者发生了内存泄露，导致在多次 GC 之后，还是无法找到一块足够大的内存容纳当前对象
+- 栈溢出：如果我们写一段程序不断地进行递归调用，而且没有退出条件，就会导致不断地进行压栈。类似这种情况，JVM 实际会抛出 StackOverFlowError；如果 JVM 试图扩展栈空间的时候失败，就会抛出 OutOfMemoryError
+- 元空间溢出：元空间溢出，系统会抛出 java.lang.OutOfMemoryError:Metaspace。出现这个问题的原因是系统的代码非常多或引用的第三方包非常多或者通过动态代码生成类加载等方法，导致元空间的内存占用很大
+- 直接内存溢出：在使用 ByteBuffer 中的 allocateDirect() 的时候会用到，很多 javaNIO 的框架中被封装为其他方法，出现该问题时会抛出 java.lang.OutOfMemoryError: Direct buffer memory 异常
 
 ### 哪些地方会发生垃圾回收？
 
@@ -108,6 +120,11 @@ class Bird extends Animal {
 - JDK1.8`resize()` 时，旧数据还没有被转移到重新哈希后的位置，但这时请求的 `key` 已经会被定位到重新哈希后的位置，导致获取到空值，这条暂时不确定
 - 多线程 `put` 时可能会数据覆盖。如果两个不同的 key 发生哈希冲突，可能会只新增一个列表节点而不是两个
 
+### HashMap 和 HashTable 的区别是什么？
+
+- HashMap 线程不安全。允许 null 的 key 和 value，null key 只能有一个，null value 可以有多个。默认初始容量为 16，每次扩充变为原来的 2 倍。创建时如果给定了初始容量，则扩充为 2 的幂次方大小。底层数据结构为数组+链表，插入元素后如果链表长度大于阈值（默认为 8），先判断数组长度是否小于 64，如果小于，则扩充数组，反之将链表转为红黑树，以减小搜索空间
+- HashTable 线程安全，效率较低，内部方法都经过 synchronized 修饰，不可以有 null 的 key 和 value。默认初始容量为 11，每次扩容变为原来的 2n + 1.创建时指定了初始容量大小，会直接用给定的大小。底层数据结构为数组+链表。它基本被淘汰了，要保证线程安全可以用 CocurrentHashMap
+
 ### HashTable 和 ConcurrentHashMap 的区别是什么？
 
 - HashTable 在整个方法加锁，ConcurrentHashMap 在每个链表头节点加锁，不会发生锁冲突
@@ -132,7 +149,7 @@ class Bird extends Animal {
 
 ### 怎么解决 HashMap 线程不安全的问题？
 
-- 使用 `ConcurrentHashMap`：ConcurrentHashMap 是线程安全的哈希表实现，通过分段锁和 CAS 保证线程安全
+- 使用 `ConcurrentHashMap`：ConcurrentHashMap 是线程安全的哈希表实现，1.7使用 Segment+HashEntry分段锁的方式实现，1.8 则抛弃了 Segment，改为使用 CAS+sychronized+Node实现，链表过长会转化为红黑树
 - 使用 `Collections.synchronizedMap`：该方法会返回同步 Map 对象，但性能不如 ConcurrentHashMap
 
 ### HashMap put 的流程？
