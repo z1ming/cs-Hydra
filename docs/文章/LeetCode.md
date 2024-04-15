@@ -96,6 +96,7 @@
 - [LCR 093. 最长的斐波那契子序列的长度](https://leetcode.cn/problems/Q91FMA/description/)
 - [LCR 094. 分割回文串 II](https://leetcode.cn/problems/omKAoA/description/)
 - [LCR 095. 最长公共子序列](https://leetcode.cn/problems/qJnOS7/description/)
+- [LCR 096. 交错字符串](https://leetcode.cn/problems/IY6buf/description/)
 
 ## 大厂面试真题
 
