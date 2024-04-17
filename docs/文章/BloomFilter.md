@@ -31,6 +31,40 @@ code 设置为多大？code 的大小取决于你允许它犯错的概率，即�
 
 # 实践
 
+引入 maven 包：
+
+```
+<dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>28.0-jre</version>
+</dependency>
+```
+
+创建一个集合，集合中放 1 亿个元素 0～99999999，然后判断 10000～100009999 在集合中的个数，理论上应该是 99990000 个，实际输出结果是 99990291 个。所以也验证了布隆过滤器确实存在一定误差。
+
+```java
+public class BloomFilterDemo {
+    public static void main(String[] args) {
+        int total = 100000000;
+        // 集合中放 1 亿个数
+        BloomFilter<Integer> bf = BloomFilter.create(Funnels.integerFunnel(), total);
+        for (int i = 0; i < total; i++) {
+            bf.put(i);
+        }
+
+        // 判断 1 亿个数是否存在集合中
+        int ret = 0;
+        for (int i = 10000; i < total + 10000; i++) {
+            if (bf.mightContain(i)) {
+                ret++;
+            }
+        }
+
+        System.out.println(ret);
+    }
+}
+```
 
 # 参考
 
