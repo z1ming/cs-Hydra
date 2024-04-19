@@ -21,6 +21,7 @@ nav:
     - 浅谈 LISP: 文章/LISP.md
     - 布隆过滤器: 文章/BloomFilter.md
     - JVM 参数: 文章/JVM-params.md
+    - GC 垃圾回收策略: 文章/GC.md
 repo_url: https://github.com/z1ming/z1ming.github.io
 theme:
   name: material
