@@ -354,6 +354,12 @@ select * from table;
 - 针对 `limit x, y` 深分页的查询优化，可以把 limit 查询转换成某个位置的查询：`select * from tb_sku where id > 20000 limit 10;`，该方案适用于主键自增的表
 - 将字段多的表拆解成多个表，有些字段使用频率高，有些低，可以考虑分开，因为数据量大时使用频率低的字段速度会慢
 
+### binlog 的类型有哪些？
+
+1. 基于语句的复制（Statement-based）
+2. 基于行的复制（Row-Based）
+3. 混合模式的复制（Mixed）
+
 ## 参考
 
 1. 《MySQL 是怎样运行的：从根儿上理解 MySQL》第 22 章 第 6 节
