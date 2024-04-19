@@ -100,6 +100,7 @@
 - [LCR 097. 不同的子序列](https://leetcode.cn/problems/21dk04/description/)
 - [LCR 098. 不同路径](https://leetcode.cn/problems/2AoeFn/description/)
 - [LCR 099. 最小路径和](https://leetcode.cn/problems/0i0mDW/description/)
+- [LCR 100. 三角形最小路径和](https://leetcode.cn/problems/IlPe0q/description/)
 
 ## 大厂面试真题
 
