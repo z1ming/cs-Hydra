@@ -102,6 +102,10 @@
 - [LCR 099. 最小路径和](https://leetcode.cn/problems/0i0mDW/description/)
 - [LCR 100. 三角形最小路径和](https://leetcode.cn/problems/IlPe0q/description/)
 
+#### 背包问题
+
+- [LCR 101. 分割等和子集](https://leetcode.cn/problems/NUPfPr/description/)
+
 ## 大厂面试真题
 
 ### 阿里
