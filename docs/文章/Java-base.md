@@ -156,6 +156,16 @@ class Bird extends Animal {
 - HashTable `resize` 时旧元素搬到新空间，然后释放旧空间，大量拷贝，效率低；ConcurrentHashMap 每次拷贝一部分，新旧空间同时存在
 - HashTable `get` 加锁，ConcurrentHashMap `get` 不加锁，原因是 Node 中的 val(和 next) 使用 volatile 修饰
 
+### HashMap 和 ConcurrentHashMap 的底层结构是什么？
+
+- HashMap 底层是数据+链表/红黑树。HashMap使用数组存储存储元素，每个元素对应一个桶，每个桶可以存放多个键值对。当发生哈希冲突时，使用链表或红黑树解决冲突，JDK1.8 之后，链表长度过长之后会转化为红黑树，以提高查找效率
+- ConcurrentHashMap 底层数据结构是分段锁（Segment 数组）+数组+链表/红黑树，ConcurrentHashMap 将整个数组结构分成多个 Segment 段，每个 Segment 相当于一个小的 HashMap，拥有自己的锁。这样在进行写操作时，只需要锁住对应的 Segment，而其他的 Segment 仍然可以并发读写，提高了并发性能。从 JDK8 开始，ConcurrentHashMap 的实现已经不使用 Segment，采用的是 Node，内部采用 CAS 和链表分割的方式实现并发安全
+
+### ConcurrentHashMap 怎么实现线程安全的？
+
+- JDK1.7 将数据分成 Segment 数据段进行存储，然后给每一段数据配一把锁，当一个线程占用其中一个数据段时，其他线程不能访问这个数据段，但是仍然可以访问其他数据段，能够实现并发访问。但是效率低于 JDK1.8，因为 1.7 的每个 Segment 内部仍然是数组+链表，没有引入红黑树
+- JDK1.8 ConcurrentHashMap 主要通过 volatile + CAS 或 sychronized 实现的，基本的数据结构是 Node，Node 是一个头节点，相比于 Segment 粒度更小，并发操作的性能提高了，且 1.8 将数组+链表转为数组+链表/红黑树，Hash 冲突数据多时，使用红黑树的效率更高
+
 ### 为什么引入红黑树，不引入其他树？
 
 红黑树相比于其他树，性能和稳定性更好，具体来说：
