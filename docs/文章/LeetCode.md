@@ -105,6 +105,7 @@
 #### 背包问题
 
 - [LCR 101. 分割等和子集](https://leetcode.cn/problems/NUPfPr/description/)
+- [LCR 102. 目标和](https://leetcode.cn/problems/YaVDxD/description/)
 
 ## 大厂面试真题
 
