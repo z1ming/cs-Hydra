@@ -107,6 +107,7 @@
 - [LCR 101. 分割等和子集](https://leetcode.cn/problems/NUPfPr/description/)
 - [LCR 102. 目标和](https://leetcode.cn/problems/YaVDxD/description/)
 - [LCR 103. 零钱兑换](https://leetcode.cn/problems/gaM7Ch/description/)
+- [LCR 104. 组合总和 Ⅳ](https://leetcode.cn/problems/D0F0SV/description/)
 
 ## 大厂面试真题
 
