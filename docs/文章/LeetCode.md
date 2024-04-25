@@ -109,6 +109,10 @@
 - [LCR 103. 零钱兑换](https://leetcode.cn/problems/gaM7Ch/description/)
 - [LCR 104. 组合总和 Ⅳ](https://leetcode.cn/problems/D0F0SV/description/)
 
+### 图
+
+- [LCR 105. 岛屿的最大面积](https://leetcode.cn/problems/ZL6zAn/description/)
+
 ## 大厂面试真题
 
 ### 阿里
