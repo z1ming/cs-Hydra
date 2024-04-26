@@ -108,6 +108,7 @@
 - [LCR 102. 目标和](https://leetcode.cn/problems/YaVDxD/description/)
 - [LCR 103. 零钱兑换](https://leetcode.cn/problems/gaM7Ch/description/)
 - [LCR 104. 组合总和 Ⅳ](https://leetcode.cn/problems/D0F0SV/description/)
+- [LCR 106. 判断二分图](https://leetcode.cn/problems/vEAB3K/description/)*
 
 ### 图
 
