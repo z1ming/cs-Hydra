@@ -79,7 +79,7 @@ TCP 在丢包后都会触发重传，重传有超时重传、快速重传等很�
 
 这里的超时时间是 `1*HZ`，取决于 TCP/IP 规范文档 RFC6298 2.1 中的初始 RTO （RTO，Retransmission Time Out，超时重传时间）时间，RFC6298 2.1 中的描述如下[3]：
 
-![2](../images/RFC6298 2.1.png)
+![2](../images/RFC6298-2.1.png)
 
 “Note that the previous version of this document used an initial RTO of 3 seconds [PA00]. ”这句话表明 RTO
  的初始值是 3 秒，所以超时时间是 3 秒，在发送 SYN 包的 3 秒后，会重新发送一次 SYN 包。
