@@ -25,7 +25,7 @@
 
 简单了解 TCP 连接之后，我们不免想知道这些标志位是什么，TCP 报文段结构就是使用 TCP 发送数据时报文段时，这个报文段具体的样子。结构如下[1]：
 
-[](../images/TCPSegmentHeader-1.png)
+![](../images/TCPSegmentHeader-1.png)
 (图片来源于：https://www.geeksforgeeks.org/services-and-segment-structure-in-tcp/)
 
 TCP 报文首部（header）大小是 20-60 字节（bytes）。40 字节是可选的，所以典型的 TCP 报文首部大小为 20 字节。
@@ -78,7 +78,7 @@ TCP 在丢包后都会触发重传，重传有超时重传、快速重传等很�
 
 这里的超时时间是 `1*HZ`，取决于 TCP/IP 规范文档 RFC6298 2.1 中的初始 RTO （RTO，Retransmission Time Out，超时重传时间）时间，RFC6298 2.1 中的描述如下[3]：
 
-[](../images/RFC6298 2.1.png)
+![](../images/RFC6298 2.1.png)
 
 “Note that the previous version of this document used an initial RTO of 3 seconds [PA00]. ”这句话表明 RTO
  的初始值是 3 秒，所以超时时间是 3 秒，在发送 SYN 包的 3 秒后，会重新发送一次 SYN 包。
