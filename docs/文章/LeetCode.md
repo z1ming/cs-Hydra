@@ -113,6 +113,7 @@
 ### 图
 
 - [LCR 105. 岛屿的最大面积](https://leetcode.cn/problems/ZL6zAn/description/)
+- [LCR 106. 判断二分图](https://leetcode.cn/problems/vEAB3K/)*
 
 ## 大厂面试真题
 
