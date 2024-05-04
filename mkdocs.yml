@@ -14,6 +14,7 @@ nav:
     - 后端每日一题 1：三次握手: 文章/three-hands-shake.md
   - 架构每日一学:
     - 架构每日一学 1：成为一名架构师，你必须具有“战略意图”: 文章/jiagou1.md
+    - 架构每日一学 2：架构师六个生存法则之一：架构必须有且仅有一个目标（一）: 文章/jiagou2.md
   - MySQL: 
     - 哲学家就餐：死锁及解决方案 Java: 文章/DiningPhilosophers.md
     - InnoDB 锁介绍: 文章/InnoDB-Locking.md
