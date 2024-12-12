@@ -1,0 +1,1505 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../MySQL-question/">
+      
+      
+        <link rel="next" href="../OS/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Redis 面试题 - 腐烂的橘子</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto Slab";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#redis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="腐烂的橘子" class="md-header__button md-logo" aria-label="腐烂的橘子" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            腐烂的橘子
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Redis 面试题
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/z1ming/z1ming.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="腐烂的橘子" class="md-nav__button md-logo" aria-label="腐烂的橘子" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    腐烂的橘子
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/z1ming/z1ming.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    前言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    面试题合集
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            面试题合集
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算机网络面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java-base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java 面试题-基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MySQL-question/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MySQL 高频面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Redis 面试题
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Redis 面试题
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redis_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 是单线程还是多线程？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 大 key 会有什么问题？如何解决？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 为什么快？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redis_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 数据结构有哪些？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      用什么结构实现延迟消息队列？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zset" class="md-nav__link">
+    <span class="md-ellipsis">
+      ZSet 用过吗？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      高可用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="高可用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      缓存雪崩是什么？如何解决？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 缓存击穿、缓存穿透、缓存雪崩是什么？怎么解决？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      多级缓存如何保证数据一致性？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 分片集群是如何分片的？有什么好处？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 持久化方式有哪些？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    操作系统面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Boot 面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LeetCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    力扣分类题集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    后端每日一题
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            后端每日一题
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../three-hands-shake/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    后端每日一题 1：三次握手
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    架构每日一学
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            架构每日一学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jiagou1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    架构每日一学 1：成为一名架构师，你必须具有“战略意图”
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jiagou2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    架构每日一学 2：架构师六个生存法则之一：架构必须有且仅有一个目标（一）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MySQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            MySQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DiningPhilosophers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    哲学家就餐：死锁及解决方案 Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InnoDB-Locking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    InnoDB 锁介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Go
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Go
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Go/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go 笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随笔
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            随笔
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ACLs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    手写访问控制列表（ACL）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../id/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分布式全局唯一 ID 实现
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LISP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    浅谈 LISP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BloomFilter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    布隆过滤器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JVM-params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM 参数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GC 垃圾回收策略
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redis_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 是单线程还是多线程？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 大 key 会有什么问题？如何解决？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 为什么快？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redis_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 数据结构有哪些？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      用什么结构实现延迟消息队列？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zset" class="md-nav__link">
+    <span class="md-ellipsis">
+      ZSet 用过吗？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      高可用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="高可用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      缓存雪崩是什么？如何解决？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 缓存击穿、缓存穿透、缓存雪崩是什么？怎么解决？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      多级缓存如何保证数据一致性？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 分片集群是如何分片的？有什么好处？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis 持久化方式有哪些？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="redis">Redis 面试题</h1>
+<h2 id="_1">基础</h2>
+<h3 id="redis_1">Redis 是单线程还是多线程？</h3>
+<p>Redis 是单线程模型。单线程指的是接收客户端请求-解析请求-数据读写-发送数据给客户端，这个过程是由一个主线程来完成的，这是单线程的原因。</p>
+<p>但是 Redis 程序本身不是单线程的，Redis 在启动是，是会启动后台线程的：</p>
+<ul>
+<li>Redis2.6 会启动两个后台线程，分别处理关闭文件、AOF 刷盘这两个任务</li>
+<li>Redis4.0 之后，新增了一个新的后台线程，用来异步释放 Redis 内存，也就是 lazyfree 线程。例如执行 <code>unlink key/flushdb async/flushall async</code>等命令，会把这些删除操作交给后台线程执行，好处是不会导致 redis 主线程卡顿。因此我们要删除大 key 时，不要使用 <code>del</code> 命令删除，因为 del 是在主线程处理的，这样会导致主线程卡顿，因此我们应该使用 unlink 命令异步删除大 key</li>
+<li>Redis6.0 之后，采用了多个 I/O 线程处理网络请求，这是因为随着网络硬件的性能提升，Redis 的性能瓶颈有时候会出现在网络的 I/O 处理上。但是对于命令的执行仍然使用单线程处理</li>
+</ul>
+<h3 id="redis-key">Redis 大 key 会有什么问题？如何解决？</h3>
+<ul>
+<li>客户端超时阻塞：由于 Redis 是单线程处理命令，操作大 key 时会比较耗时，那么就会阻塞 Redis，从客户端角度来看，就是很久都没有响应</li>
+<li>引发网络阻塞：每次获取大 key 的网络流量较大。如果一个 key 的大小是 1MB，QPS 1000，每秒产生 1000MB 流量，对于普通前兆网卡来说是灾难性的</li>
+<li>阻塞工作线程：如果使用 del 删除大 key，会阻塞工作线程</li>
+<li>内存分布不均：集群模型在 slot 分片均匀的情况下，会出现数据和查询倾斜的情况，部分有大 key 的节点占用内存太多，导致 QPS 降低</li>
+</ul>
+<p>解决方式：</p>
+<ul>
+<li>拆分成多个小 key，这是最容易想到的办法，降低单 key 的大小，读取可以用 mget 批量读取</li>
+<li>设置合理的过期时间，为每个 key 设置合理的过期时间，以便在数据失效时能自动清理，避免大 key 长时间积累在内存</li>
+<li>启动内存淘汰策略。启动 Redis 的内存淘汰策略，例如 LRU，以便在内存不足时自动淘汰最近最少使用的数据，防止大 key 长时间占用内存</li>
+<li>数据分片。例如使用 Redis Cluster 将数据分散到多个实例，以减轻单个示例的负担，降低大 key 问题的风险</li>
+<li>删除大 key：使用 unlink 命令删除大 key，unlink 命令是 del 命令的异步版本，它可以在后台删除 key，避免阻塞 Redis 示例</li>
+</ul>
+<h3 id="redis_2">Redis 为什么快？</h3>
+<ul>
+<li>Redis 的大部分操作都在内存中进行</li>
+<li>采用单线程避免多线程之间的竞争</li>
+<li>采用 I/O 多路复用处理大量的客户端 Socket 请求，IO 多路复用机制是指一个线程处理多个 IO 流，就是我们经常听到的 select/epoll 机制。在 Redis 运行单线程的情况下，该机制允许在内核中，同时存在多个监听 Socket 和已连接 Socket。内核会一直监听这些 Socket 上的连接请求和数据请求。一旦有请求到达，就会交给 Redis 线程处理，这就实现了一个 Redis 线程处理多个 IO 流的效果</li>
+</ul>
+<h2 id="_2">数据结构</h2>
+<h3 id="redis_3">Redis 数据结构有哪些？</h3>
+<p>Redis 常见的有 5 种数据结构：</p>
+<ol>
+<li>String（字符串）：SDS。缓存对象、常规计数、分布式锁、共享 session 等</li>
+<li>Hash（哈希）：压缩列表或哈希表 -&gt; listpack。缓存对象、购物车</li>
+<li>List（列表）：双向链表和压缩列表 -&gt; quicklist。消息队列</li>
+<li>问题 1：生产者需要自行实现全局唯一 ID</li>
+<li>问题 2：不能以消费组形式消费数据</li>
+<li>Set（集合）：哈希表或整数集合。聚合计算（交集、并集、差集），点赞、共同关注、抽奖</li>
+<li>ZSet（有序集合）：压缩列表或跳表 -&gt; listpack。排序场景，比如排行榜、电话和姓名等</li>
+</ol>
+<p>后面新增了 4 种：BitMap（2.2 版新增）、HyperLogLog（2.8 版新增）、GEO（3.2 版新增）、Stream（5.0 版新增）。</p>
+<h3 id="_3">用什么结构实现延迟消息队列？</h3>
+<p>常见延迟消息场景：</p>
+<ul>
+<li>淘宝购物车未付款订单 24 小时后自动取消</li>
+<li>打车时长时间没有车主接单，平台取消订单并告诉你暂时没有车主接单</li>
+<li>点外卖时，如果商家 10 分钟还没有接单，就会自动取消接单</li>
+</ul>
+<p>可以使用有序集合 ZSet 的方式来实现延迟队列，ZSet 有一个 Score 属性可以用来存储延迟执行的时间。</p>
+<p>使用 <code>add score1 value1</code> 就可以一直向内存中生产消息，再利用 zrangebyscore 查询所有符合条件的所有待处理任务，通过循环执行队列任务即可。</p>
+<h3 id="zset">ZSet 用过吗？</h3>
+<p>ZSet 可以实现排行榜功能。ZSet 的底层数据结构是由压缩列表或跳表实现的：</p>
+<ul>
+<li>如果有序集合的元素个数小于 128 个，并且每个元素的值小于 64 字节时，Redis 会使用压缩列表作为 Zset 的底层数据结构</li>
+<li>如果有序集合的元素不满足上面的条件，Redis 会使用跳表作为 Zset 底层的数据结构</li>
+<li>Redis7.0 中，压缩列表的数据结构已经废弃了，交由 listpack 数据结构来实现了</li>
+</ul>
+<h2 id="_4">高可用</h2>
+<h3 id="_5">缓存雪崩是什么？如何解决？</h3>
+<p>缓存雪崩是指大量请求不经过缓存，直接查询数据库，导致数据库压力骤增，进而发生宕机等故障，从而造成连锁反应，造成整个系统崩溃。</p>
+<p>造成缓存雪崩的原因和解决办法：</p>
+<ul>
+<li>大量缓存同时过期，缓存都未命中<ul>
+<li>设置均匀过期时间：如果要给缓存设置过期时间，尽量避免将大量的数据设置为同一个过期时间。可以在设置缓存时间时，给过期时间添加一个随机数，这样就保证数据不会在同一时间过期</li>
+<li>互斥锁：当业务线程在处理用户请求时，如果发现访问的数据不在 Redis 里，就加一个互斥锁，保证同一时间只能有一个请求在构建缓存（从数据库读取数据，再将数据更新到 Redis 里），当缓存构建完成后再释放锁。未能获取互斥锁的请求，要么等待锁释放后重新读取缓存，要么直接返回空值或默认值</li>
+<li>后台更新缓存：业务线程不再负责更新缓存，缓存也不设置有效期，让缓存”永久有效“，并将更新缓存的工作由后台线程实时更新</li>
+</ul>
+</li>
+<li>redis 故障<ul>
+<li>熔断机制：直接启用服务的熔断机制，暂停业务方对缓存服务的访问，直接返回错误，不再继续访问数据库，从而降低对数据库的访问压力，保证数据库系统的正常运行，等 Redis 恢复正常后，再允许业务应用访问缓存服务。熔断机制保护了数据库的正常访问，但是暂停了业务访问缓存。</li>
+<li>构建 Redis 缓存高可用集群：通过主从节点的方式构建 Redis 缓存高可用集群。如果 Redis 缓存的主节点故障宕机，从节点可以切换为主节点，继续提供缓存服务，避免了由于 Redis 故障宕机从而导致的缓存雪崩问题</li>
+</ul>
+</li>
+</ul>
+<h3 id="redis_4">Redis 缓存击穿、缓存穿透、缓存雪崩是什么？怎么解决？</h3>
+<ul>
+<li>缓存击穿<ul>
+<li>某个热点 key 过期了，有大量请求访问，无法从缓存中读取，直接访问数据库，数据库容易被高并发的请求冲跨</li>
+</ul>
+</li>
+<li>缓存穿透<ul>
+<li>用户访问的数据，既不在缓存中，也不在数据库中，导致请求发生时无法构建返回数据</li>
+</ul>
+</li>
+<li>缓存雪崩<ul>
+<li>大量缓存数据在同一时刻过期或者失效，或 Redis 宕机时，如果此时有大量请求过来，无法走 Redis 缓存，于是全部请求都直接访问数据库，从而导致数据库压力骤增，严重可能发生一系列连锁反应，造成整个系统崩溃</li>
+</ul>
+</li>
+</ul>
+<p>解决方案：</p>
+<ul>
+<li>缓存击穿：<ul>
+<li>互斥锁方案：保证同一时间只有一个业务线程更新缓存，未能获取互斥锁的请求，要么等待锁释放后重新读取缓存，要么返回空值或默认值</li>
+<li>不给热点数据设置过期时间，有后台异步更新缓存，或者在热点数据准备过期前，提前通知后台线程更新缓存以及重新设置过期时间</li>
+</ul>
+</li>
+<li>缓存穿透：<ul>
+<li>非法请求限制：当有大量恶意请求访问不存在的数据时，也会发生缓存穿透，因此在 API 入口处我们要判断请求参数是否合理，请求参数是否含有非法值，请求字段是否存在，如果判断出是恶意请求就直接返回错误</li>
+<li>缓存空值或默认值：发现缓存穿透现象时，如果请求正常，可以单独构建一个空值或默认值的缓存</li>
+<li>可以设置布隆过滤器：在写入数据库时，使用布隆过滤器做个标记，在用户请求到来时，业务确认缓存失效后，通过布隆过滤器判断数据库中是否有该记录，有才查询，没有就不用查询</li>
+</ul>
+</li>
+</ul>
+<h3 id="_6">多级缓存如何保证数据一致性？</h3>
+<ul>
+<li>方案一：通过 redis 过期时间更新缓存，MySQL 数据库更新不会触发 redis 更新，只有当 redis key 过期后才会重新加载<ul>
+<li>缺点 1：数据不一致的时间较长，会造成脏数据</li>
+<li>缺点 2：完全依赖过期时间，过期时间太短缓存更新太频繁，太长容易有长时间的更新延迟</li>
+</ul>
+</li>
+<li>方案二：在方案一的基础上，用 key 的过期时间做兜底，在更新 MySQL 的同时也会更新 redis。<ul>
+<li>缺点：如果 MySQL 更新成功，redis 更新失败，则会出现和方案一一样的问题</li>
+</ul>
+</li>
+<li>方案三：在方案二的基础上，使用消息队列，异步更新 redis<ul>
+<li>缺点 1：解决不了时序的问题，如果多个业务实例同时更新同一条数据，数据更新的先后顺序可能会乱</li>
+<li>缺点 2：引入 MQ，增加了系统的复杂度</li>
+</ul>
+</li>
+<li>方案四：将 MySQL 和 redis 更新放在同一个事务中，保证强一致性<ul>
+<li>缺点 1：更新时任何环节出问题，都将导致回滚或撤销</li>
+<li>缺点 2：如果网络出现超时，不仅可能造成数据回滚或撤销，还可能发生并发问题</li>
+</ul>
+</li>
+<li>方案五：订阅 MySQL 的 binlog 日志来更新 redis，把我们搭建的 mq 消费服务，作为 mysql 的一个 slave，订阅 Binlog，解析出更新的内容，再更新 redis<ul>
+<li>缺点：单独搭建一个同步服务，引入 binlog 同步机制，成本较大</li>
+</ul>
+</li>
+</ul>
+<h3 id="redis_5">Redis 分片集群是如何分片的？有什么好处？</h3>
+<p>当 Redis 的缓存数据量大到一台服务器无法缓存时，就需要使用 Redis 切片集群（Redis Cluster）方案，它将数据分布在不同的服务器上，以此来降低对单主节点的依赖，从而提高 Redis 的读写性能。</p>
+<p>Redis Cluster 使用哈希槽（Hash Slot）来处理数据和节点的映射关系。</p>
+<p>在 Redis Cluster 方案中，一个切片集群有 16384 个哈希槽，这些哈希槽类似于数据分区，每个键值对都会根据它的 key，被映射到一个哈希槽中，具体执行过程分为两大步：</p>
+<ul>
+<li>根据键值对的 key，按照 CRC16 算法[1]计算一个 16bit 的值</li>
+<li>用 16bit 的值对 16384 取模，得到 [0,16384) 范围内的模数，每个模数代表相应编号的哈希槽，通过哈希槽找到所属的节点</li>
+</ul>
+<h3 id="redis_6">Redis 持久化方式有哪些？</h3>
+<p>Redis 的读写操作都是在内存中执行，所以性能很好，但是一旦 Redis 重启，内存中的数据就会丢失，为了保证数据不丢失，Redis 通过持久化方式将数据保存到磁盘，这样 Redis 重启后就能从磁盘中恢复数据。有两种方式：</p>
+<ul>
+<li>RDB 文件：RDB 是内存快照，将某个时刻的内存数据，以二进制的方式写入内存</li>
+<li>AOF 日志：每执行一条写操作命令，就把该命令以追加的方式写到一个日志里</li>
+<li>混合持久化方式：Redis4.0 新增的方式，集成了 AOF 和 RDB 的优点</li>
+</ul>
+<p>RDB 文件如何实现的？</p>
+<p>RDB 文件保存的是某个时刻的内存里的实际数据，而 AOF 文件保存的是写操作的命令。在故障恢复时，RDB 的恢复效率比 AOF 高一些，因为直接将 RDB 文件写入内存中就可以，不用像 AOF 那样额外执行写操作命令。</p>
+<p>有两个 Redis 命令可以用于生成 RDB 文件，一个是 <code>SAVE</code>，另一个是 <code>BGSAVE</code>[2]。他们的区别在于是否在主线程执行：</p>
+<ul>
+<li>SAVE 命令在主线程生成 RDB 文件，由于和执行操作命令在同一个线程，所以如果写入 RDB 文件的时间太长，会阻塞主线程</li>
+<li>BGSAVE 命令会单独生成一个子进程来生成 RDB 文件，可以避免阻塞主线程</li>
+</ul>
+<p>AOF 文件如何实现持久化？</p>
+<p>AOF 持久化是通过保存 Redis 数据库的写命令来记录数据库状态的。有以下三步：</p>
+<ol>
+<li>命令追加：服务在执行完一个写操作命令后，会以协议格式将被执行的写命令追加到服务器状态的 aof_buf 缓冲区的末尾</li>
+<li>如客户端向服务端发送命令 <code>set key value</code>，会将以下协议追加到 aof_buf 缓冲区末尾</li>
+<li><code>3\r\n$3\r\nSET\r\n$3\r\nKEY\r\n$5\r\nVALUE\r\n</code></li>
+<li>文件写入 + 文件同步</li>
+<li>Redis 服务器进程就是一个事件循环，所以每次写命令执行完后，都会调用 <code>flushAppendOnlyFile()</code> 函数，考虑是否要将 aof_buf 缓冲区中的内容写入和保存到 AOF 文件里</li>
+<li><code>flushAppendOnlyFile</code> 函数的行为由服务器配置 Redis.conf 的 appendfsync 选项值决定，不同值的行为如下：<ul>
+<li>always：将 aof_buf 缓冲区中的所有内容写入并同步 AOF 文件</li>
+<li>everysec：将 aof_buf 缓冲区中的所有内容写入 AOF 文件，如果上次同步 AOF 文件的时间距离现在超过一秒钟，则再次同步 AOF 文件，即将 AOF 文件中的命令执行，回写到硬盘。这个同步操作由一个专门的线程执行</li>
+<li>no：将 aof_buf 缓冲区中的所有内容写入 AOF 文件，但同步的时机由操作系统决定</li>
+</ul>
+</li>
+</ol>
+<h2 id="_7">参考</h2>
+<ol>
+<li>Cyclic redundancy check：https://en.wikipedia.org/wiki/Cyclic_redundancy_check</li>
+<li>Redis 设计与实现，黄健宏</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 - 2024 <a href="https://github.com/z1ming" target="_blank" rel="noopener noreferrer">Rotten Orange</a>|沪ICP备2024058920号
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>

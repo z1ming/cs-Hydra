@@ -1,0 +1,2909 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../network/">
+      
+      
+        <link rel="next" href="../MySQL-question/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Java 面试题-基础 - 腐烂的橘子</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto Slab";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#java-" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="腐烂的橘子" class="md-header__button md-logo" aria-label="腐烂的橘子" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            腐烂的橘子
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Java 面试题-基础
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/z1ming/z1ming.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="腐烂的橘子" class="md-nav__button md-logo" aria-label="腐烂的橘子" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    腐烂的橘子
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/z1ming/z1ming.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    前言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    面试题合集
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            面试题合集
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算机网络面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Java 面试题-基础
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Java 面试题-基础
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向对象？多态？重载？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      重载和重写的区别是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java 中的设计模式？介绍下常用的一些？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么是序列化？什么是反序列化？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equals" class="md-nav__link">
+    <span class="md-ellipsis">
+      == 和 equals 的区别是？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java 中对象创建的过程？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      JVM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JVM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      垃圾回收机制？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      标记清除中“标记”的过程？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jvm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      JVM 内存模型说一下
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jvm_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      jvm 内存结构有哪几种内存溢出的情况？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      哪些地方会发生垃圾回收？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hashmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HashMap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hashmap_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 的数据结构是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 的扩容机制？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 是线程安全的吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap-hashtable" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 和 HashTable 的区别是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashtable-concurrenthashmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashTable 和 ConcurrentHashMap 的区别是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap-concurrenthashmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 和 ConcurrentHashMap 的底层结构是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrenthashmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConcurrentHashMap 怎么实现线程安全的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么引入红黑树，不引入其他树？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 出现红黑树会一直增高变成无限高的情况吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 读和写的时间复杂度是多少？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      怎么解决 HashMap 线程不安全的问题？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap-put" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap put 的流程？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      拓展：解决线程安全问题还有哪些办法？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap-put_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 的 put 流程？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#java_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java 并发
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Java 并发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatile" class="md-nav__link">
+    <span class="md-ellipsis">
+      volatile 关键字底层是怎么实现的？如何保证内存可见性？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么需要保证内存可见性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatile_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      volatile 为什么要禁止指令重拍，能举一个具体的指令重拍出现的例子吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronized" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronized 的底层原理是什么，锁升级的过程了解吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程是怎么拿到锁的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      锁信息具体是放在哪里的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronized-reentrantlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronized 锁和 ReentrantLock 加锁有什么区别？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sleep-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      sleep 和 wait 的区别是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么wait要包在同步块？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建线程有哪些方式？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程有哪些状态？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何保证线程安全？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      公平锁和非公平锁是什么意思？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reentrantlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReentrantLock 如何实现公平锁和非公平锁？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cas" class="md-nav__link">
+    <span class="md-ellipsis">
+      CAS 原理介绍一下
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cas_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      CAS 有什么缺点？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#niobioaio" class="md-nav__link">
+    <span class="md-ellipsis">
+      NIO、BIO、AIO 有什么区别？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#java_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java 线程池
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Java 线程池">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程池了解过吗？有哪些核心参数？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么核心线程满了之后是先加入阻塞队列而不是直接加到总线程？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心线程数一搬设置为多少？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io-2n1" class="md-nav__link">
+    <span class="md-ellipsis">
+      IO 密集型线程数为什么设置为 2N+1？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringstringbuilderstringbuffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      String，StringBuilder，StringBuffer 区别？单线程大量操作字符串用哪个？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronized_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      synchronized 偏向锁直接升级为重量级锁吗？重量级锁是怎么实现的？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#java_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java 中的异常分类？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      异常顶层是什么，有哪些接口实现类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      集合顶层是什么，各个接口实现类有哪些
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      有哪些集合是线程安全的？哪些集合是线程不安全的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      数组和链表有什么区别？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      堆和栈的区别？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set 集合有什么特点？如何实现 key 是无重复的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    <span class="md-ellipsis">
+      有序的 Set 是什么？记录插入顺序的集合是什么？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      锁
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="锁">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      乐观锁如何实现，有哪些缺点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      乐观锁和悲观锁有什么区别？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MySQL-question/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MySQL 高频面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis 面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    操作系统面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Boot 面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LeetCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    力扣分类题集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    后端每日一题
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            后端每日一题
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../three-hands-shake/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    后端每日一题 1：三次握手
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    架构每日一学
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            架构每日一学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jiagou1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    架构每日一学 1：成为一名架构师，你必须具有“战略意图”
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jiagou2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    架构每日一学 2：架构师六个生存法则之一：架构必须有且仅有一个目标（一）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MySQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            MySQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DiningPhilosophers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    哲学家就餐：死锁及解决方案 Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InnoDB-Locking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    InnoDB 锁介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Go
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Go
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Go/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go 笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随笔
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            随笔
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ACLs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    手写访问控制列表（ACL）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../id/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分布式全局唯一 ID 实现
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LISP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    浅谈 LISP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BloomFilter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    布隆过滤器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JVM-params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM 参数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GC 垃圾回收策略
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      面向对象？多态？重载？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      重载和重写的区别是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java 中的设计模式？介绍下常用的一些？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么是序列化？什么是反序列化？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equals" class="md-nav__link">
+    <span class="md-ellipsis">
+      == 和 equals 的区别是？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java 中对象创建的过程？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      JVM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JVM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      垃圾回收机制？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      标记清除中“标记”的过程？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jvm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      JVM 内存模型说一下
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jvm_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      jvm 内存结构有哪几种内存溢出的情况？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      哪些地方会发生垃圾回收？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hashmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HashMap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hashmap_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 的数据结构是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 的扩容机制？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 是线程安全的吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap-hashtable" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 和 HashTable 的区别是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashtable-concurrenthashmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashTable 和 ConcurrentHashMap 的区别是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap-concurrenthashmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 和 ConcurrentHashMap 的底层结构是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrenthashmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConcurrentHashMap 怎么实现线程安全的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么引入红黑树，不引入其他树？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 出现红黑树会一直增高变成无限高的情况吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 读和写的时间复杂度是多少？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      怎么解决 HashMap 线程不安全的问题？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap-put" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap put 的流程？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      拓展：解决线程安全问题还有哪些办法？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashmap-put_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashMap 的 put 流程？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#java_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java 并发
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Java 并发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatile" class="md-nav__link">
+    <span class="md-ellipsis">
+      volatile 关键字底层是怎么实现的？如何保证内存可见性？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么需要保证内存可见性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatile_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      volatile 为什么要禁止指令重拍，能举一个具体的指令重拍出现的例子吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronized" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronized 的底层原理是什么，锁升级的过程了解吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程是怎么拿到锁的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      锁信息具体是放在哪里的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronized-reentrantlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronized 锁和 ReentrantLock 加锁有什么区别？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sleep-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      sleep 和 wait 的区别是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么wait要包在同步块？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建线程有哪些方式？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程有哪些状态？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何保证线程安全？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      公平锁和非公平锁是什么意思？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reentrantlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReentrantLock 如何实现公平锁和非公平锁？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cas" class="md-nav__link">
+    <span class="md-ellipsis">
+      CAS 原理介绍一下
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cas_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      CAS 有什么缺点？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#niobioaio" class="md-nav__link">
+    <span class="md-ellipsis">
+      NIO、BIO、AIO 有什么区别？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#java_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java 线程池
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Java 线程池">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程池了解过吗？有哪些核心参数？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么核心线程满了之后是先加入阻塞队列而不是直接加到总线程？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心线程数一搬设置为多少？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io-2n1" class="md-nav__link">
+    <span class="md-ellipsis">
+      IO 密集型线程数为什么设置为 2N+1？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringstringbuilderstringbuffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      String，StringBuilder，StringBuffer 区别？单线程大量操作字符串用哪个？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronized_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      synchronized 偏向锁直接升级为重量级锁吗？重量级锁是怎么实现的？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#java_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java 中的异常分类？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      异常顶层是什么，有哪些接口实现类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      集合顶层是什么，各个接口实现类有哪些
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      有哪些集合是线程安全的？哪些集合是线程不安全的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      数组和链表有什么区别？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      堆和栈的区别？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set 集合有什么特点？如何实现 key 是无重复的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    <span class="md-ellipsis">
+      有序的 Set 是什么？记录插入顺序的集合是什么？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      锁
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="锁">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      乐观锁如何实现，有哪些缺点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      乐观锁和悲观锁有什么区别？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="java-">Java 面试题-基础</h1>
+<h2 id="_1">基础</h2>
+<h3 id="_2">面向对象？多态？重载？</h3>
+<p>面向对象的三大特点：</p>
+<ul>
+<li>封装：将对象的数据和方法结合在一起，对外隐藏内部实现细节，只对外暴露接口。封装的目的是增强安全性和简化编程，使对象更加独立。</li>
+<li>继承：子类可以继承父类，从而共享父类的数据结构和方法，继承是代码复用的重要手段，也为多态建立基础。</li>
+<li>多态：多态允许不同对象对同一消息多出响应。同一个接口使用不同的实例可以执行不同的操作。具体有重载和重写。重载是方法名相同，参数不同。重写是子类继承父类，子类可以重新实现父类的方法。</li>
+</ul>
+<p>多态是指同一个方法名在不同的对象上可以有不同的行为。可通过继承和接口实现：</p>
+<ul>
+<li>子类继承父类，可重写父类的方法</li>
+<li>不同的类可以实现相同的接口</li>
+</ul>
+<h3 id="_3">重载和重写的区别是什么？</h3>
+<ul>
+<li>重载方法名相同，参数列表不同（参数的类型，数量，顺序），返回值可能也不同</li>
+<li>重写是子类继承父类，子类重新实现父类的方法，方法名和参数列表均相同</li>
+</ul>
+<p>实现一个常用的多态的例子：</p>
+<pre><code>public class Animal {
+    public void say() {
+        System.out.println(&quot;dddd&quot;);
+    }
+
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.say();
+
+        Pig pig = new Pig();
+        pig.say();
+
+        Bird bird = new Bird();
+        bird.say();
+    }
+}
+
+class Dog extends Animal {
+    public void say() {
+        System.out.println(&quot;汪&quot;);
+    }
+}
+
+class Pig extends Animal {
+    public void say() {
+        System.out.println(&quot;哼&quot;);
+    }
+}
+
+class Bird extends Animal {
+    public void say() {
+        System.out.println(&quot;叽喳&quot;);
+    }
+}
+</code></pre>
+<p>如上例子实现了一个 <code>Animal</code> 类，<code>Dog</code>, <code>Pig</code>, <code>Bird</code> 类分别继承了 <code>Animal</code> 类，并重写了 <code>say()</code> 方法，这样实例化不同的类，调用同一个方法 <code>say()</code> 时，会打印不同的叫声。</p>
+<h3 id="java">Java 中的设计模式？介绍下常用的一些？</h3>
+<ul>
+<li>单例模式：确保一个类只有一个实例，并提供一个全局访问点</li>
+<li>工厂方法模式：定义一个创建对象的接口，但让实现这个接口的类来决定实例化哪个类</li>
+<li>抽象工厂模式；提供一个接口，用于创建相关或依赖对象的家族，而不需要指明具体类</li>
+</ul>
+<h3 id="_4">什么是序列化？什么是反序列化？</h3>
+<p>不同进程间通信时，可以发送各种类型的数据，包括文本、图片、音频、视频等，而这些数据都会以二进制序列的形式在网络上传送。当两个 Java 进程通信时，也能实现进程间对象的传送，这就是通过序列化和反序列化。序列化是指将 Java 对象转化为字节序列的过程，反序列化是指将字节序列转化为 Java 对象的过程。</p>
+<h3 id="equals">== 和 equals 的区别是？</h3>
+<ul>
+<li>对于字符串变量：== 比较的是值，equals 比较的是对象在内存中的首地址</li>
+<li>非字符串变量：如果没有对 equals 重写的话，== 和 equals 都是用来比较对象在堆内存中的首地址，即用来比较两个引用变量是否指向同一个对象</li>
+</ul>
+<h3 id="java_1">Java 中对象创建的过程？</h3>
+<ol>
+<li>类加载检查：虚拟机遇到一条 new 指令时，首先去检查这个指令的参数能否在常量池中定位到一个类的符号引用，并检查这个符号引用代表的类是否已被加载过、解析和初始化过。如果没有需先执行类初始化。</li>
+<li>分配内存：在类加载检查通过后，接下来虚拟机将为新生对象分配内存。对象所需的内存大小在类加载完成后便可确定，为对象分配空间的任务等于把一块确定大小的内存从 Java 堆中划分出来</li>
+<li>初始化零值：内存分配完成后，虚拟机需要将分配到的内存空间都初始化为零值（不包括对象头），这一步操作保证了对象的实例字段在 Java 代码中可以不赋初始值就直接使用，程序能访问到这些字段的数据类型所对应的零值</li>
+<li>进行必要设置，如对象头：初始化零值完成之后，虚拟机要对对象进行必要的设置，例如这个对象是哪个类的实例，如何才能找到类的元数据信息、对象的哈希码、对象的 GC 分代年龄等信息。这些信息存放在对象头中。另外，根据虚拟机当前运行状态的不同，如是否启用偏向锁等，对象头会有不同的设置方式</li>
+<li>执行 init 方法：从 Java 虚拟机的视角，一个新的对象已经产生了，但是从 Java 程序的视角，还需要执行构造方法后才算创建出一个对象</li>
+</ol>
+<h2 id="jvm">JVM</h2>
+<h3 id="_5">垃圾回收机制？</h3>
+<ul>
+<li>Eden Serviver1，Serviver2</li>
+<li>创建的对象放在 Eden 区和 Serviver 区，如果都快满了，触发 Minor GC，将没被回收的放到 Serviver2 区</li>
+<li>躲过 15 次 GC 的对象会转移到老年代，大对象也会转移到老年代</li>
+<li>15 次可以设置 -XX:MAX TenuringThreshold</li>
+<li>除了15规则，还有动态年龄判断的规则，如果 Serviver 里的对象容量加起来超过 50%，那么超过这些最大年龄的对象直接进入老年代</li>
+<li>大对象直接进入老年代，通过参数 -XX:PretenureSizeThreshold 控制</li>
+<li>如果 Minor GC 后剩余的对象大于 serviver，直接放到老年代</li>
+<li>如果老年代也不够？看参数-XX:-HandlePromotionFailure是否设置，如果设置且判断失败，或者没有设置，则触发 Full GC</li>
+<li>如果还是不够，则触发 OOM</li>
+</ul>
+<h3 id="_6">标记清除中“标记”的过程？</h3>
+<p>遍历对象并标记，使用深度优先和广度优先。</p>
+<h3 id="jvm_1">JVM 内存模型说一下</h3>
+<ul>
+<li>堆（Heap）：堆是 Java 虚拟机中最大的一块内存区域，用于存储各种类型的对象示例，也是垃圾收集器的主要工作区域，Java 堆根据对象存活时间的不同，Java 堆还被分为年轻代、老年代两个区域，年轻代进一步划分为 Eden 区，From Survivor 0、To Survivor 1 区</li>
+<li>方法区（Method Area）：方法区也是所有线程共享的部分，它用于存储类的加载信息、静态变量、常量池、方法字节码等数据。在 Java 8 以前被实现为永久代（Permanent Generation），在 Java 8 中被改为元空间（Metaspace）</li>
+<li>虚拟机栈（VM Stack）：每个线程都有一个虚拟机栈。虚拟机栈保存着方法执行期间的局部变量、操作数栈、方法出口等信息。线程每调用一个 Java 方法时，会创建一个栈帧（Stack Frame），栈帧包含着该方法的局部变量、操作数栈、方法返回地址等信息。栈帧在方法执行结束后会被弹出</li>
+<li>程序计数器（Program Counter Register）：每个线程都有一个程序计数器。当线程执行 Java 方法时，程序计数器保存当前指令的地址，以便在 JVM 调用其他方法或恢复线程执行时，重新回到正确的位置</li>
+<li>本地方法栈（Native Method Stack）：与 Java 虚拟机类似，但是为本地方法服务</li>
+</ul>
+<h3 id="jvm_2">jvm 内存结构有哪几种内存溢出的情况？</h3>
+<ul>
+<li>堆内存溢出：当出现 java.lang.OutOfMemoryError:Java Heap Space 异常时，就是堆内存溢出了。原因是代码中可能存在大对象分配，或者发生了内存泄露，导致在多次 GC 之后，还是无法找到一块足够大的内存容纳当前对象</li>
+<li>栈溢出：如果我们写一段程序不断地进行递归调用，而且没有退出条件，就会导致不断地进行压栈。类似这种情况，JVM 实际会抛出 StackOverFlowError；如果 JVM 试图扩展栈空间的时候失败，就会抛出 OutOfMemoryError</li>
+<li>元空间溢出：元空间溢出，系统会抛出 java.lang.OutOfMemoryError:Metaspace。出现这个问题的原因是系统的代码非常多或引用的第三方包非常多或者通过动态代码生成类加载等方法，导致元空间的内存占用很大</li>
+<li>直接内存溢出：在使用 ByteBuffer 中的 allocateDirect() 的时候会用到，很多 javaNIO 的框架中被封装为其他方法，出现该问题时会抛出 java.lang.OutOfMemoryError: Direct buffer memory 异常</li>
+</ul>
+<h3 id="_7">哪些地方会发生垃圾回收？</h3>
+<ul>
+<li>堆内存：垃圾回收主要针对堆内存中不再被引用的对象进行回收，包括新生代和老年代中的对象</li>
+<li>永久代/元空间：虚拟机中存放类的元数据信息的区域，也会进行垃圾回收，即对不再使用的类信息进行清理</li>
+<li>字符串常量池：存放字符串常量的区域，也会进行垃圾回收，对不再被引用的字符串进行清理</li>
+</ul>
+<h2 id="hashmap">HashMap</h2>
+<h3 id="hashmap_1">HashMap 的数据结构是什么？</h3>
+<ul>
+<li>JDK1.7 及之前版本采用数组+链表的方式， JDK1.8 开始采用数组+链表/红黑树的方式</li>
+<li>链表长度大于 8 会改变成红黑树，小于 6 时会从红黑树退化为链表</li>
+</ul>
+<h3 id="hashmap_2">HashMap 的扩容机制？</h3>
+<ul>
+<li>判断老表容量是否超过上限，是修改为 Integer.MAX_VALUE</li>
+<li>否将容量和阈值都修改为原来 2 倍，遍历老数组，如果索引位置有一个节点，直接迁移到新位置，如果大于 1 个，则判断是红黑树节点还是链表节点，如果是链表，先保存头结点，然后依次计算后续的节点</li>
+<li>Jdk1.8 之前头插法，1.8 开始尾插法</li>
+</ul>
+<h3 id="hashmap_3">HashMap 是线程安全的吗？</h3>
+<p>线程不安全。</p>
+<ul>
+<li>JDK1.7 采用数据+链表，多线程下，扩容时存在 Entry 链死循环和数据丢失问题。</li>
+<li>JDK1.8<code>resize()</code> 时，旧数据还没有被转移到重新哈希后的位置，但这时请求的 <code>key</code> 已经会被定位到重新哈希后的位置，导致获取到空值，这条暂时不确定</li>
+<li>多线程 <code>put</code> 时可能会数据覆盖。如果两个不同的 key 发生哈希冲突，可能会只新增一个列表节点而不是两个</li>
+</ul>
+<h3 id="hashmap-hashtable">HashMap 和 HashTable 的区别是什么？</h3>
+<ul>
+<li>HashMap 线程不安全。允许 null 的 key 和 value，null key 只能有一个，null value 可以有多个。默认初始容量为 16，每次扩充变为原来的 2 倍。创建时如果给定了初始容量，则扩充为 2 的幂次方大小。底层数据结构为数组+链表，插入元素后如果链表长度大于阈值（默认为 8），先判断数组长度是否小于 64，如果小于，则扩充数组，反之将链表转为红黑树，以减小搜索空间</li>
+<li>HashTable 线程安全，效率较低，内部方法都经过 synchronized 修饰，不可以有 null 的 key 和 value。默认初始容量为 11，每次扩容变为原来的 2n + 1.创建时指定了初始容量大小，会直接用给定的大小。底层数据结构为数组+链表。它基本被淘汰了，要保证线程安全可以用 CocurrentHashMap</li>
+</ul>
+<h3 id="hashtable-concurrenthashmap">HashTable 和 ConcurrentHashMap 的区别是什么？</h3>
+<ul>
+<li>HashTable 在整个方法加锁，ConcurrentHashMap 在每个链表头节点加锁，不会发生锁冲突</li>
+<li>HashTable 使用 <code>synchronized</code> 加锁，ConcurrentHashMap 使用 CAS，后者效率更高</li>
+<li>HashTable <code>resize</code> 时旧元素搬到新空间，然后释放旧空间，大量拷贝，效率低；ConcurrentHashMap 每次拷贝一部分，新旧空间同时存在</li>
+<li>HashTable <code>get</code> 加锁，ConcurrentHashMap <code>get</code> 不加锁，原因是 Node 中的 val(和 next) 使用 volatile 修饰</li>
+</ul>
+<h3 id="hashmap-concurrenthashmap">HashMap 和 ConcurrentHashMap 的底层结构是什么？</h3>
+<ul>
+<li>HashMap 底层是数据+链表/红黑树。HashMap使用数组存储存储元素，每个元素对应一个桶，每个桶可以存放多个键值对。当发生哈希冲突时，使用链表或红黑树解决冲突，JDK1.8 之后，链表长度过长之后会转化为红黑树，以提高查找效率</li>
+<li>ConcurrentHashMap 底层数据结构是分段锁（Segment 数组）+数组+链表/红黑树，ConcurrentHashMap 将整个数组结构分成多个 Segment 段，每个 Segment 相当于一个小的 HashMap，拥有自己的锁。这样在进行写操作时，只需要锁住对应的 Segment，而其他的 Segment 仍然可以并发读写，提高了并发性能。从 JDK8 开始，ConcurrentHashMap 的实现已经不使用 Segment，采用的是 Node，内部采用 CAS 和链表分割的方式实现并发安全</li>
+</ul>
+<h3 id="concurrenthashmap">ConcurrentHashMap 怎么实现线程安全的？</h3>
+<ul>
+<li>JDK1.7 将数据分成 Segment 数据段进行存储，然后给每一段数据配一把锁，当一个线程占用其中一个数据段时，其他线程不能访问这个数据段，但是仍然可以访问其他数据段，能够实现并发访问。但是效率低于 JDK1.8，因为 1.7 的每个 Segment 内部仍然是数组+链表，没有引入红黑树</li>
+<li>JDK1.8 ConcurrentHashMap 主要通过 volatile + CAS 或 sychronized 实现的，基本的数据结构是 Node，Node 是一个头节点，相比于 Segment 粒度更小，并发操作的性能提高了，且 1.8 将数组+链表转为数组+链表/红黑树，Hash 冲突数据多时，使用红黑树的效率更高</li>
+</ul>
+<h3 id="_8">为什么引入红黑树，不引入其他树？</h3>
+<p>红黑树相比于其他树，性能和稳定性更好，具体来说：</p>
+<ol>
+<li>为什么不用二叉排序树？二叉排序树在极端条件下可能出现线性结构，比如每次添加的元素均小于或大于当前所有元素，则该树变为线性结构。这时查询的效率和链表一样，所以不用二叉排序树</li>
+<li>为什么不用平衡二叉树（AVL 树）？AVL 树是严格平衡的二叉树，而红黑树是基于 2-3 树演变而来，没有严格平衡，因此 AVL 树为了保持平衡进行的旋转次数要多于红黑树，性能也就不如红黑树</li>
+</ol>
+<h3 id="hashmap_4">HashMap 出现红黑树会一直增高变成无限高的情况吗？</h3>
+<p>不会。集合中节点的数量超过阈值，HashMap 会进行扩容，原始红黑树的节点会被打散，可能会退款成链表结构。</p>
+<h3 id="hashmap_5">HashMap 读和写的时间复杂度是多少？</h3>
+<p>读、写（插入、更新、删除）的时间复杂度均为 O(1)。使用键值对存储数据，可直接计算出哈希值来定位到对应的存储位置。</p>
+<h3 id="hashmap_6">怎么解决 HashMap 线程不安全的问题？</h3>
+<ul>
+<li>使用 <code>ConcurrentHashMap</code>：ConcurrentHashMap 是线程安全的哈希表实现，1.7使用 Segment+HashEntry分段锁的方式实现，1.8 则抛弃了 Segment，改为使用 CAS+sychronized+Node实现，链表过长会转化为红黑树</li>
+<li>使用 <code>Collections.synchronizedMap</code>：该方法会返回同步 Map 对象，但性能不如 ConcurrentHashMap</li>
+</ul>
+<h3 id="hashmap-put">HashMap put 的流程？</h3>
+<p><img alt="HashMap.put" src="../../images/WX20240313-082755%402x.png" /></p>
+<h3 id="_9">拓展：解决线程安全问题还有哪些办法？</h3>
+<ul>
+<li>使用同步关键字 <code>synchronized</code>：同一时刻只有一个线程可以访问共享资源</li>
+<li>使用 <code>volatile</code> 关键字：一个线程修改了共享变量的值，其他线程可以立即看到该值</li>
+<li>使用线程安全的工具类：如 <code>AtomicInteger</code>,<code>AutomicLong</code>,<code>CountDownLatch</code> 等线程安全的工具类</li>
+<li>使用多线程并发容器：如 <code>ConcurrentLinkedQueue</code>, <code>CopyOnWriteArrayList</code> 等</li>
+</ul>
+<h3 id="hashmap-put_1">HashMap 的 put 流程？</h3>
+<ol>
+<li>计算 key 的 Hash 值，即 key 要添加的数组的位置</li>
+<li>检查该位置是否为空<ul>
+<li>如果为空，则创建一个新的 Node 来保存键值对，并保存在数组的对应位置。modCount 加 1，以便在迭代时发现并发修改</li>
+</ul>
+</li>
+<li>如果在该位置已经存在其他键值对，检查该位置的第一个键值对的哈希码是否与要添加的键值对相同<ul>
+<li>如果相同，则表示找到了相同的键，直接将新的值替换旧的值，完成更新操作</li>
+</ul>
+</li>
+<li>如果第一个键值对的哈希码和键不相同，则需要遍历链表或红黑树来查找是否有相同的键<ul>
+<li>如果键值对集合是链表结构：<ul>
+<li>从链表的头部开始逐个比较键的哈希码和 <code>equals()</code> 方法，知道找到相同的键或达到链表末尾</li>
+<li>如果找到了相同的键，则使用新的值取代旧值，即更新键对应的值</li>
+<li>如果没有找到相同的键，则将新的键值对添加到链表的头部</li>
+</ul>
+</li>
+<li>如果键值对是红黑树结构：<ul>
+<li>在红黑树中使用哈希码和 <code>equals()</code> 方法进行查找，根据键的哈希码，定位到红黑树中的某个节点，然后逐个比较键，知道找到相同的键或达到红黑树末尾</li>
+<li>如果找到了相同的键，则使用新值代替旧值，更新对应的值</li>
+<li>如果没有找到相同的键，则将新的键值添加到红黑树中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>检查链表长度是否为 8<ul>
+<li>如果链表长度超过阈值，且 HashMap 的数组长度大于 64，则会将链表转为红黑树</li>
+</ul>
+</li>
+<li>检查负载因子是否大于 0.75<ul>
+<li>如果键值对的数量/数组长度 &gt; 阈值，则需要进行扩容操作</li>
+</ul>
+</li>
+<li>扩容<ul>
+<li>创建一个新的两倍大小的数组</li>
+<li>将旧数组中的键值对重新计算哈希码并分配到新数组中的位置</li>
+<li>更新 HashMap 的数组引用和阈值参数</li>
+</ul>
+</li>
+<li>完成添加操作</li>
+</ol>
+<p>这里，HashMap 的键和值都可以为 null，是非线程安全的。</p>
+<h2 id="java_2">Java 并发</h2>
+<h3 id="volatile">volatile 关键字底层是怎么实现的？如何保证内存可见性？</h3>
+<p>volatile 通过以下两种机制保证内存可见性：</p>
+<ul>
+<li>禁止指令重排：在程序执行时，为了提高性能，编译器和处理器可能会指令重排序，导致变更的更新操作被延迟执行或乱序执行，其他线程无法看到最新的值。使用 volatile 关键字修饰的变量会禁止指令重排序，保证变量更新操作按照代码顺序执行。</li>
+<li>内存屏障：在多核处理器架构下，每个线程都有自己的缓存，volatile 关键字会在写操作后插入写屏障（Write Barrier），在读操作前插入读屏障（Read Barrier），确保变量的更新能够立即被其他线程看到，保证内存的可见性。</li>
+</ul>
+<p>通过指令重排序和插入内存屏障，volatile 关键字能够保证被修饰变量的更新操作对其他线程是可见的，从而有效解决了多线程环境下的内存可见性问题。</p>
+<h3 id="_10">为什么需要保证内存可见性</h3>
+<p>为了解决数据一致性。如果不保证内存可见性，一个线程改变了共享变量的值，另一个线程无法看到最新的值，没有使用最新的数据，导致产生错误的结果。</p>
+<h3 id="volatile_1">volatile 为什么要禁止指令重拍，能举一个具体的指令重拍出现的例子吗？</h3>
+<p>禁止指令重拍是为了保证程序的执行顺序和编写的顺序一致，特别是在多线程环境下，避免出现意外的结果。</p>
+<p>如:</p>
+<pre><code>int a = 0;
+boolean flag = false;
+
+a = 1; 
+flag = false;
+
+if (flag) {
+    System.out.println(a);
+}
+</code></pre>
+<p>如果发生指令重排，可能发生在判断 flag 先于 <code>a</code> 的赋值操作，从而打印出 <code>0</code>。如果禁止指令重排，则在多线程环境下保证代码按顺序执行，保证 <code>System.out.println(a);</code> 可以输出 1。</p>
+<h3 id="synchronized">Synchronized 的底层原理是什么，锁升级的过程了解吗？</h3>
+<ul>
+<li>Synchronized 底层使用 monitor 对象锁实现，每一个对象关联一个 monitor 对象，而 monitor 对象锁是互斥的，同一个时刻只能有一个线程持有对象锁，其他线程想再获取对象锁时会被阻塞住，这样就能保证拥有对象锁的线程可以安全执行临界区的代码</li>
+<li>锁升级是指 jvm 根据锁的竞争对象和对象的状态，将对象的锁从偏向锁、轻量锁升级为重量级锁的过程。<ul>
+<li>偏向锁是指针对无竞争的情况下，锁会偏向于第一个获取锁的线程</li>
+<li>轻量锁是指段时间内只有一个线程竞争锁的情况下，使用 CAS 操作来避免阻塞</li>
+<li>重量级锁是指多个线程竞争同一个锁时，通过操作系统的互斥量来实现线程阻塞和唤醒。</li>
+<li>锁升级为了提供多线程并发访问的效率和性能</li>
+</ul>
+</li>
+</ul>
+<h3 id="_11">线程是怎么拿到锁的？</h3>
+<p>检查锁的状态，并尝试获取锁。在 JVM 中，锁信息具体是存放在 Java 对象头中的。</p>
+<p>当一个线程尝试进入 synchronized 代码块或方法时，JVM 会检查对应对象的锁状态。如果一个对象的锁未被其他线程持有，即锁状态为可获取，那么该线程将成功获取锁并进入临界区执行代码。</p>
+<h3 id="_12">锁信息具体是放在哪里的？</h3>
+<p>锁状态信息是 Java 对象头中的 Mark Word 字段，保存了锁的信息、垃圾回收信息等。Java 对象在内存中有如下字段：</p>
+<ul>
+<li>对象头<ul>
+<li>Mark Word</li>
+<li>Class Pointer</li>
+<li>Length</li>
+</ul>
+</li>
+<li>对象实际数据<ul>
+<li>Instance Data/Array Data</li>
+</ul>
+</li>
+<li>对齐填充<ul>
+<li>Padding</li>
+</ul>
+</li>
+</ul>
+<p>JVM 通过操作对象的头部信息来实现锁的获取、释放以及等待队列的管理。当线程成功获取锁后，对象的头部信息会被更新为当前线程的标识，表示该线程拥有了这个锁。</p>
+<p>其他线程在尝试获取同一个锁时，会检查对象的头部信息，如果锁已经被其他线程持有，他们将会被阻塞直到锁被释放。</p>
+<h3 id="synchronized-reentrantlock">Synchronized 锁和 ReentrantLock 加锁有什么区别？</h3>
+<ul>
+<li>用法不同：synchronized 可用来修饰普通方法、静态方法和代码块，而 ReentrantLock 只能用在代码块上</li>
+<li>获取锁和释放锁的方式不同：synchronized 会自动加锁和释放锁，当进入 synchronized 修饰的代码块之后会自动加锁，当离开 synchronized 的代码段之后会自动释放锁。ReentrantLock 需要手动加锁和释放锁</li>
+<li>锁类型不同：synchronized 属于非公平锁，而 ReentrantLock 既可以是公平锁也可以是非公平锁</li>
+<li>响应中断不同：ReentrantLock 可以响应中断，synchronized 不可以</li>
+<li>底层实现不同：synchronized 是 JVM 层面通过监视器实现的，ReentrantLock 是基于 AQS 实现的</li>
+</ul>
+<h3 id="sleep-wait">sleep 和 wait 的区别是什么？</h3>
+<ul>
+<li>相同点：<code>sleep</code> 和 <code>wait</code> 都会暂停当前线程并让出 cpu</li>
+<li>不同点：</li>
+<li>定义位置不同，<code>sleep</code> 是 Thread 的方法，<code>wait</code> 是 Object 的方法</li>
+<li>调用位置不同：<code>sleep</code> 可以在任何地方使用，<code>wait</code> 只能在同步方法或同步块中使用</li>
+<li>锁资源释放方式不同：<code>sleep</code> 只是让出了 CPU，但没有释放同步资源锁，<code>wait</code> 让当前线程退出同步资源锁，其他线程调用 <code>notify</code> 时才会继续竞争同步资源锁，从而执行</li>
+<li>恢复方式不同：<code>sleep</code> 调用停止后仍持有同步锁，所以到时间后会继续执行，<code>wait</code> 调用会放弃对象锁，进入等待队列，待调用 notify/notifyAll唤醒指定的线程或所有线程，才会进入锁池，等到再次获取到对象锁时才会进入运行状态，在没有获取到对象锁之前不会运行</li>
+<li>异常捕获：<code>sleep</code> 需要捕获或抛出异常，wait/notify/notifyAll 则不需要</li>
+</ul>
+<h3 id="wait">为什么wait要包在同步块？</h3>
+<p>Java 中的 wait() 方法需要在同步块（synchronized block）中调用的原因是因为 wait()方法会释放对象的锁，而在同步块中可以确保线程在调用 wait() 方法前持有对象的锁，从而避免多线程执行时的竞争和冲突。</p>
+<p>具体原因如下：</p>
+<ul>
+<li>线程安全：在同步块中调用 wait() 方法可以确保线程在调用 wait() 前已经获取了对象的锁，避免多线程之间的竞争和数据不一致性问题。</li>
+<li>对象监视器：wait() 方法会释放对象的监视器（monitor），其他线程可以获取该对象的监视器并执行同步操作，确保线程之间的协作和同步。</li>
+<li>唤醒机制：当调用 wait() 方法后，线程会进入等待状态，只有在其他线程调用 notify() 或 notifyAll() 方法唤醒该线程时，线程才会继续执行。在同步块中调用 wait() 可以保证线程被正确唤醒。</li>
+</ul>
+<h3 id="_13">创建线程有哪些方式？</h3>
+<ol>
+<li>继承 Thread 类并重写 <code>run()</code> 方法</li>
+<li>实现 <code>Runnable</code> 接口并实现 <code>run()</code> 方法</li>
+<li>使用 Callable 和 Feature 接口通过 Executor 框架创建线程</li>
+</ol>
+<p>对于第 3 点：</p>
+<pre><code class="language-java">
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
+
+public class CreateThreadCallableFutureTask {
+    public static final int MAX_TURN = 5;
+    public static final int COMPUTE_TIMES = 100000000;
+    static class ReturnableTask implements Callable&lt;Long&gt; {
+        @Override
+        public Long call() throws Exception {
+            long startTime = System.currentTimeMillis();
+            System.out.println(Thread.currentThread().getName() + &quot; 线程运行开始。&quot;);
+            Thread.sleep(1000);
+
+            for (int i = 0; i &lt; COMPUTE_TIMES; i++) {
+                int j = i * 10000;
+            }
+            long used = System.currentTimeMillis() - startTime;
+            System.out.println(Thread.currentThread().getName() + &quot;线程运行结束。&quot;);
+            return used;
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        ReturnableTask task = new ReturnableTask();
+        FutureTask&lt;Long&gt; futureTask = new FutureTask&lt;&gt;(task);
+
+        Thread thread = new Thread(futureTask, &quot;returnableThread&quot;);
+        thread.start();
+        Thread.sleep(500);
+        System.out.println(Thread.currentThread().getName() + &quot; let 子弹 fly a moument&quot;);
+        System.out.println(Thread.currentThread().getName() + &quot; 做自己的事情：&quot;);
+
+        for (int i = 0; i &lt; COMPUTE_TIMES /2; i++) {
+            int j = i * 10000;
+        }
+        System.out.println(Thread.currentThread().getName() + &quot; 获取并发任务的执行结果&quot;);
+        try {
+            System.out.println(Thread.currentThread().getName() + &quot;线程占用时间&quot; + futureTask.get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(Thread.currentThread().getName() + &quot;运行结束。&quot;);
+    }
+}
+</code></pre>
+<h3 id="_14">线程有哪些状态？</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">线程状态</th>
+<th style="text-align: left;">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">NEW</td>
+<td style="text-align: left;">尚未启动线程的状态，即创建线程但为调用 start() 方法</td>
+</tr>
+<tr>
+<td style="text-align: left;">RUNNABLE</td>
+<td style="text-align: left;">就绪状态，调用 start() 等待运行 + 正在运行</td>
+</tr>
+<tr>
+<td style="text-align: left;">BLOCKED</td>
+<td style="text-align: left;">等待监视器锁时，进入阻塞状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">WAITING</td>
+<td style="text-align: left;">该线程正在等待另一个线程完成特定操作（notify,notifyAll）</td>
+</tr>
+<tr>
+<td style="text-align: left;">TIMED_WAITING</td>
+<td style="text-align: left;">具有等待时间的等待状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">TERMINATED</td>
+<td style="text-align: left;">线程完成执行，进入终止状态</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_15">如何保证线程安全？</h3>
+<ul>
+<li>使用同步代码块(synchronized)或同步方法来保护共享资源，确保同一时刻只有一个线程访问</li>
+<li>使用线程安全的集合，如 ConcurrentHashMap、CopyOnWriteArrayList 等</li>
+<li>使用 Lock 接口极其实现类（如 ReentrantLock）来进行线程同步</li>
+<li>使用 TheadLocal 来保证每个线程都有自己的独立版本</li>
+</ul>
+<h3 id="_16">公平锁和非公平锁是什么意思？</h3>
+<ul>
+<li>公平锁是指多个线程按照锁申请的顺序来获取锁，线程直接进入队列中排队，队列中的第一个线程才能获取到锁。公平锁的优点在于各个线程公平平等，但是吞吐量小</li>
+<li>非公平锁是指多个线程加锁时直接抢占锁，抢到了就直接占有锁，抢不到才进入队列中排队。优点是吞吐量大，缺点是可能有的线程一直抢占不到锁，长时间不会运行</li>
+</ul>
+<h3 id="reentrantlock">ReentrantLock 如何实现公平锁和非公平锁？</h3>
+<p>默认使用非公平锁，参数传 true 时使用公平锁：</p>
+<pre><code>public ReentrantLock() {
+    sync = new NonfairSync();
+}
+
+/**
+ * Creates an instance of {@code ReentrantLock} with the
+ * given fairness policy.
+ *
+ * @param fair {@code true} if this lock should use a fair ordering policy
+ */
+public ReentrantLock(boolean fair) {
+    sync = fair ? new FairSync() : new NonfairSync();
+}
+</code></pre>
+<p>公平锁的 Lock 方法：</p>
+<pre><code>static final class FairSync extends Sync {
+    private static final long serialVersionUID = -3000897897090466540L;
+
+    final void lock() {
+        acquire(1);
+    }
+
+    /**
+     * Fair version of tryAcquire.  Don't grant access unless
+     * recursive call or no waiters or is first.
+     */
+    protected final boolean tryAcquire(int acquires) {
+        final Thread current = Thread.currentThread();
+        int c = getState();
+        if (c == 0) {
+            if (!hasQueuedPredecessors() &amp;&amp; // 1
+                    compareAndSetState(0, acquires)) {
+                setExclusiveOwnerThread(current);
+                return true;
+            }
+        }
+        else if (current == getExclusiveOwnerThread()) {
+            int nextc = c + acquires;
+            if (nextc &lt; 0)
+                throw new Error(&quot;Maximum lock count exceeded&quot;);
+            setState(nextc);
+            return true;
+        }
+        return false;
+    }
+}
+</code></pre>
+<p>注释 1 处有个 <code>hasQueuedPredecessors()</code> 方法，表明当前队列没有前驱节点，即没有线程在等待时才会 <code>compareAndSetState</code>，这就实现了公平锁。</p>
+<p>非公平锁的实现：</p>
+<pre><code>final void lock() {
+    if (compareAndSetState(0, 1)) // 2
+    setExclusiveOwnerThread(Thread.currentThread());
+    else
+    acquire(1);
+}
+
+final boolean nonfairTryAcquire(int acquires) {
+    final Thread current = Thread.currentThread();
+    int c = getState();
+    if (c == 0) {
+    if (compareAndSetState(0, acquires)) { // 3
+        setExclusiveOwnerThread(current);
+        return true;
+    }
+    }
+    else if (current == getExclusiveOwnerThread()) {
+    int nextc = c + acquires;
+    if (nextc &lt; 0) // overflow
+        throw new Error(&quot;Maximum lock count exceeded&quot;);
+    setState(nextc);
+    return true;
+    }
+    return false;
+}
+</code></pre>
+<p>注释 2 处，在进入 <code>Lock()</code> 方法后会直接使用 CAS 尝试获取锁，在注释 3 处没有 <code>hasQueuedPredecessors()</code> 方法，直接使用 CAS 尝试获取锁，由此实现非公平锁。</p>
+<h3 id="cas">CAS 原理介绍一下</h3>
+<p>CAS 叫做 CompareAndSwap，比较并交换，主要通过处理器的指令保证操作的原子性，它包含三个操作数：</p>
+<ol>
+<li>变量内存地址，V 表示</li>
+<li>旧的预期值，A 表示</li>
+<li>准备设置的新值，B 表示</li>
+</ol>
+<p>当执行 CAS 时，只有当 V 等于 A 时，才会用 B 更新 V 的值，否则不会执行更新操作。</p>
+<h3 id="cas_1">CAS 有什么缺点？</h3>
+<p>缺点有 3 点：</p>
+<ul>
+<li>ABA 问题：假定在某个时刻某个线程从内存中取出A，然后在下个时刻准备更新这个值；在这个时间差内数据发生了改变；比如 假设线程1从内存中取出了A，线程2也从内存中取出了A，并且将值修改为B，最后又改为A，当线程1去更新值得时候发现内存中的数据和线程备份数据相同，可以更新；但是此时内存中的值其实发生了变化的，只不过又变回去了。又比如现有一个用单向链表实现的堆栈，栈顶为A，这时线程T1已经知道A.next为B，然后希望用CAS将栈顶替换为B：head.compareAndSet(A,B);在T1执行上面这条指令之前，线程T2介入，将A、B出栈，再pushD、C、A，，而对象B此时处于游离状态：此时轮到线程T1执行CAS操作，检测发现栈顶仍为A，所以CAS成功，栈顶变为B，但实际上B.next为null，所以此时的情况变为：其中栈中只有B一个元素，C和D组成的链表不再存在于堆栈中，平白无故就把C、D丢掉了。</li>
+<li>循环时间长开销大：自旋 CAS 的方式如果长时间不成功，会给 CPU 带来很大开销</li>
+<li>只能保证一个共享变量的原子操作：只对一个共享变量操作可以保证原子性，但是多个则不行，多个则可以使用 AtomicReference 来处理或者使用锁 synchronized 实现</li>
+</ul>
+<h3 id="niobioaio">NIO、BIO、AIO 有什么区别？</h3>
+<ul>
+<li>BIO 是阻塞 I/O，NIO 是非阻塞 I/O，AIO 是异步 I/O。BIO 每个连接对应一个线程，NIO 多个连接共享少量线程，AIO 允许应用程序异步处理多个操作</li>
+<li>NIO 和 AIO 通常比 BIO 更适用于高并发的网络应用，可以更有效的管理多个连接和 I/O 操作</li>
+<li>AIO 是适合高吞吐量的应用程序，可以异步处理多个I/O 操作，而不需要线程等待。但 AIO 在 Java 中的支持相对有限，不是所有操作系统都支持</li>
+</ul>
+<h2 id="java_3">Java 线程池</h2>
+<h3 id="_17">线程池了解过吗？有哪些核心参数？</h3>
+<p>线程吃是为了减少频繁的创建线程和销毁线程带来的性能损耗。</p>
+<p>线程池分为核心线程池，线程池的最大容量，还有等待任务的队列，提交一个任务，如果核心线程没有满，就创建一个线程，如果满了就加入等待队列，如果等待队列满了，就会增加线程，如果达到最大线程数量，就按照丢弃策略处理。</p>
+<p>一共有 7 个参数：</p>
+<pre><code>public ThreadPoolExecutor(int corePoolSize,
+                          int maximumPoolSize,
+                          long keepAliveTime,
+                          TimeUnit unit,
+                          BlockingQueue&lt;Runnable&gt; workQueue,
+                          ThreadFactory threadFactory,
+                          RejectedExecutionHandler handler) 
+</code></pre>
+<ul>
+<li>corePoolSize: 核心线程数。默认情况下，线程池中线程的数量 &lt;= corePoolSize，即使线程处于空闲状态也不会被销毁</li>
+<li>maximumPoolSize: 最大线程数，即线程池中最多可以容纳的线程数量。</li>
+<li>keepAliveTime: 当线程池中线程的数量大于 corePoolSize，并且某个线程的空闲时间超过了 keepAliveTime，那么这个线程就会被销毁</li>
+<li>unit: keepAliveTime 的时间单位</li>
+<li>workQueue: 工作队列。当没有空闲的线程执行新任务时，该任务就会被放入工作队列</li>
+<li>threadFactory: 线程工厂。可以给线程取名字等</li>
+<li>handler: 拒绝策略。当一个新任务交给线程池，如果此时线程池中有空闲的线程，就会直接执行，如果没有空闲的的线程，就放入阻塞队列中，如果阻塞队列满了，就会创建一个新线程，从阻塞队列头部取出一个任务来执行，并将新任务加入到阻塞队列的末尾。如果当前线程池中线程的数量等于 maximumPoolSize，就不会创建新线程，就会去执行拒绝策略</li>
+</ul>
+<h3 id="_18">为什么核心线程满了之后是先加入阻塞队列而不是直接加到总线程？</h3>
+<ul>
+<li>线程池创建线程需要获取 mainLock 这个全局锁，会影响并发效率，所以使用阻塞队列吧第一步创建核心线程与第三步创建最大线程隔离开来，起一个缓冲的作用</li>
+<li>引入阻塞队列，是为了在执行 <code>execute()</code> 方法时，尽可能地避免获取全局锁</li>
+</ul>
+<h3 id="_19">核心线程数一搬设置为多少？</h3>
+<p>假设机器有 N 个 CPU:</p>
+<ul>
+<li>如果是 CPU 密集型应用，则线程池大小设置为 N+1，线程的应用场景：主要是复杂算法</li>
+<li>如果是 IO 密集型应用，则线程池大小设置为 2N+1，线程的应用场景：数据库数据的交互，文件的上传下载，网络数据传输等</li>
+</ul>
+<p>如果同时有计算工作和 IO 工作的任务，应该考虑使用两个线程池，一个处理计算任务，一个处理 IO 任务，分别对两个线程池按照计算密集型和 IO 密集型来设置线程数。</p>
+<h3 id="io-2n1">IO 密集型线程数为什么设置为 2N+1？</h3>
+<p>在 IO 密集型任务中，线程通畅会因为 IO 操作而阻塞，此时可以让其他线程继续执行，充分利用 CPU 字段。设置为 2N+1 可以保证在有多个线程阻塞时，仍有足够的线程可以继续执行。</p>
+<h3 id="stringstringbuilderstringbuffer">String，StringBuilder，StringBuffer 区别？单线程大量操作字符串用哪个？</h3>
+<ul>
+<li>String 是不可变字符序列，每次对 String 进行修改时都会创建一个新的 String 对象，因此在大量操作字符串时，使用 String 会频繁创建对象，导致性能较低</li>
+<li>StringBuilder 线程不安全，</li>
+<li>StringBuffer 线程安全，性能不如 StringBuilder，因为 StringBuffer 所有共有的方法都是同步的</li>
+</ul>
+<p>因此单线程场景下，使用 StringBuilder 性能更好，多线程场景下使用 StringBuffer 能保证线程安全。</p>
+<h3 id="synchronized_1">synchronized 偏向锁直接升级为重量级锁吗？重量级锁是怎么实现的？</h3>
+<p>偏向锁不会直接升级为重量级锁，而是先升级为轻量级锁，如果轻量级锁竞争失败，则再升级为重量级锁。</p>
+<p>重量级锁一般是通过操作系统的互斥量（mutex）来实现的，当一个线程获取重量级锁时，会将该线程挂起，直到锁被释放。这种锁的性能比较低，因为每次加锁和释放锁都需要涉及到操作系统的系统调用，开销比较大。因此在实际应用中，应尽量避免使用重量级锁。</p>
+<h2 id="_20">类</h2>
+<h3 id="java_4">Java 中的异常分类？</h3>
+<ul>
+<li>Checked Exception（受检异常）：这种异常在编译时就可以被检测出来，必须在代码中声明或者抛出，否则编译不通过。一般由外部环境引起，如 <code>IOException</code>，<code>SQLException</code> 等</li>
+<li>Unchecked Exception（非受检异常）：程序内部错误导致，这类代码不用显式声明抛出，抛出后不处理程序会崩溃，如 <code>NullPointerException</code>, <code>ArrayIndexOutOfBoundsException</code>, <code>IllegalArgumentException</code> 等</li>
+<li>Error（错误）：这类错误无法捕获，通常由 JVM 或内存不足引起。如 <code>OutOfMemory Error</code>, <code>StackOverFlowError</code> 等</li>
+</ul>
+<p>Java 中，可以使用 <code>try ... catch</code> 捕获异常，使用 <code>throw</code> 手动抛出异常。</p>
+<h3 id="_21">异常顶层是什么，有哪些接口实现类</h3>
+<ul>
+<li>Throwable</li>
+<li>Error<ul>
+<li>OutOfMemoryError</li>
+<li>VirtualMachineError</li>
+<li>StackOverFlowError</li>
+<li>AssertionError</li>
+<li>IOError</li>
+</ul>
+</li>
+<li>Exception<ul>
+<li>Checked Exception</li>
+<li>IOException</li>
+<li>ClassNotFoundException</li>
+<li>SQLException</li>
+<li>FileNotFoundException</li>
+<li>Unchecked Exception</li>
+<li>ArithmeticException</li>
+<li>ClassCastException</li>
+<li>IllegalThreadStateException</li>
+<li>IndexOutOfBoundsException   </li>
+</ul>
+</li>
+</ul>
+<h3 id="_22">集合顶层是什么，各个接口实现类有哪些</h3>
+<p>集合的顶层有 Collection 和 Map，继承 Collection 的接口有 Set, SortedSet, List, Queue 和 Deque；继承 Map 的有 SortedMap</p>
+<ul>
+<li>Set：Set 的实现类有 HashSet、LinkedHashSet，SortedSet 继承 Set，实现 SortedSet 有 TreeSet</li>
+<li>List：List 的实现类有 ArrayList、LinkedList、Vector，Stack 继承 Vector，由于 Vector 不建议用，因此不建议用 Stack，最好是用 Deque 实现 Stack</li>
+<li>Queue：Queue 的实现类有 PriorityQueue，Deque 继承 Queue，Deque 的实现类有 ArrayDeque</li>
+<li>Map：Map 的实现类有 HashMap、HashTable，SortedMap 继承 Map，实现类有 TreeMap</li>
+</ul>
+<p><img alt="Collection.png" src="../../images/Collection.png" /></p>
+<h3 id="_23">有哪些集合是线程安全的？哪些集合是线程不安全的？</h3>
+<ul>
+<li>Vector、HashTable、Properties 是线程安全的</li>
+<li>ArrayList、LinkedList、HashSet、TreeSet、HashMap、TreeMap 都是线程不安全的</li>
+</ul>
+<h3 id="_24">数组和链表有什么区别？</h3>
+<ul>
+<li>访问效率：数组O(1)，链表O(n)</li>
+<li>插入/删除效率：数据O(n)，链表O(1)</li>
+<li>缓存命中率：数组在内存中连续存储，可以提高 CPU 缓存命中率，而链表节点不连续存储，可能导致 CPU 缓存命中率降低，频繁的缓存失效会影响性能</li>
+<li>应用场景：数组适合静态大小，频繁访问元素的场景；链表适合动态大小，频繁插入、删除的场景</li>
+</ul>
+<h3 id="_25">堆和栈的区别？</h3>
+<ul>
+<li>分配方式：堆是动态分配内存，由程序员手动申请和释放，通常用于存储动态数据结构和对象。栈是静态分配的内存，由编译器自动分配和释放内存，用于存储函数的局部变量和函数调用的信息</li>
+<li>内存管理：堆需要手动管理内存的分配和释放，可能有内存泄露的问题。栈由编译器自动管理，遵循后进先出的原则，变量的生命周期由其作用域决定，函数调用时分配内存，函数返回时释放内存</li>
+<li>大小和速度：堆内存空间通常比栈大，栈的速度大于堆</li>
+</ul>
+<h3 id="set-key">Set 集合有什么特点？如何实现 key 是无重复的？</h3>
+<ul>
+<li>Set 集合特点：Set 集合中的元素是无重复的，且唯一</li>
+<li>Set 原理：内部通过哈希表或红黑树来实现 key 的无重复，当向 Set 中插入元素时，会根据元素的 HashCode 值来确定元素的存储位置，然后再通过 equals 方法来判断是否存在相同的元素，如果存在则不会再次插入，保证了元素的唯一性</li>
+</ul>
+<h3 id="set">有序的 Set 是什么？记录插入顺序的集合是什么？</h3>
+<p>LinkedHashSet。 有序的 Set 是 TreeSet 和 LinkedHashSet。TreeSet 是基于红黑树实现，保证元素的自然顺序。LinkedHashSet 是基于双重链表和哈希表的结合来实现元素的有序存储，保证元素添加的顺序。</p>
+<h2 id="_26">锁</h2>
+<h3 id="_27">乐观锁如何实现，有哪些缺点</h3>
+<p>乐观锁通过在更新数组时先检查数据版本号（或时间戳），若版本号匹配则更新数据，否则拒绝更新，实现并发控制，实现方式包括：</p>
+<ol>
+<li>添加版本字段：在数据表中增加一个版本字段，每次更新数据时增加版本号</li>
+<li>检查版本号：在更新数据时，先查询当前版本号，在更新时检查版本号是否匹配</li>
+</ol>
+<p>缺点：在并发场景下，冲突较多，可能导致大量的重试操作。所以在数据竞争非常激烈的环境中，乐观锁可能不太适用。</p>
+<h3 id="_28">乐观锁和悲观锁有什么区别？</h3>
+<ul>
+<li>乐观锁：乐观锁假设多个事务之间很少发生冲突，因此在读取数据时不会加锁，而是在更新数据时检查数据的版本（如使用版本号或时间戳），如果版本匹配则执行更新操作，否则认为发生了冲突。多用于读多写少的场景，可以减少锁的竞争，提高并发性能</li>
+<li>悲观锁：悲观锁假设多个事务之间会频繁发生冲突，因此在读取数据时会加锁，防止其他事务对数据进行修改，直到当前事务操作完成后才释放锁</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 - 2024 <a href="https://github.com/z1ming" target="_blank" rel="noopener noreferrer">Rotten Orange</a>|沪ICP备2024058920号
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>

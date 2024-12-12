@@ -1,0 +1,1590 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../redis/">
+      
+      
+        <link rel="next" href="../spring-boot/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>操作系统面试题 - 腐烂的橘子</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto Slab";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="腐烂的橘子" class="md-header__button md-logo" aria-label="腐烂的橘子" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            腐烂的橘子
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              操作系统面试题
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/z1ming/z1ming.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="腐烂的橘子" class="md-nav__button md-logo" aria-label="腐烂的橘子" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    腐烂的橘子
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/z1ming/z1ming.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    前言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    面试题合集
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            面试题合集
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算机网络面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java-base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java 面试题-基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MySQL-question/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MySQL 高频面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis 面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    操作系统面试题
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    操作系统面试题
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程间通信方式？管道模型的分类？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程间的通信有哪些？有什么作用？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程和线程的区别是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      你说到进程是分配资源的基本单位，那么这个资源指的是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      协程是什么？为什么协程比线程快？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      虚拟内存是什么？有什么作用？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      内核态和用户态区别？内核态的底层操作有什么？为什么要分为两个不同的态？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      软连接和硬连接的区别是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      死锁的条件是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      死锁的解决方案是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      讲讲中断的流程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      中断的类型有哪些？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      中断的作用是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      堆和栈的作用和区别是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux 中软连接和硬连接的区别？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      fork() 原理？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    <span class="md-ellipsis">
+      说说 IO 多路复用？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      用户态和内核态的区别？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux 命令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux 命令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux 系统中哪个命令可以查看端口被哪个应用占用？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Boot 面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LeetCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    力扣分类题集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    后端每日一题
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            后端每日一题
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../three-hands-shake/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    后端每日一题 1：三次握手
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    架构每日一学
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            架构每日一学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jiagou1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    架构每日一学 1：成为一名架构师，你必须具有“战略意图”
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jiagou2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    架构每日一学 2：架构师六个生存法则之一：架构必须有且仅有一个目标（一）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MySQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            MySQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DiningPhilosophers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    哲学家就餐：死锁及解决方案 Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InnoDB-Locking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    InnoDB 锁介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Go
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Go
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Go/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go 笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随笔
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            随笔
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ACLs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    手写访问控制列表（ACL）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../id/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分布式全局唯一 ID 实现
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LISP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    浅谈 LISP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BloomFilter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    布隆过滤器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JVM-params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM 参数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GC 垃圾回收策略
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程间通信方式？管道模型的分类？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      线程间的通信有哪些？有什么作用？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      进程和线程的区别是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      你说到进程是分配资源的基本单位，那么这个资源指的是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      协程是什么？为什么协程比线程快？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      虚拟内存是什么？有什么作用？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      内核态和用户态区别？内核态的底层操作有什么？为什么要分为两个不同的态？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      软连接和硬连接的区别是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      死锁的条件是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      死锁的解决方案是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      讲讲中断的流程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      中断的类型有哪些？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      中断的作用是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      堆和栈的作用和区别是什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux 中软连接和硬连接的区别？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      fork() 原理？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    <span class="md-ellipsis">
+      说说 IO 多路复用？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      用户态和内核态的区别？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux 命令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux 命令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux 系统中哪个命令可以查看端口被哪个应用占用？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">操作系统面试题</h1>
+<h2 id="_2">进程间通信方式？管道模型的分类？</h2>
+<p>回答 1：</p>
+<ul>
+<li>管道（Pipe）：单向通信，适用于有亲缘关系的进程（父子进程）之间通信</li>
+<li>优点：简单易用，适用于单向通信</li>
+<li>缺点：只能在有亲缘关系的进程之间使用，且只能实现单向通信</li>
+<li>命名管道（Named Pipe）：允许无亲缘关系的进程之间通信</li>
+<li>优点：允许无亲缘关系的进程通信</li>
+<li>缺点：只能实现单向通信</li>
+<li>消息队列（Message Queue）：实现进程间的异步通信，通过消息缓冲区传递数据</li>
+<li>优点：支持异步通信，可以实现多对多通信</li>
+<li>缺点：复杂度较高，需要处理消息的发送和接收</li>
+<li>共享内存（Shared Memory）：多个进程共享同一块内存区域，实现高效的数据交换</li>
+<li>优点：高效，适合大数据量的共享</li>
+<li>缺点：需要处理同步和互斥问题，可能引起数据一致性和安全问题</li>
+<li>信号量（Semaphore）：用于进程间的同步和互斥控制</li>
+<li>优点：可以实现进程间的同步和互斥</li>
+<li>缺点：复杂度较高，需要处理信号量的管理</li>
+<li>套接字（Socket）：适用于不同主机之间的进程通信，可以实现网络通信</li>
+<li>优点：跨主机通信，支持多种通信协议</li>
+<li>缺点：相比于其他方式，套接字通信开销较大</li>
+</ul>
+<p>回答 2：</p>
+<ul>
+<li>最简单的方式就是管道，管道分为“匿名管道“和”命名管道”。<ul>
+<li>“匿名管道”顾名思义，它没有文字标识，是一种特殊的文件，只存在于内存，没有存在于文件系统中，shell 命令中的竖线 <code>|</code> 就是匿名管道，通信的数据是无格式的流并且大小受限，通信方式是单向的，数据只能在一个方向上流动，如果要双向通信，需要创建两个管道。匿名管道只能用于存在父子关系的进程间通信，匿名管道的生命周期随着进程创建而建立，随着进程终止而消失</li>
+<li>命名管道突破了匿名管道只能在亲缘关系进程间进行通信的限制，因为使用命名管道前，需要在文件系统中创建一个类型为 p 的设备文件，那么毫无关系的两个进程就可以通过这个设备文件进行通信。另外，不管是匿名管道还是命名管道，进程写入的数据都是缓存在内核中，另一个进程读取数据时自然也是从内核中读取，同时通信数据都遵循先进先出的原则</li>
+</ul>
+</li>
+<li>消息队列解决了管道通信的数据是无格式的字节流的问题，消息队列实际上是保存在内核中的<strong>消息链表</strong>，用户可以自定义消息体的数据类型，发送数据时，会被分成一个个独立的消息体，接收数据时，也要于发送方发送的消息提的数据类型保持一致，这样才能保证正确读取数据。消息队列通信的速度不是最及时的，毕竟每次数据的写入和读取都需要经过用户态与内核态之间的拷贝过程</li>
+<li>共享内存可以解决消息队列通信中用户态与内核态之间数据拷贝过程带来的开销，它直接分配一个共享空间，每个进程都可以直接访问，就像访问进程自己的空间一样快捷方便，不需要陷入内核态或者系统调用，大大提高了通信速度，<strong>享有最快的通信方式之名</strong>。但是便捷高效的共享内存通信，带来新的问题，多进程竞争同个共享资源会造成数据的错乱</li>
+<li>这时需要信号量来保护共享资源，以确保任何时刻只能有一个进程访问共享资源，这种方式就是互斥访问。信号量不仅可以实现访问的互斥行，还可以实现进程间的同步，信号量其实是一个计数器，表示的是资源个数，其值可以通过两个原子操作来控制，分别是 P 操作和 V 操作</li>
+<li>与信号量名字很相似的叫信号，名字虽然相似，但功能不一样。信号可以在应用进程和内核之间直接交互，内核也可以利用信号来通知用户空间的进程发生了哪些系统事件，信号事件的来源主要有硬件来源（如 Ctrl+C）和软件来源（如 kill 命令），一旦有信号发生，进程有三种响应方式：1）执行默认操作，2）捕捉信号，3）忽略信号。<code>SIGKILL</code> 和 <code>SIGSTOP</code> 是应用进程无法捕捉和忽略的，为了方便我们能在任何时候结束或停止某个进程</li>
+<li>Socket 用于不同主机的进程间通信，还可用于本地主机进程间通信。根据创建 Socket 类型不同可分为三种常见的通信方式：1）基于 TCP 协议的通信方式，2）基于 UDF 协议的通信方式，3）本地进程间通信方式</li>
+</ul>
+<h2 id="_3">线程间的通信有哪些？有什么作用？</h2>
+<p>Linux 系统中，线程间的通信方式包括：</p>
+<ul>
+<li>互斥锁（Mutex）：线程可以使用互斥锁保护共享资源，确保同时只有一个线程可以访问该资源</li>
+<li>条件变量：线程可以使用条件变量等待特定条件的发生，以实现线程间的协调和通知</li>
+<li>信号量：线程可以使用信号量来控制对共享资源的访问，实现线程间的同步和互斥</li>
+<li>都写锁：允许多个线程读取共享资源，但只允许一个线程写入共享资源</li>
+</ul>
+<h2 id="_4">进程和线程的区别是什么？</h2>
+<ul>
+<li>本质区别：进程是操作系统资源分配的基本单位，线程是任务调度和执行的基本单位</li>
+<li>在开销方面：每个进程都有独立的代码和数据空间（程序上下文），进程之间的切换会有较大的开销；线程可以看作是轻量级的进程，同一类线程共享代码和数据空间，每个线程都有自己独立的运行栈和程序计数器（PC），线程之间切换的开销小</li>
+<li>稳定性方面：进程中的某个线程如果崩溃了，可能导致整个进程崩溃。而进程中的子进程崩溃，并不会影响其他进程</li>
+<li>内存分配方面：系统在运行时会为每个进程分配不同的内存空间，而线程所使用的资源来自所属进程的资源，线程组之间只能共享资源</li>
+<li>包含关系：没有线程的进程可以看作是单线程的，线程是进程的一部分</li>
+</ul>
+<h2 id="_5">你说到进程是分配资源的基本单位，那么这个资源指的是什么？</h2>
+<p>虚拟内存、文件句柄、信号量等资源，其中文件句柄包括文件描述符、文件状态标志、文件位置指针</p>
+<h2 id="_6">协程是什么？为什么协程比线程快？</h2>
+<p>协程比线程快的主要原因有以下几点：</p>
+<ul>
+<li>用户态切换：协程是在用户态下进行切换，不涉及内核态的上下文切换和系统调用，切换成本低，执行效率高</li>
+<li>轻量级：协程是由用户自己管理的，不需要操作系统进行调度和管理，占用的资源较少，创建和销毁的开销小</li>
+<li>高并发：协程可以在同一个线程内并发执行，避免了线程切换和同步的开销，提高了并发处理能力</li>
+</ul>
+<h2 id="_7">虚拟内存是什么？有什么作用？</h2>
+<p>虚拟内存（Virtual Memory）是计算机系统内存管理的一种技术。它使内存管理更为高效，编写大型程序也变得容易[1]。应用程序直接访问虚拟内存，操作系统完成虚拟内存到物理内存的映射，一段连续的虚拟内存，通常会映射到多个物理内存碎片区域。编写程序时，操作系统为每个进程分配独立的虚拟内存，内存之间是互斥的。</p>
+<p>虚拟内存的作用？</p>
+<ul>
+<li>内存管理和分配：虚拟内存允许操作系统将物理和内存和磁盘空间组合成一个更大的虚拟地址空间，使得操作系统可以更灵活地管理内存资源，当物理内存不足时，根据程序运行的局部性原理，可能将一部分不常用的数据转移到磁盘上，腾出空间给其他进程使用</li>
+<li>地址空间隔离：每个进程都有自己的页表，所以每个进程的虚拟内存空间就是独立的，进程没办法访问到其他进程的页表，所以这些页表是私有的，解决了多线程之间的地址冲突问题</li>
+</ul>
+<h2 id="_8">内核态和用户态区别？内核态的底层操作有什么？为什么要分为两个不同的态？</h2>
+<p>内核态和用户态是操作系统的两种运行模式，他们主要区别在于权限和可执行的操作：</p>
+<ul>
+<li>内核态（Kernel Mode）：在内核态下，CPU 可以执行所有的指令和访问所有的硬件资源。在这种模式下的操作具有更高的权限，主要用于操作系统内核的运行。</li>
+<li>用户态（User Mode）：在用户态下，CPU 只能执行部分指令集，无法直接访问硬件资源。这种模式下的操作权限较低，主要用于运行用户程序</li>
+</ul>
+<p>内核态的底层操作主要包括：</p>
+<ul>
+<li>内存管理</li>
+<li>进程管理</li>
+<li>设备驱动程序控制</li>
+<li>系统调用</li>
+</ul>
+<p>这些操作设计到操作系统的核心功能，需要较高的权限来执行。</p>
+<p>分为内核态和用户态的原因主要有以下几点：</p>
+<ol>
+<li>安全性：通过对权限的划分，用户程序无法直接访问硬件资源，从而避免了恶意程序对系统资源的破坏</li>
+<li>稳定性：用户态程序出现问题时，不会影响到整个系统，避免了程序故障导致系统崩盘的风险</li>
+<li>隔离性易维护：这种划分是操作系统内核于用户程序直接有了明确的边界，有利于系统的模块化和维护</li>
+</ol>
+<h2 id="_9">软连接和硬连接的区别是什么？</h2>
+<ul>
+<li>软连接是指向目标文件路径的符号连接，类似于 Windows 中的快捷方式，创建软连接不会占用目标文件的 inode 节点，指示简单地指向目标文件中的路径。删除原始文件后，软连接仍然存在，但指向的目标文件失效，称为“悬空”连接。软连接可以跨文件系统创建软连接</li>
+<li>硬连接是指多个文件实际上指向的是同一个 inode 节点，即多个文件共享同一个数据块。创建硬连接会增加目标文件的连接计数，删除任何一个硬连接不会影响其他硬链接指向的文件计数。只能在同一个文件系统内创建硬连接</li>
+</ul>
+<h2 id="_10">死锁的条件是什么？</h2>
+<p>死锁只有同时满足以下四个条件才能发生：</p>
+<ol>
+<li>互斥条件：是指多个线程不能同时使用一个资源</li>
+<li>持有并等待条件：当线程 A 已经持有了资源 1，同时又想获取资源 2，而资源 2 已经被另一个线程持有了，所以线程 A 就会陷入等待状态，但是线程 A 在等待资源 2 的同时并不会释放已经持有的资源 1</li>
+<li>不可剥夺条件：指当线程已经持有了资源，在自己使用完之前不能被其他线程获取，线程 B 如果也想使用此资源，必须等待 A 释放后才能获取</li>
+<li>换路等待条件：指的是在死锁发生的时候，两个线程获取资源的顺序构成了环形链</li>
+</ol>
+<h2 id="_11">死锁的解决方案是什么？</h2>
+<p>产生死锁的四个必要条件是：</p>
+<ol>
+<li>互斥条件</li>
+<li>持有并等待条件</li>
+<li>不可剥夺条件</li>
+<li>环路等待条件</li>
+</ol>
+<p>避免死锁只要破坏其中一个条件就可以，最常见的是使用资源有序分配法，来破坏环路等待条件。</p>
+<p>资源有序分配法就是，假设线程 A 先获取资源 1，后获取资源 2，如果线程 B 先获取资源 2，后获取资源 1。当线程 A 持有资源 1 同时想获取资源 2，而线程 B 持有资源 2 同时想获取资源 1，这时会发生死锁。有序分配就是让线程 B 也先获取资源 1，再获取资源 2，这时就不会发生死锁。</p>
+<h2 id="_12">讲讲中断的流程</h2>
+<p>中断是计算机系统中的一种机制，用于在处理器执行指令时暂停当前任务，转而执行其他任务或处理特定事件。</p>
+<p>以下是中断的基本流程：</p>
+<ul>
+<li>发生中断：当外部设备或软件需要处理器的注意或者响应时，会发出中断信号。处理器在接收到中断信号后，会停止当前执行的指令，保存当前执行现场，并跳转到中断处理器执行</li>
+<li>中断响应：处理器接收到中断信号后，会根据中断向量表找到对应的中断处理程序的入口地址。处理器会保存当前执行现场（如程序计数器、寄存器状态等），以便在中断处理完成后能恢复运行</li>
+<li>中断处理：处理器跳转到中断处理程序的入口地址开始执行中断处理程序。中断处理程序会根据中断类型进行相应处理，可能涉及到保存现场、处理中断事件、执行特定任务等</li>
+</ul>
+<h2 id="_13">中断的类型有哪些？</h2>
+<p>中断按事件来源分类，分为外部中断和内部中断。中断事件来自于 CPU 外部的被称为外部中断，来自于 CPU 内部的则为内部中断。</p>
+<p>进一步细分，外部中断还可分为屏蔽中断和不可屏蔽中断，而内部中断按事件是否正常来划分为软中断和异常两种。</p>
+<ul>
+<li>外部中断的中断事件来源于CPU外部，必然是某个硬件产生的，所以外部中断又被称为硬件中断（hardware interrupt）。计算机的外部设备，如网卡、声卡、显卡等都能产生中断。外部设备的中断信号是通过两根信号线通知CPU的，一根是INTR，另一根是NMI。CPU从INTR收到的中断信号都是不影响系统运行的，CPU可以选择屏蔽（通过设置中断屏蔽寄存器中的IF位），而从NMI中收到的中断信号则是影响系统运行的严重错误，不可屏蔽，因为屏蔽的意义不大，系统已经无法运行。</li>
+<li>内部中断来自于处理器内部，其中软中断是由软件主动发起的中断，常被用于系统调用（system call）；而异常则是指令执行期间CPU内部产生的错误引起的。异常也和不可屏蔽中断一样不受eflags寄存器的IF位影响，区别在于不可屏蔽中断发生的事件会导致处理器无法运行（如断电、电源故障等），而异常则是影响系统正常运行的中断（如除0、越界访问等）。</li>
+</ul>
+<h2 id="_14">中断的作用是什么？</h2>
+<p>中断使得计算机系统具备应对对处理突发事件的能力，提高了CPU的工作效率。</p>
+<p>如果没有中断系统，CPU就只能按照原来的程序编写的先后顺序，对各个外设进行查询和处理，即轮询工作方式，轮询方法貌似公平，但实际工作效率却很低，却不能及时响应紧急事件。</p>
+<h2 id="_15">堆和栈的作用和区别是什么？</h2>
+<ul>
+<li>堆是用于动态分配内存的区域，需要手动管理内存；栈用于存储函数调用和局部变量，由编译器自动管理。</li>
+<li>堆中的内存分配通常由程序员通过调用类似 malloc()、new等函数来实现，但需要手动释放，如果没有正确释放堆中分配的内存，可能会导致内存泄漏。；栈中的内存分配和释放自动化，遵循“后进先出”的原则。</li>
+<li>栈空间的数据线程中是独立的，堆空间的数据在线程中是共享的，读写操作的时候，需要加锁，保证并发安全。</li>
+</ul>
+<h2 id="linux">Linux 中软连接和硬连接的区别？</h2>
+<p>如果希望给文件取个别名，可以通过硬连接和软连接的方式，它们的实现不同：</p>
+<ul>
+<li>硬连接是多个目录项的索引节点指向一个文件，即指向同一个 inode，但是 inode 是不可能跨越文件系统的，每个文件系统都有各自的 inode 数据结构和列表，所以硬连接是不可能跨文件系统的。由于多个目录都是指向同一个 inode，那么只有删除文件的所有硬链接和源文件时，系统才会彻底删除文件</li>
+<li>软连接相当于重新创建一个文件，这个文件有独立的 inode，但是这个文件的内容是另外一个文件的路径，所以访问软连接的时候，实际上相当于访问到了另外一个文件，所以软连接是可以跨越文件系统的，甚至目标文件被删除了，链接文件还在的，只不过指向的文件找不到了而已</li>
+</ul>
+<h2 id="fork">fork() 原理？</h2>
+<p>主进程在执行 fork() 时，操作系统会把主进程的“页表”复制一份给子进程，这个页表记录着虚拟地址和物理地址的映射关系，而不会复制物理内存，也就是说，两者的虚拟地址不同，但对应的物理空间是同一个。</p>
+<p>这样一来，子进程就共享了父进程的物理内存数据了，这样能够节省物理内存资源，页表对应的属性会标记为该物理内存的权限为只读。</p>
+<p>当父进程或子进程在向这个内存发起写操作时，CPU 就会触发写保护中断，这个写保护中断是由于违反权限导致的，然后操作系统会在“写保护中断处理函数”里进行物理内存的复制，并重新设置其内存映射关系，将父子进行的内存读写权限设置为可读写，最后才会对内存进行写操作，这个过程被称为 CopyOnWrite，即写时复制。</p>
+<p>顾名思义，写时复制就是在发生写操作的时候，操作系统才会去复制物理内存，这样是为了防止 fork 创建子进程时，由于物理内存数据的复制时间过长而导致父进程长时间阻塞的问题。子鸣10:28## fork() 会复制哪些东西？</p>
+<ul>
+<li>fork 阶段会复制父进程的页表（虚拟内存）</li>
+<li>fork 之后，如果发生了写时复制，就会复制物理内存</li>
+</ul>
+<h2 id="io">说说 IO 多路复用？</h2>
+<p>IO 多路复用只可以使用一个进程来维护多个 Socket。一个进程虽然任一时刻只能处理一个请求，但是处理每个请求的事件时，耗时控制在1ms内，这样1s内就能处理上千个请求，把时间拉长了看，多个请求复用了一个进程，这就是多路复用，这种思想类似 CPU 并发处理进程，所以也叫时分多路复用。</p>
+<p>select/poll/epoll 内核提供给用户态的多路复用系统调用，进程可以通过一个系统调用函数从内核中获取多个事件。在获取事件时，先把所有连接（文件描述符）传给内核，再由内核返回产生了事件的连接，然后在用户态中再处理这些连接对应的请求即可。</p>
+<h2 id="_16">用户态和内核态的区别？</h2>
+<p>他们的主要区别在于权限和可执行的操作：</p>
+<ul>
+<li>内核态（Kernel Mode）：在内核态下，CPU 可以执行所有的指令和访问所有的硬件资源。这种模式下的操作具有更高的权限，主要用于操作系统内核的运行</li>
+<li>用户态（User Mode）：在用户态下，CPU 只能执行部分指令集，无法直接访问硬件资源。这种模式下的操作权限较低，主要用户运行用户程序</li>
+</ul>
+<p>内核态的底层操作主要包括：内存管理、进程管理、设备驱动程序设置、系统调用等。这些操作涉及到操作系统的核心功能，需要较高的权限来执行。分为内核态和用户态的原因主要有以下几点：</p>
+<ul>
+<li>安全性：通过对权限的划分，用户程序无法直接访问硬件资源，从而避免了恶意程序对系统资源的破坏</li>
+<li>稳定性：用户态程序出现问题时，不会影响到整个系统，避免了程序故障导致系统崩溃的风险</li>
+<li>隔离性：内核态和用户态的划分使得操作系统内核与用户程序之间有了明确的边界，有利于系统的模块化维护</li>
+</ul>
+<h2 id="linux_1">Linux 命令</h2>
+<h3 id="linux_2">Linux 系统中哪个命令可以查看端口被哪个应用占用？</h3>
+<p><code>lsof</code> 命令或 <code>netstat</code></p>
+<pre><code>lsof -i 端口号
+netstat -tulnp | grep 端口号
+</code></pre>
+<h2 id="_17">参考</h2>
+<ol>
+<li>虚拟内存 wiki：https://zh.wikipedia.org/wiki/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 - 2024 <a href="https://github.com/z1ming" target="_blank" rel="noopener noreferrer">Rotten Orange</a>|沪ICP备2024058920号
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>

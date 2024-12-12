@@ -1,0 +1,2124 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Java-base/">
+      
+      
+        <link rel="next" href="../redis/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>MySQL 高频面试题 - 腐烂的橘子</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto Slab";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mysql" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="腐烂的橘子" class="md-header__button md-logo" aria-label="腐烂的橘子" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            腐烂的橘子
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MySQL 高频面试题
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/z1ming/z1ming.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="腐烂的橘子" class="md-nav__button md-logo" aria-label="腐烂的橘子" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    腐烂的橘子
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/z1ming/z1ming.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    前言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    面试题合集
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            面试题合集
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算机网络面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java-base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java 面试题-基础
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    MySQL 高频面试题
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    MySQL 高频面试题
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 索引
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MySQL 索引">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql-b-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      聊聊 MySQL 的索引结构，为什么使用 B+ 树而不是 B 树？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      你是怎么建立索引的？一般给哪些字段建立索引？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何确定语句是否走了索引？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么是联合索引？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      如果要建立联合索引，字段的顺序有什么需要注意的吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 索引失效的几种情况？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      索引底层的数据结构有哪些实现方式？了解 Hash 索引吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      索引有什么优缺点？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      索引和数据库的源结构是耦合的吗？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 事务
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MySQL 事务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      事务的四个特性是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      隔离性是怎么实现的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      一致性是怎么实习的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 有哪些隔离级别？可能产生什么问题？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#innodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      InnoDB 如何避免不可重复读？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      滥用事务，或者一个事务里有特别多 SQL 的弊端？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 锁
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MySQL 锁">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 死锁是怎么产生的？如何解决？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 有哪些锁？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#innodb_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      InnoDB 有哪些锁？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      可重复读隔离级别下，以下 SQL 会发生什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 如何实现乐观锁？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 两个线程的 update 语句同时处理同一条数据，会不会有阻塞？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-10-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      两条 update 语句处理一张表的不同主键范围的记录，一个 &lt; 10, 一个 &gt; 15，会不会遇到阻塞？底层是为什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      如果 2 个范围不是主键或索引，还会阻塞吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      除了表锁、行锁之外，还有其他类型的锁吗？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      设计 MySQL 的表结构要考虑什么问题？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql-char-varchar" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 的 char 和 varchar 有什么区别？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      当前读和快照读的区别是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 分表怎么设计？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mvcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVCC 是什么意思？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据库三大范式是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据库怎么分类，描述一下你对这些数据库的理解？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么情况使用 MySQL，什么情况使用 Redis？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      了解 SQL 注入吗？怎么防止 SQL 注入？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 有哪些引擎？说一下他们的区别？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 查询数据怎么优化？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binlog" class="md-nav__link">
+    <span class="md-ellipsis">
+      binlog 的类型有哪些？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis 面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    操作系统面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spring-boot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Boot 面试题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LeetCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    力扣分类题集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    后端每日一题
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            后端每日一题
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../three-hands-shake/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    后端每日一题 1：三次握手
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    架构每日一学
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            架构每日一学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jiagou1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    架构每日一学 1：成为一名架构师，你必须具有“战略意图”
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jiagou2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    架构每日一学 2：架构师六个生存法则之一：架构必须有且仅有一个目标（一）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MySQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            MySQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DiningPhilosophers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    哲学家就餐：死锁及解决方案 Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InnoDB-Locking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    InnoDB 锁介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Go
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Go
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Go/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go 笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    随笔
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            随笔
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ACLs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    手写访问控制列表（ACL）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../id/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    分布式全局唯一 ID 实现
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LISP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    浅谈 LISP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BloomFilter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    布隆过滤器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JVM-params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM 参数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GC 垃圾回收策略
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 索引
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MySQL 索引">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql-b-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      聊聊 MySQL 的索引结构，为什么使用 B+ 树而不是 B 树？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      你是怎么建立索引的？一般给哪些字段建立索引？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何确定语句是否走了索引？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么是联合索引？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      如果要建立联合索引，字段的顺序有什么需要注意的吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 索引失效的几种情况？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      索引底层的数据结构有哪些实现方式？了解 Hash 索引吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      索引有什么优缺点？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      索引和数据库的源结构是耦合的吗？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 事务
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MySQL 事务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      事务的四个特性是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      隔离性是怎么实现的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      一致性是怎么实习的？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 有哪些隔离级别？可能产生什么问题？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#innodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      InnoDB 如何避免不可重复读？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      滥用事务，或者一个事务里有特别多 SQL 的弊端？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 锁
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MySQL 锁">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 死锁是怎么产生的？如何解决？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 有哪些锁？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#innodb_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      InnoDB 有哪些锁？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      可重复读隔离级别下，以下 SQL 会发生什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 如何实现乐观锁？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 两个线程的 update 语句同时处理同一条数据，会不会有阻塞？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-10-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      两条 update 语句处理一张表的不同主键范围的记录，一个 &lt; 10, 一个 &gt; 15，会不会遇到阻塞？底层是为什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      如果 2 个范围不是主键或索引，还会阻塞吗？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      除了表锁、行锁之外，还有其他类型的锁吗？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="其他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      设计 MySQL 的表结构要考虑什么问题？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql-char-varchar" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 的 char 和 varchar 有什么区别？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      当前读和快照读的区别是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 分表怎么设计？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mvcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVCC 是什么意思？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据库三大范式是什么？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据库怎么分类，描述一下你对这些数据库的理解？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么情况使用 MySQL，什么情况使用 Redis？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      了解 SQL 注入吗？怎么防止 SQL 注入？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 有哪些引擎？说一下他们的区别？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL 查询数据怎么优化？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binlog" class="md-nav__link">
+    <span class="md-ellipsis">
+      binlog 的类型有哪些？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="mysql">MySQL 高频面试题</h1>
+<h2 id="mysql_1">MySQL 索引</h2>
+<h3 id="mysql-b-b">聊聊 MySQL 的索引结构，为什么使用 B+ 树而不是 B 树？</h3>
+<ul>
+<li>B+ 树的非叶子节点不存放实际的数据，只存放索引，因此数据量相同的条件下，相比既存数据又存索引的 B 树，B+ 树可以存放更多的索引，B+ 树可以比 B 树更矮胖，查询底层节点的磁盘 IO 次数会变少</li>
+<li>B+ 树有大量冗余节点，所有非叶子节点都是冗余索引，这些冗余索引让 B+ 树在插入、删除时的效率更高，相比 B 树有更少的结构变换</li>
+<li>B+ 树叶子节点之间用链表连接，有利于范围查询，而 B 树要实现范围查询，只能遍历树，效率更低。</li>
+</ul>
+<h3 id="_1">你是怎么建立索引的？一般给哪些字段建立索引？</h3>
+<ul>
+<li>字段有唯一性限制的，比如商品编码</li>
+<li>经常使用 <code>WHERE</code> 查询条件的字段，如果查询字段不是一个，可以建立联合索引</li>
+<li>建立联合索引时，按照最左匹配原则，且稀疏度越大的越放在左边</li>
+<li>经常用 <code>GROUP BY</code> 的字段，这样查询的时候数据就是排序好的，因为建立索引后数据在 B+ 树中的记录是排序好的</li>
+</ul>
+<h3 id="_2">如何确定语句是否走了索引？</h3>
+<p>在 SQL 前添加 <code>explain</code> 查看执行计划：</p>
+<ul>
+<li>possible_keys： 可能用到的索引</li>
+<li>key：实际用到的索引，如果为 null，表示没有走索引</li>
+<li>key_len：索引的长度</li>
+<li>rows：扫描的数据行数</li>
+<li>type：扫描的数据类型，如果为 all，表示没有走索引，进行了全表扫描</li>
+</ul>
+<h3 id="_3">什么是联合索引？</h3>
+<p>联合索引由多个字段组合而成。在 B+ 树中的非叶子节点中保存了联合索引的多个字段。联合查询时，先按照第一个索引字段查询，相同的话按第二个字段查询，以此类推。存在<strong>最左匹配原则</strong>。</p>
+<h3 id="_4">如果要建立联合索引，字段的顺序有什么需要注意的吗？</h3>
+<ul>
+<li>最左匹配原则</li>
+<li>稀疏度高的放在左边：稀疏度高就是区分度高的字段，比如唯一 id 要放在类型左边</li>
+</ul>
+<h3 id="mysql_2">MySQL 索引失效的几种情况？</h3>
+<ul>
+<li>模糊匹配：<code>like %xxxx</code> 或 <code>like %xxx%</code></li>
+<li>where 中对索引列使用函数</li>
+<li>where 中对索引列使用表达式计算</li>
+<li>MySQL 在遇到字符串和数字比较的时候，会自动把字符串转为数字，然后再比较。如果字符串是索引列，而条件语句中的输入参数是数字的话，那么索引列会发生隐式类型转化，由于隐式类型转化是通过 cast 函数实现的，等同于对索引列使用了函数，所以就会导致索引失效</li>
+<li>联合索引不遵循最左匹配原则</li>
+</ul>
+<h3 id="hash">索引底层的数据结构有哪些实现方式？了解 Hash 索引吗？</h3>
+<p>MySQL 常见索引：</p>
+<ul>
+<li>B+ Tree 索引：MySQL 默认存储引擎 InnoDB 采用的索引数据结构，所有数据都存储在叶子节点中，非叶子节点只存储索引，提高范围查询的性能和减少磁盘 IO次数，千万级数据量的 B+ 树只需要 3 层</li>
+<li>Full-Text 索引：全文索引用于对文本内容进行搜索，采用倒排索引等数据结构来实现全文搜索功能，支持关键字搜索和模糊查询</li>
+<li>哈希索引：哈希索引通过哈希函数计算键的存储位置，适用于等值查找，速度快，但不适用于范围查找</li>
+</ul>
+<h3 id="_5">索引有什么优缺点？</h3>
+<p>优点：</p>
+<ul>
+<li>提高数据检索效率：索引可以加快数据的检索速度，减少数据查询的时间</li>
+<li>支持快速排序和分组：索引可以帮助数据库快速排序和分组数据</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>占用存储空间：索引会占用额外的存储空间，增加数据库的存储成本</li>
+<li>维护成本高：随着数据的增删改查，索引需要不断更新维护，增加数据库的维护成本</li>
+<li>降低写入性能：对于频繁进行写操作的表，索引可能会降低写入性能，因为每次写入都需要更新索引</li>
+</ul>
+<h3 id="_6">索引和数据库的源结构是耦合的吗？</h3>
+<p>InnoDB 存储引擎中，索引可以为分聚簇索引和非聚簇索引（二级索引），他们的区别在于叶子节点存放的数据不同；</p>
+<ul>
+<li>聚簇索引叶子节点存放的是实际数据，所有完整的用户记录都存放在聚簇索引的叶子节点</li>
+<li>非聚簇索引的叶子节点存放的是主键值，而不是实际数据</li>
+</ul>
+<h2 id="mysql_3">MySQL 事务</h2>
+<h3 id="_7">事务的四个特性是什么？</h3>
+<ul>
+<li>原子性（Automicity）：一个事务中的全部操作，要么全部完成，要么全部不完成，不会结束在中间某个环节，如果事务在执行过程中发生错误，会会滚到事务开始前的状态，就像这个事务从来没有执行过一样。比如用户购买一件商品，购买成功，则给商家了付了钱，商品也到手；反之购买失败，商品没有拿到，钱也还在消费者手里</li>
+<li>一致性（Consistency）：是指事务操作前和操作后，数据满足完整性约束，数据库保持一致性的状态。比如用户 A 和用户 B 分别有800 元和 600 元，共 1400 元，用户 A 给用户 B 转账 200 元，分为两个步骤，从 A 的账户扣除 200 元，从 B 的账户增加 200 元，一致性就是按上述要求操作结束后，A 剩余 600 元，B 剩余 800 元，合计还是 1400 元，不会出现 A 少了 200 元，B 的账户未增加的情况</li>
+<li>隔离性（Isolation）：数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个并发事务执行时由于交叉执行而导致数据的不一致，因为多个事务同时使用相同的数据时，不会互相干扰，每个事务都有一个完整的数据空间，对其他并发事务是隔离的。也就是说，消费者购买商品这个事务，是不影响其他消费者购买的</li>
+<li>持久性（Durability）：事务处理结束后，对数据的修改就是永久的，即使系统故障也不会丢失</li>
+</ul>
+<h3 id="_8">隔离性是怎么实现的？</h3>
+<p>MVCC，多版本并发控制或锁机制来实现的。</p>
+<h3 id="_9">一致性是怎么实习的？</h3>
+<ul>
+<li>持久性通过 redo log（重做日志）来保证的</li>
+<li>原子性通过 undo log（回滚日志）来保证的</li>
+<li>隔离性通过 MVCC 或锁机制保证的</li>
+<li>一致性通过持久性+原子性+隔离性保证的</li>
+</ul>
+<h3 id="mysql_4">MySQL 有哪些隔离级别？可能产生什么问题？</h3>
+<ul>
+<li>读未提交：当一个事务还未提交时，它的变更就能被其他事务看到</li>
+<li>读已提交：当一个事务被提交后，它的变更就能被其他事务看到</li>
+<li>可重复读：InnoDB 默认隔离级别，事务执行时看到的数据和启动时一样</li>
+<li>串行化：会对记录加上读写锁，多个事务对一条记录进行读写操作时，后一个事务需要等待前一个事务执行完成释放锁后才能继续执行</li>
+</ul>
+<p>不同的隔离级别可能产生不同的问题：</p>
+<ul>
+<li>读未提交：脏读、不可重复读、幻读</li>
+<li>读已提交：不可重复读、幻读</li>
+<li>可重复读：幻读</li>
+<li>串行化：无</li>
+</ul>
+<h3 id="innodb">InnoDB 如何避免不可重复读？</h3>
+<p>InnoDB 默认隔离级别是可重复读，可重复读隔离级别在开启事务后，执行第一个 select 语句时，会生成一个 Read View，后面整个事务 select 期间都在用这个 Read View，所以这期间读取的数据都是一致的，不会出现前后读取的数据不一致的问题，避免了不可重复读。</p>
+<h3 id="sql">滥用事务，或者一个事务里有特别多 SQL 的弊端？</h3>
+<ul>
+<li>一个事务里的 SQL 太多，容易造成大量的死锁和锁超时</li>
+<li>回滚记录会占用大量的存储空间，事务回滚的时间长。在 MySQL 中，实际上每条记录在更新时都会同时记录一条回滚操作，记录上的最新值，通过回滚操作可以得到前一个状态的值，sql 越多，需要保存的回滚数据就越多</li>
+<li>执行时间长，容易造成主从延迟，主库上必须等待事务执行完成后才能写入 binlog，再传给备库。所以，如果一个主库上的语句执行 10 分钟，那这个事务很有可能造成从库延迟 10 分钟</li>
+</ul>
+<h2 id="mysql_5">MySQL 锁</h2>
+<h3 id="mysql_6">MySQL 死锁是怎么产生的？如何解决？</h3>
+<p>【需要使用实验验证】</p>
+<p>示例 1：</p>
+<p>假设有两个事务 A 和 B[1]：</p>
+<ol>
+<li>A: <code>select * from table where id = 1;</code>，事务 A 对 id = 1 的记录上了 X 行锁</li>
+<li>B: <code>select * from table where id = 3;</code>，事务 B 对 id = 3 的记录上了 X 行锁</li>
+<li>A: <code>select * from table where id = 3;</code>，事务 A 等待 B 释放 id = 3 的锁后再加锁</li>
+<li>B: <code>select * from table where id = 1;</code>，事务 B 等待 A 释放 id = 1 的锁后再加锁</li>
+</ol>
+<p>这时事务 A 和事务 B 都在等待对方释放锁后才能加锁，陷入无限等待，这时进入死锁。</p>
+<p>解决办法是加锁时添加顺序，比如必须按照这个顺序：先获取 id = 1 的锁，再获取 id = 3 的锁。那么以上步骤就会变为 1，2，4，3，这时就不会发生死锁了。</p>
+<p>示例 2：</p>
+<ol>
+<li>假设有 100 条数据，id 从 1～100</li>
+<li>事务 A 查询 id=101 的数据：<code>select * from table where id = 101;</code>，对 (100,+♾️] 加 X 型 next-key 锁</li>
+<li>事务 B 查询 id=102 的数据：<code>select * from table where id = 102;</code>，对 (100,+♾️] 加 X 型 next-key 锁</li>
+<li>事务 A 未查到 101 的数据，所以在事务内接着尝试插入数据：<code>insert into table (id, time) values (101, now())</code>，会添加一个插入意向锁，插入意向锁与 next-key 锁冲突，所以需要等待 B 释放 next-key 锁</li>
+<li>事务 B 未查到 102 的数据，所以在事务内接着尝试插入数据：<code>insert into table (id, time) values (102, now())</code>，会添加一个插入意向锁，插入意向锁与 next-key 锁冲突，所以需要等待 A 释放 next-key 锁，这时造成死锁</li>
+</ol>
+<h3 id="mysql_7">MySQL 有哪些锁？</h3>
+<ul>
+<li>全局锁</li>
+<li>表级锁</li>
+<li>表锁</li>
+<li>元数据锁</li>
+<li>意向锁</li>
+<li>行级锁</li>
+<li>记录锁：分为 S 锁和 X 锁，满足读写互斥、写写互斥</li>
+<li>间隙锁</li>
+<li>Next-Key Lock 临键锁</li>
+</ul>
+<h3 id="innodb_1">InnoDB 有哪些锁？</h3>
+<p>InnoDB 有如下锁[2]：</p>
+<ul>
+<li>Shared(S) and Exclusive(X) Locks </li>
+<li>Intention Locks</li>
+<li>Record Locks</li>
+<li>Gap Locks</li>
+<li>Next-Key Locks</li>
+<li>Insert Intention Locks</li>
+<li>AUTO-INC Locks</li>
+<li>Predicate Locks for Spatial Indexes</li>
+</ul>
+<p>具体参考<a href="../InnoDB-Locking/">InnoDB 锁介绍</a></p>
+<h3 id="sql_1">可重复读隔离级别下，以下 SQL 会发生什么？</h3>
+<pre><code>(id, no, name, age, score)
+
+(15, S0001, Bob, 25, 34)
+(18, S0002, Alice, 24, 77)
+(20, S0003, Jim, 24, 5)
+(30, S0004, Eric, 23, 91)
+(37, S0005, Tom, 22, 22)
+(49, S0006, Tom, 25, 83)
+(50, S0007, Rose, 23, 89)
+
+事务A: 
+time1: update students set score=100 where id = 25
+time3: insert into students(id,no,name,age,score) value (25,'S0025','sony',28,90)
+
+事务B: 
+time2: update students set score=100 where id = 26
+time4: insert into students(id,no,name,age,score) value (26,'S0026','ace',28,90)
+</code></pre>
+<p>解答:</p>
+<ul>
+<li>time1: 事务 A 获取 Gap Lock（间隙锁），范围 20~30</li>
+<li>time2: 事务 B 获取 Gap Lock（间隙锁），范围 20~30，间隙锁可以共存[3]</li>
+<li>time3: 事务 A 生成 Insert Intention Lock（插入意向锁），等待</li>
+<li>time4: 事务 B 生成 Insert Intention Lock（插入意向锁），等待</li>
+<li>由于双方都在等待对方释放间隙锁，进入死锁</li>
+</ul>
+<h3 id="mysql_8">MySQL 如何实现乐观锁？</h3>
+<p>乐观锁（Optimistic Concurrency Control，缩写“OCC”）是一种并发控制机制，最早是由孔祥重（H.T.Kung）教授提出[4]。乐观锁相信事务之间的竞争是比较小的，因此在读取数据时不会加锁，只在更新数据时根据版本号决定是否更新：</p>
+<ul>
+<li>如果更新时，版本号与数据库中的版本号一致，则将版本号加 1，并更新到数据库</li>
+<li>如果更新时，版本号于数据库中的版本号不一致，表示记录已经被其他事务更新，此次更新失败</li>
+</ul>
+<p>SQL 如下：</p>
+<pre><code>update table set
+xxx = '其他字段',
+version = version + 1
+where version = #{当前版本号}
+</code></pre>
+<h3 id="mysql-update">MySQL 两个线程的 update 语句同时处理同一条数据，会不会有阻塞？</h3>
+<p>例如 <code>update ... where id = 1</code>，是会阻塞的，因为 InnoDB 实现了行级锁。</p>
+<p>当事务 A 对 id=1 这条记录进行更新时，会对主键 id 为 1 的记录加 X 类型的记录锁，这样吧第二个事务 B 对 id=1 的记录更新时，发现已经有锁记录了，就会进入阻塞状态。</p>
+<h3 id="update-10-15">两条 update 语句处理一张表的不同主键范围的记录，一个 &lt; 10, 一个 &gt; 15，会不会遇到阻塞？底层是为什么？</h3>
+<p>不会，因为锁住的范围不一样，不会形成冲突</p>
+<ul>
+<li>第一条 update xxxx where id &lt; 10，锁住的范围是 (-♾️, 10)</li>
+<li>第一条 update xxxx where id &gt; 15，锁住的范围是 (-15, +♾️)</li>
+</ul>
+<h3 id="2">如果 2 个范围不是主键或索引，还会阻塞吗？</h3>
+<p>如果以上两个范围查询的字段不是主键或者索引时，就代表 update 没有用到索引，这时候触发了全表扫描，全部索引都会加行级锁，这时候第二条 update 语句执行时，就会阻塞了。如果 update 没有用到索引，在扫描过程中会对索引加锁，所以全表扫描的场景下，所有记录都会被加锁。</p>
+<h3 id="_10">除了表锁、行锁之外，还有其他类型的锁吗？</h3>
+<p>还有全局锁。通过 <code>flash table with read lock</code> 会将整个数据库处于只读状态，这时其他线程执行增删改或者表结构修改都会阻塞。全局锁主要用于全库逻辑备份，这样在备份数据库期间，不会因为修改或表结构的更新，出现备份后的数据于语气不一致。</p>
+<h2 id="_11">其他</h2>
+<h3 id="mysql_9">设计 MySQL 的表结构要考虑什么问题？</h3>
+<ul>
+<li>主键设计要合理：主键不要有业务含义，比如身份证号码虽然是唯一的，但是不宜做主键，常见的主键 ID 有自增 ID、uuid、雪花算法生成的 ID 等</li>
+<li>不要有太多字段：一张表的字段尽量不要超过 20 个，如果字段太多，保存的数据可能太大，查询效率会降低。当表中字段非常多时，可以拆分为两张表，一张为查询表，另一张为详情表</li>
+<li>优先考虑逻辑删除，而不是物理删除：会数据添加一个 is_delete 字段，表示数据是否已经逻辑删除，最好不要物理删除，因为数据恢复会很困难，且自增的主键不再连续</li>
+<li>尽可能使用 not null 定义字段：首先，NULL 值可以防止出现控制真问题；其次，NULL 值存储也是需要额外空间的，它会导致比较运算符复杂，使优化器难以优化 SQL；最后 NULL 值可能会导致索引失效</li>
+<li>评估哪些字段需要加索引：区分度不高的字段，不宜加索引。索引也不要建的太多，一搬单表索引数量不要超过 5 个，建立联合索引时，要结合最左匹配原则，和业务上频繁使用的 where 条件来综合考虑</li>
+</ul>
+<h3 id="mysql-char-varchar">MySQL 的 char 和 varchar 有什么区别？</h3>
+<ul>
+<li>char 是固定长度字符串类型，定义时需要指定字段长度，存储时会在末尾补足空格。char 适合存储长度固定的数据，如固定长度的代码，状态等，存储空间固定，对于短字符串效率较高</li>
+<li>varchar 是可变长度的字符串类型，定义时需要指定最大长度，存储时根据实际长度占用存储空间。varchar 适合存储长度可变的字符，如用户输入的文本，备注等</li>
+</ul>
+<h3 id="_12">当前读和快照读的区别是什么？</h3>
+<ul>
+<li>当前读可以读取其他事务最新已经提交的记录，执行的过程中会通过加行级锁的方式保持事务的隔离性，比如 select for update，update，delete，都属于当前读</li>
+<li>快照读是无锁的，主要是基于 mvcc 机制实现的，可重复读和读已提交的 select 都属于快照读</li>
+<li>可重复读的隔离级别是启动事务时生成一个 Read View，然后整个事务期间都在使用这个 Read View，这样就保证了在事务期间读到的数据都是事务启动前的记录</li>
+<li>读提交隔离级别是在每个 select 都会生成一个新的 Read View，也意味着，同一个事务期间多次读取同一条记录，两次读取到的结果可能不一样，因为可能这期间另外一个事务修改了记录，并提交了事务</li>
+</ul>
+<h3 id="mysql_10">MySQL 分表怎么设计？</h3>
+<ul>
+<li>按时间分表：根据数据的时间特征，按照时间范围（如年、月、日）将数据存到不同表中</li>
+<li>按业务分表：按照业务需求将数据按照业务逻辑进行分类，可根据不同业务属性将数据打散到不同的表中，实现逻辑上的分离</li>
+<li>按哈希分表：通过使用哈希计算，将数据均匀分布在多个表中，避免单表数据量过大</li>
+<li>按范围分表：根据数据的某个范围属性，（用户 ID、地区 ID 等）将数据打散到不同的表中，便于查询和管理不同范围的数据</li>
+<li>按数据量分表：当单表数据量过大时，按照一定规则将数据分散到不同表中</li>
+</ul>
+<h3 id="mvcc">MVCC 是什么意思？</h3>
+<p>MVCC（Multiversion concurrency control）多版本并发控制。假设有两个事务同时更新一条数据，数据有两个隐藏列：</p>
+<ol>
+<li>trx_id: 当一个聚簇索引对该记录进行改动时，trx_id 为该事务的 id</li>
+<li>roll_pointer: 每次对某条聚簇索引改动时，都会把旧版本的日志写到 undo 日志中，roll_pointer 是一个指针，指向上一个版本的数据，形成一个链</li>
+</ol>
+<p>当数据库引擎为不同隔离级别时，事务通过数据库快照 ReadView 判断应该读取版本链中的哪条数据：</p>
+<ul>
+<li>隔离级别为 READ COMMITTED：每次查询开始是生成独立的 ReadView</li>
+<li>REPEATABLE COMMITTED：第一次读取数据时生成 ReadView</li>
+</ul>
+<p>ReadView 有四个字段，在如上不同隔离级别下通过这四个字段完成数据访问：
+  - m_ids：表示在生成 ReadView 时当前系统中活跃的读写事务的事务 id 列表。
+  - min_trx_id：表示在生成 ReadView 时当前系统中活跃的读写事务中最小的事务 id，也就是 m_ids 中的最小值。
+  - max_trx_id：表示生成 ReadView 时系统中应该分配给下一个事务的 id 值。
+  - creator_trx_id：表示生成该 ReadView 的事务的事务 id。</p>
+<h3 id="_13">数据库三大范式是什么？</h3>
+<ul>
+<li>第一范式：保证每一列不可再分</li>
+<li>第二范式：前提是满足第一范式，每张表只描述一件事情，消除部分依赖的问题</li>
+<li>第三范式：前提是满足第一范式和第二范式，第三范式需要确保数据表中每一列数据都和主键直接相关，而不能间接相关，消除传递依赖的问题</li>
+</ul>
+<h3 id="_14">数据库怎么分类，描述一下你对这些数据库的理解？</h3>
+<p>按照数据模型，主要分为关系型数据库和非关系型数据库</p>
+<ul>
+<li>关系型数据库：基于关系模型组织的数据库，如 MySQL，Oracle 等</li>
+<li>非关系型数据库：不使用传统表格形式存储的数据库，如 MongoDB、Redis 等</li>
+</ul>
+<p>数据库是用于存储、管理和检索数据的系统，关系型数据库使用结构化语言 SQL 来管理数据，适用于需要保持数据一致性和完整性的场景；NoSQL 数据库则更加灵活，适用于需要处理大量非结构化数据或需要高可伸缩性的场景。</p>
+<h3 id="mysql-redis">什么情况使用 MySQL，什么情况使用 Redis？</h3>
+<ul>
+<li>选择 MySQL：需要存储结构化数据，需要支持复杂的查询操作，和需要支持事务处理时，选择 MySQL</li>
+<li>选择 Redis：需要快速数据读取和写入，实现分布式锁时，可以使用 Redis</li>
+</ul>
+<p>一般 Redis 会作为 MySQL 的缓存，提高服务系统的查询性能，比如一些高吞吐量的场景，会做二级缓存，请求顺序为本地缓存-Redis-MySQL，Redis 直接读取内存，MySQL 读取硬盘，所以 Redis 速度更快。</p>
+<h3 id="sql-sql">了解 SQL 注入吗？怎么防止 SQL 注入？</h3>
+<p>SQL 注入是发生于应用程序和数据库之间的安全漏洞，是输入的字符串中输入 SQL 指令，数据库以为是正常的指令去执行，系统因此遭到破坏。比如有如下 SQL：</p>
+<pre><code>select * from table where user_name = 'name' and pass_word = 'passwd' and user_type = 'student';
+</code></pre>
+<p>假如在用户界面需要输入用户名和密码，用户名输入 <code>name</code>，密码输入 <code>'or true --</code>，SQL 变为：</p>
+<pre><code>select * from table where user_name = 'name' and pass_word = ''or true --' and user_type = 'student';
+</code></pre>
+<p><code>--</code> 是 SQL 的注释符号，因此会把 <code>and user_type = 'student'</code> 这段注释掉，而由于 <code>or true</code> 的存在，整个 SQL 的逻辑相当于：</p>
+<pre><code>select * from table;
+</code></pre>
+<p>由此实现了通过 SQL 注入不用密码即可登录成功。</p>
+<p>预防措施：</p>
+<ol>
+<li>严格限制数据库的操作权限，给连接数据库的用户提供满足需要的最低权限</li>
+<li>校验参数是否合法，利用正则或特殊字符的判断</li>
+<li>对进入数据库的特殊字符转义处理，或编码转换</li>
+<li>预编译 SQL（Java 中使用 PreparedStatement），参数化查询方式，避免 SQL 拼接</li>
+</ol>
+<h3 id="mysql_11">MySQL 有哪些引擎？说一下他们的区别？</h3>
+<p>有 InnoDB 和 MyISAM，它们的区别：</p>
+<ul>
+<li>事务：InnoDB 支持事务，MyISAM 不支持，这是 MySQL 的默认引擎从 MyISAM 变成 InnoDB 重要原因之一</li>
+<li>索引结构：InnoDB 是聚簇索引，MyISAM 是非聚簇索引。聚簇索引的文件存放在主键索引的叶子节点上，因此 InnoDB 必须要有主键，通过主键索引效率很高。但是辅助索引需要两次查询，先查询到主键，再通过主键查询到数据。因此主键不应太大，主键太大会导致其他索引也很大。而 MyISAM 是非聚簇索引，数据文件和索引是分离的，索引保存的是数据文件的指针</li>
+<li>锁粒度：InnoDB 最小粒度的锁是行锁，MyISAM 最小粒度的锁是表锁。一个更新语句会锁住整张表，因此并发访问受限</li>
+<li>count 的效率：InnoDB 不保存行数，<code>select count(1) from table</code> 查询时需要全表扫描，而 MyISAM 用一个变量保存了整个表的行数，执行上述语句只需要读改变量的值即可，速度比较快</li>
+</ul>
+<h3 id="mysql_12">MySQL 查询数据怎么优化？</h3>
+<ul>
+<li>通过 explain 执行结果，查看 SQL 是否走索引，如果不走索引，考虑增加索引</li>
+<li>建立联合索引，索引区分度最大的字段放在最左边，且要符合最左匹配原则</li>
+<li>避免索引失效，比如不要使用左模糊匹配，函数计算、表达式计算等</li>
+<li>连表查询最好要以小表驱动大表，被驱动表的字段要有索引，最好通过冗余字段的设计避免多表关联</li>
+<li>针对 <code>limit x, y</code> 深分页的查询优化，可以把 limit 查询转换成某个位置的查询：<code>select * from tb_sku where id &gt; 20000 limit 10;</code>，该方案适用于主键自增的表</li>
+<li>将字段多的表拆解成多个表，有些字段使用频率高，有些低，可以考虑分开，因为数据量大时使用频率低的字段速度会慢</li>
+</ul>
+<h3 id="binlog">binlog 的类型有哪些？</h3>
+<ol>
+<li>基于语句的复制（Statement-based）</li>
+<li>基于行的复制（Row-Based）</li>
+<li>混合模式的复制（Mixed）</li>
+</ol>
+<h2 id="_15">参考</h2>
+<ol>
+<li>《MySQL 是怎样运行的：从根儿上理解 MySQL》第 22 章 第 6 节</li>
+<li><a href="https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html">MySQL 8.0 Reference Manual-17.7.1</a></li>
+<li><a href="https://www.xiaolincoding.com/mysql/lock/show_lock.html#time-2-%E9%98%B6%E6%AE%B5%E5%8A%A0%E9%94%81%E5%88%86%E6%9E%90">小林 coding</a></li>
+<li>孔祥重: https://zh.wikipedia.org/wiki/%E5%AD%94%E7%A5%A5%E9%87%8D</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 - 2024 <a href="https://github.com/z1ming" target="_blank" rel="noopener noreferrer">Rotten Orange</a>|沪ICP备2024058920号
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
